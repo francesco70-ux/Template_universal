@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <!-- =====================================================
+         META / SEO
+         Contiene le informazioni principali della pagina.
+         Titolo e descrizione vengono compilati automaticamente
+         da config.js tramite gli attributi data-config.
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <!-- Adatta il layout a smartphone, tablet e desktop. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Descrizione SEO: viene sostituita automaticamente da config.js. -->
+    <meta
+        name="description"
+        data-config="seo.description"
+        content="Descrizione del locale."
+    >
+
+    <!-- Titolo della scheda del browser: viene da config.js. -->
+    <title data-config="seo.title">
+        NOME LOCALE | Ristorante
+    </title>
+
+    <!-- Foglio di stile principale del template. -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER / NAVBAR
+         Contiene logo, navigazione principale e pulsante
+         di prenotazione.
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <!--
+                LOGO:
+                l'immagine viene caricata automaticamente
+                dal percorso definito in config.js.
+            -->
+            <a href="index.html" class="logo">
+
+                <!-- Nome testuale di fallback se il logo non è disponibile. -->
+                <span class="logo-text" data-config="name">
+                    NOME LOCALE
+                </span>
+
+                <!-- Logo del cliente, caricato da config.js. -->
+                <img
+                    src=""
+                    alt=""
+                    class="logo-image"
+                >
+
+            </a>
+
+
+            <!--
+                MENU DI NAVIGAZIONE:
+                i collegamenti alle sezioni opzionali possono
+                essere nascosti automaticamente da script.js.
+            -->
+            <ul class="nav-menu">
+
+                <!-- Home: pagina principale del sito. -->
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <!-- Chi siamo: viene nascosto se about = false. -->
+                <li data-section-link="about">
+                    <a href="#chi-siamo">
+                        Chi siamo
+                    </a>
+                </li>
+
+                <!-- Menu: destinazione caricata da config.js. -->
+                <li>
+                    <a
+                        href="#"
+                        class="menu-link"
+                    >
+                        Menu
+                    </a>
+                </li>
+
+                <!-- Galleria: viene nascosta se gallery = false. -->
+                <li data-section-link="gallery">
+                    <a href="#galleria">
+                        Galleria
+                    </a>
+                </li>
+
+                <!-- Contatti: pagina standard del template. -->
+                <li>
+                    <a href="contatti.html">
+                        Contatti
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!--
+                PRENOTAZIONE NAVBAR:
+                testo e destinazione vengono gestiti da config.js.
+                La sezione viene nascosta se reservation = false.
+            -->
+            <a
+                href="#"
+                class="nav-button"
+                data-navbar-button="reservation"
+                data-section-link="reservation"
+            >
+                Prenota
+            </a>
+
+
+            <!--
+                MENU MOBILE:
+                apre e chiude la navigazione su smartphone.
+                aria-expanded viene aggiornato da script.js.
+            -->
+            <button
+                class="mobile-menu-button"
+                type="button"
+                aria-label="Apri menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENUTO PRINCIPALE
+         Tutte le sezioni principali della homepage.
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+             Prima sezione visibile: nome, slogan e CTA.
+        ================================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <!-- Tipologia del locale, configurata dal cliente. -->
+                <p
+                    class="hero-subtitle"
+                    data-config="type"
+                >
+                    Ristorante
+                </p>
+
+                <!-- Nome del locale, configurato dal cliente. -->
+                <h1 data-config="name">
+                    NOME DEL LOCALE
+                </h1>
+
+                <!-- Slogan principale, configurato dal cliente. -->
+                <p
+                    class="hero-description"
+                    data-config="slogan"
+                >
+                    Una cucina fatta di passione e qualità.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <!--
+                        CTA PRINCIPALE HERO:
+                        testo e link vengono da buttons.heroPrimary.
+                    -->
+                   <a
+    href="#"
+    class="button button-primary"
+    data-button="heroPrimary"
+>
+    Scopri il menu
+</a>
+                    <!--
+                        CTA SECONDARIA HERO:
+                        testo e link vengono da buttons.heroSecondary.
+                    -->
+                    <a
+    href="#"
+    class="button button-secondary"
+    data-button="heroSecondary"
+>
+    Prenota un tavolo
+</a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CHI SIAMO
+             Racconta storia, identità e filosofia del locale.
+        ================================================== -->
+
+        <section
+            id="chi-siamo"
+            class="about"
+        >
+
+            <div class="section-container">
+
+                <div class="about-content">
+
+                    <div class="about-text">
+
+                        <!-- Etichetta della sezione, configurata da config.js. -->
+                        <p
+                            class="section-label"
+                            data-config="about.label"
+                        >
+                            CHI SIAMO
+                        </p>
+
+                        <!-- Titolo della sezione. -->
+                        <h2 data-config="about.title">
+                            La nostra storia
+                        </h2>
+
+                        <!-- Primo paragrafo della sezione About. -->
+                        <p data-config="about.text1">
+                            Racconta qui la storia del locale.
+                        </p>
+
+                        <!-- Secondo paragrafo della sezione About. -->
+                        <p data-config="about.text2">
+                            Descrizione della filosofia del locale.
+                        </p>
+
+                    </div>
+
+
+                    <!--
+                        IMMAGINE ABOUT:
+                        viene caricata da images.about in config.js.
+                    -->
+                    <div class="about-image">
+
+                        <img
+                            src=""
+                            alt=""
+                            class="about-image-element"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PUNTI DI FORZA
+             Mostra i principali elementi distintivi del locale.
+        ================================================== -->
+
+        <section class="features">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <!-- Etichetta della sezione. -->
+                    <p
+                        class="section-label"
+                        data-config="features.label"
+                    >
+                        PERCHÉ SCEGLIERCI
+                    </p>
+
+                    <!-- Titolo della sezione. -->
+                    <h2 data-config="features.title">
+                        Qualità e passione
+                    </h2>
+
+                </div>
+
+
+                <!--
+                    CONTENITORE DINAMICO:
+                    le card vengono generate automaticamente
+                    da features.items in config.js.
+                -->
+                <div
+                    class="features-grid"
+                    id="features-container"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MENU IN EVIDENZA
+             Mostra solo alcuni piatti; il menu completo
+             rimane una pagina indipendente.
+        ================================================== -->
+
+        <section class="featured-menu">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <!-- Etichetta della sezione. -->
+                    <p
+                        class="section-label"
+                        data-config="featuredMenu.label"
+                    >
+                        DALLA NOSTRA CUCINA
+                    </p>
+
+                    <!-- Titolo della sezione. -->
+                    <h2 data-config="featuredMenu.title">
+                        Le nostre proposte
+                    </h2>
+
+                    <!-- Descrizione della sezione. -->
+                    <p data-config="featuredMenu.description">
+                        Una selezione dei piatti più rappresentativi.
+                    </p>
+
+                </div>
+
+
+                <!--
+                    CONTENITORE DINAMICO:
+                    i piatti vengono generati da featuredMenu.items.
+                -->
+               <div
+    class="featured-menu-grid"
+    id="featured-menu-container"
+></div>
+
+                <!-- CTA che porta al menu completo. -->
+                <a
+                    href="#"
+                    class="btn btn-primary"
+                    data-button="featuredMenu"
+                >
+                    Scopri il menu
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GALLERIA
+             Mostra immagini del locale, piatti e atmosfera.
+        ================================================== -->
+
+        <section
+            id="galleria"
+            class="gallery"
+        >
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <!-- Etichetta della galleria. -->
+                    <p
+                        class="section-label"
+                        data-config="gallery.label"
+                    >
+                        GALLERIA
+                    </p>
+
+                    <!-- Titolo della galleria. -->
+                    <h2 data-config="gallery.title">
+                        Scopri il nostro locale
+                    </h2>
+
+                </div>
+
+
+                <!--
+                    CONTENITORE DINAMICO:
+                    le immagini vengono generate da gallery.images.
+                -->
+                <div
+                    class="gallery-grid"
+                    id="gallery-container"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENSIONI
+             Mostra testimonianze configurabili del cliente.
+        ================================================== -->
+
+        <section class="reviews">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <!-- Etichetta recensioni. -->
+                    <p
+                        class="section-label"
+                        data-config="reviews.label"
+                    >
+                        RECENSIONI
+                    </p>
+
+                    <!-- Titolo recensioni. -->
+                    <h2 data-config="reviews.title">
+                        Cosa dicono i nostri clienti
+                    </h2>
+
+                </div>
+
+
+                <!--
+                    CONTENITORE DINAMICO:
+                    le recensioni vengono generate da reviews.items.
+                -->
+                <div
+                    class="reviews-grid"
+                    id="reviews-container"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA PRENOTAZIONE
+             Invito finale all'azione.
+        ================================================== -->
+
+        <section class="reservation-cta">
+
+            <div class="section-container">
+
+                <div class="cta-content">
+
+                    <!-- Etichetta CTA. -->
+                    <p
+                        class="section-label"
+                        data-config="reservation.label"
+                    >
+                        TI ASPETTIAMO
+                    </p>
+
+                    <!-- Titolo CTA. -->
+                    <h2 data-config="reservation.title">
+                        Prenota il tuo tavolo
+                    </h2>
+
+                    <!-- Descrizione CTA. -->
+                    <p data-config="reservation.description">
+                        Contattaci per prenotare il tuo tavolo.
+                    </p>
+
+                    <!--
+                        CTA PRENOTAZIONE:
+                        testo e link vengono da buttons.reservation.
+                    -->
+                    <a
+                        href="#"
+                        class="btn btn-primary"
+                        data-button="reservation"
+                    >
+                        Prenota ora
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         Contiene logo, descrizione, contatti, orari e social.
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+        <!--
+            COLONNA PRINCIPALE:
+            nome e descrizione del locale.
+        -->
+        <div class="footer-column">
+
+            <!-- Nome/logo testuale del locale. -->
+            <a
+                href="index.html"
+                class="footer-logo"
+                data-config="name"
+            >
+                NOME LOCALE
+            </a>
+
+            <!-- Descrizione generale configurata dal cliente. -->
+            <p data-config="description">
+                Una breve descrizione del locale.
+            </p>
+
+        </div>
+
+
+
+        <!--
+            CONTATTI:
+            indirizzo, città, telefono ed email vengono
+            caricati da contact in config.js.
+        -->
+        <div class="footer-column">
+
+            <h3>
+                Contatti
+            </h3>
+
+            <!-- Indirizzo del locale. -->
+            <p data-config="contact.address">
+                Via Esempio 00
+            </p>
+
+            <!-- Città e provincia. -->
+            <p data-config="contact.city">
+                00000 Città
+            </p>
+
+            <!-- Numero di telefono cliccabile. -->
+            <p>
+                <a
+                    href="#"
+                    class="phone-link"
+                >
+                    <span data-config="contact.phone">
+                        +39 000 000 0000
+                    </span>
+                </a>
+            </p>
+
+            <!-- Email cliccabile. -->
+            <p>
+                <a
+                    href="#"
+                    class="email-link"
+                >
+                    <span data-config="contact.email">
+                        email@esempio.it
+                    </span>
+                </a>
+            </p>
+
+        </div>
+
+
+
+        <!--
+            ORARI:
+            ogni giorno utilizza il relativo valore
+            definito in openingHours di config.js.
+        -->
+        <div class="footer-column">
+
+            <h3>
+                Orari
+            </h3>
+
+            <p>
+                Lunedì:
+                <span data-config="openingHours.monday">
+                    Chiuso
+                </span>
+            </p>
+
+            <p>
+                Martedì:
+                <span data-config="openingHours.tuesday">
+                    19:00 - 23:00
+                </span>
+            </p>
+
+            <p>
+                Mercoledì:
+                <span data-config="openingHours.wednesday">
+                    19:00 - 23:00
+                </span>
+            </p>
+
+            <p>
+                Giovedì:
+                <span data-config="openingHours.thursday">
+                    19:00 - 23:00
+                </span>
+            </p>
+
+            <p>
+                Venerdì:
+                <span data-config="openingHours.friday">
+                    19:00 - 23:30
+                </span>
+            </p>
+
+            <p>
+                Sabato:
+                <span data-config="openingHours.saturday">
+                    12:00 - 15:00 / 19:00 - 23:30
+                </span>
+            </p>
+
+            <p>
+                Domenica:
+                <span data-config="openingHours.sunday">
+                    12:00 - 15:00 / 19:00 - 23:00
+                </span>
+            </p>
+
+        </div>
+
+
+
+        <!--
+            SOCIAL:
+            i link vengono caricati automaticamente da social
+            in config.js.
+        -->
+        <div class="footer-column">
+
+            <h3>
+                Seguici
+            </h3>
+
+            <!-- Instagram configurato dal cliente. -->
+            <a
+                href="#"
+                class="instagram-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Instagram
+            </a>
+
+            <!-- Facebook configurato dal cliente. -->
+            <a
+                href="#"
+                class="facebook-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Facebook
+            </a>
+
+        </div>
+
+
+
+        <!--
+            COPYRIGHT:
+            l'anno e il nome del locale vengono aggiornati
+            automaticamente da script.js.
+        -->
+       <div class="footer-bottom">
+
+    <p>
+        © <span class="current-year"></span>
+        <span data-config="name">NOME LOCALE</span>.
+        Tutti i diritti riservati.
+    </p>
+
+    <p>
+        Website by FC Studio
+    </p>
+
+</div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         config.js deve essere caricato prima di script.js,
+         perché script.js utilizza restaurantConfig.
+    ====================================================== -->
+
+    <!-- Configurazione specifica del cliente. -->
+    <script src="js/config.js"></script>
+
+    <!-- Logica generale e funzioni dinamiche del template. -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
