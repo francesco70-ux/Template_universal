@@ -1,1844 +1,816 @@
-/*
-============================================================
-FC STUDIO — RESTAURANT & BAR TEMPLATE V1.0
-FILE: style.css
+/* Cormorant Garamond 400 italic [latin-ext] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-400-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
 
-Questo file controlla l'ASPETTO GRAFICO del sito:
-- colori
-- font
-- spaziature
-- dimensioni
-- layout
-- responsive
-- animazioni
+/* Cormorant Garamond 400 italic [latin] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-400-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
-REGOLA PRINCIPALE:
+/* Cormorant Garamond 500 italic [latin-ext] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-500-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
 
-Per un nuovo cliente, normalmente si modifica:
+/* Cormorant Garamond 500 italic [latin] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-500-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
-1. js/config.js  → contenuti, colori e impostazioni
-2. assets/       → immagini e logo
-3. questo file   → solo per modifiche grafiche specifiche
+/* Cormorant Garamond 400 normal [latin-ext] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-400-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
 
-Le variabili presenti in :root permettono di modificare
-rapidamente il tema generale senza cercare ogni singolo
-colore nel resto del CSS.
-============================================================
-*/
+/* Cormorant Garamond 400 normal [latin] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-400-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
+/* Cormorant Garamond 500 normal [latin-ext] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-500-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
 
+/* Cormorant Garamond 500 normal [latin] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-500-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Cormorant Garamond 600 normal [latin-ext] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-600-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* Cormorant Garamond 600 normal [latin] */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-600-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Jost 400 normal [latin-ext] */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/Jost-400-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* Jost 400 normal [latin] */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/Jost-400-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Jost 500 normal [latin-ext] */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/Jost-500-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* Jost 500 normal [latin] */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/Jost-500-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Jost 600 normal [latin-ext] */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/Jost-600-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* Jost 600 normal [latin] */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/Jost-600-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 /* ============================================================
-   1. DESIGN SYSTEM
+   FC STUDIO — UNIVERSAL TEMPLATE V2.0 · style.css
+   Design system condiviso da tutte le pagine.
+   I colori in :root vengono sovrascritti da js/config.js.
+   Convenzione: BEM leggero (.blocco-elemento), token --*.
+   ============================================================ */
 
-   Qui definiamo le variabili grafiche principali del template.
-
-   IMPORTANTE:
-   I colori vengono sovrascritti automaticamente da config.js
-   attraverso script.js.
-
-   Quindi, per un normale nuovo cliente, i colori vanno
-   modificati in config.js e NON qui.
-============================================================ */
-
+/* ---------- 1. DESIGN TOKENS ---------- */
 :root {
-
-    /* ---------- COLORI PRINCIPALI ---------- */
-
     --color-primary: #19352a;
-
     --color-primary-dark: #10241c;
-
     --color-secondary: #c8a96b;
-
-
-    /* ---------- SFONDI ---------- */
-
+    --color-secondary-dark: #7d5f28;
     --color-background: #f8f6f0;
-
     --color-background-light: #ffffff;
-
     --color-background-dark: #17241e;
-
-
-    /* ---------- TESTI ---------- */
-
     --color-text: #222222;
-
-    --color-text-light: #6b6b6b;
-
+    --color-text-light: #5c5c5c;
     --color-text-white: #ffffff;
+    --color-border: rgba(25, 53, 42, 0.12);
+    --color-gold-soft: rgba(200, 169, 107, 0.16);
 
-
-    /* ---------- TIPOGRAFIA ---------- */
-
-    /* Font utilizzato per titoli e intestazioni */
-
-    --font-title:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    /* Font utilizzato per il testo normale */
-
-    --font-body:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-
-    /* ---------- DIMENSIONI GENERALI ---------- */
-
-    /* Larghezza massima del contenuto */
+    --font-title: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-body: "Jost", "Segoe UI", Arial, Helvetica, sans-serif;
 
     --container-width: 1200px;
-
-    /* Spazio verticale standard delle sezioni */
-
-    --section-padding: 100px;
-
-    /* Arrotondamento generale degli elementi */
-
-    --border-radius: 6px;
-
-    /* Arrotondamento dei pulsanti */
-
-    --button-radius: 4px;
-
-
-    /* ---------- TRANSIZIONI ---------- */
-
-    /* Animazioni rapide */
+    --section-padding: 104px;
+    --border-radius: 10px;
+    --button-radius: 999px;
 
     --transition-fast: 0.2s ease;
-
-    /* Animazioni normali */
-
     --transition-normal: 0.35s ease;
 
-
-    /* ---------- OMBRE ---------- */
-
-    --shadow-small:
-        0 4px 15px rgba(0, 0, 0, 0.08);
-
-    --shadow-medium:
-        0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-small: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 12px 34px rgba(23, 36, 30, 0.14);
 }
 
+/* ---------- 2. RESET ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-
-/* ============================================================
-   2. RESET
-
-   Elimina gli stili predefiniti del browser per avere
-   un comportamento più uniforme tra browser diversi.
-============================================================ */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-}
-
-
-/* Scorrimento fluido verso le sezioni */
-
-html {
-
-    scroll-behavior: smooth;
-}
-
-
-/* Stile generale della pagina */
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 
 body {
-
-    /* Font principale */
-
     font-family: var(--font-body);
-
-    /* Dimensione base del testo */
-
-    font-size: 16px;
-
-    /* Altezza delle righe */
-
-    line-height: 1.6;
-
-    /* Colore principale del testo */
-
+    font-size: 17px;
+    line-height: 1.65;
     color: var(--color-text);
-
-    /* Colore dello sfondo */
-
     background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
+img { display: block; max-width: 100%; height: auto; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
 
-/* Regole generali per tutte le immagini */
+/* ---------- 3. ACCESSIBILITÀ DI BASE ---------- */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 200;
+    padding: 12px 20px;
+    border-radius: 0 0 8px 8px;
+    background: var(--color-secondary);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    transition: top var(--transition-fast);
+}
+.skip-link:focus { top: 0; }
 
-img {
-
-    /* Elimina lo spazio residuo delle immagini inline */
-
-    display: block;
-
-    /* L'immagine non supera la larghezza del contenitore */
-
-    width: 100%;
-
-    /* Mantiene le proporzioni originali */
-
-    height: auto;
+:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
-
-/* Regole generali per i link */
-
-a {
-
-    /* Il link eredita il colore dal suo contenitore */
-
-    color: inherit;
-
-    /* Elimina la sottolineatura */
-
-    text-decoration: none;
-}
-
-
-/* I pulsanti utilizzano lo stesso font del sito */
-
-button {
-
-    font-family: inherit;
-}
-
-
-/* Elimina i pallini dalle liste */
-
-ul {
-
-    list-style: none;
-}
-
-
-
-/* ============================================================
-   3. ELEMENTI GENERALI
-
-   Classi riutilizzate in diverse sezioni del sito.
-============================================================ */
-
-
-/* Contenitore centrale di tutte le sezioni */
-
+/* ---------- 4. TIPOGRAFIA E LAYOUT ---------- */
 .section-container {
-
-    width: min(
-        calc(100% - 40px),
-        var(--container-width)
-    );
-
+    width: min(calc(100% - 48px), var(--container-width));
     margin: 0 auto;
 }
 
-
-/* Contenitore del titolo delle sezioni */
-
-.section-heading {
-
-    max-width: 700px;
-
-    margin: 0 auto 50px;
-
-    text-align: center;
-}
-
-
-/* Piccola etichetta sopra il titolo */
+.section-heading { max-width: 720px; margin: 0 auto 56px; text-align: center; }
 
 .section-label {
-
-    margin-bottom: 12px;
-
-    color: var(--color-secondary);
-
+    margin-bottom: 14px;
+    color: var(--color-secondary-dark);
     font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-}
-
-
-/* Font comune per tutti i titoli */
-
-h1,
-h2,
-h3 {
-
-    font-family: var(--font-title);
-
-    font-weight: 500;
-
-    line-height: 1.2;
-}
-
-
-/* Titoli principali delle sezioni */
-
-h2 {
-
-    margin-bottom: 20px;
-
-    /*
-    clamp() permette al titolo di adattarsi
-    automaticamente alla dimensione dello schermo.
-    */
-
-    font-size: clamp(
-        32px,
-        5vw,
-        48px
-    );
-}
-
-
-/* Titoli delle card */
-
-h3 {
-
-    font-size: 24px;
-}
-
-
-/* Testo descrittivo generale */
-
-p {
-
-    color: var(--color-text-light);
-}
-
-
-
-/* ============================================================
-   4. BUTTONS
-
-   Stile comune dei pulsanti.
-
-   .button
-   = pulsante principale
-
-   .button-secondary
-   = variante secondaria trasparente
-============================================================ */
-
-.button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    /* Altezza minima del pulsante */
-
-    min-height: 48px;
-
-    /* Spazio interno */
-
-    padding: 12px 26px;
-
-    /* Bordo */
-
-    border: 1px solid var(--color-primary);
-
-    /* Angoli */
-
-    border-radius: var(--button-radius);
-
-    /* Sfondo */
-
-    background-color: var(--color-primary);
-
-    /* Colore testo */
-
-    color: var(--color-text-white);
-
-    /* Dimensione testo */
-
-    font-size: 14px;
-
-    /* Peso testo */
-
     font-weight: 600;
-
-    /* Spaziatura lettere */
-
-    letter-spacing: 0.5px;
-
-    /* Animazione */
-
-    transition:
-        background-color var(--transition-normal),
-        color var(--transition-normal),
-        transform var(--transition-fast);
-}
-
-
-/* Effetto quando il mouse passa sopra il pulsante */
-
-.button:hover {
-
-    background-color: var(--color-primary-dark);
-
-    transform: translateY(-2px);
-}
-
-
-/* Variante secondaria */
-
-.button-secondary {
-
-    border-color: var(--color-text-white);
-
-    background-color: transparent;
-}
-
-
-/* Effetto hover del pulsante secondario */
-
-.button-secondary:hover {
-
-    background-color: var(--color-text-white);
-
-    color: var(--color-primary);
-}
-
-
-
-/* ============================================================
-   5. NAVBAR
-
-   La navbar si trova sopra il Hero.
-
-   Desktop:
-   mostra normalmente le voci del menu.
-
-   Mobile:
-   il menu viene sostituito dal pulsante hamburger.
-============================================================ */
-
-
-/* Contenitore principale della navbar */
-
-.site-header {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    /*
-    z-index determina la priorità degli elementi.
-    100 permette alla navbar di stare sopra il Hero.
-    */
-
-    z-index: 100;
-}
-
-
-/* Contenuto interno della navbar */
-
-.navbar {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    width: min(
-        calc(100% - 40px),
-        var(--container-width)
-    );
-
-    min-height: 80px;
-
-    margin: 0 auto;
-}
-
-
-/* Nome del locale utilizzato come fallback */
-
-.logo {
-
-    color: var(--color-text-white);
-
-    font-family: var(--font-title);
-
-    font-size: 24px;
-
-    font-weight: 600;
-}
-
-
-/* Logo immagine */
-
-.logo-image {
-
-    /*
-    Nascondiamo inizialmente l'immagine.
-    script.js la mostra quando trova il logo in config.js.
-    */
-
-    display: none;
-
-    width: auto;
-
-    max-width: 160px;
-
-    max-height: 55px;
-
-    object-fit: contain;
-}
-
-
-/* Lista delle voci della navbar */
-
-.nav-menu {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 32px;
-}
-
-
-/* Link della navbar */
-
-.nav-menu a {
-
-    color: var(--color-text-white);
-
-    font-size: 14px;
-
-    font-weight: 500;
-
-    transition:
-        color var(--transition-fast);
-}
-
-
-/* Colore dei link al passaggio del mouse */
-
-.nav-menu a:hover {
-
-    color: var(--color-secondary);
-}
-
-
-/* Pulsante prenotazione della navbar */
-
-.nav-button {
-
-    padding: 10px 20px;
-
-    border: 1px solid var(--color-secondary);
-
-    border-radius: var(--button-radius);
-
-    color: var(--color-text-white);
-
-    font-size: 14px;
-
-    transition:
-        background-color var(--transition-fast),
-        color var(--transition-fast);
-}
-
-
-/* Hover del pulsante navbar */
-
-.nav-button:hover {
-
-    background-color: var(--color-secondary);
-
-    color: var(--color-primary);
-}
-
-
-/* Pulsante hamburger.
-   Rimane nascosto su desktop. */
-
-.mobile-menu-button {
-
-    display: none;
-
-    border: none;
-
-    background: transparent;
-
-    color: var(--color-text-white);
-
-    font-size: 28px;
-
-    cursor: pointer;
-}
-
-
-
-/* ============================================================
-   6. HERO
-
-   È la prima grande sezione del sito.
-
-   script.js sostituisce dinamicamente l'immagine di sfondo
-   utilizzando images.hero presente in config.js.
-============================================================ */
-
-.hero {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    /* Altezza minima del Hero */
-
-    min-height: 720px;
-
-    /* Spazio interno */
-
-    padding: 120px 20px 80px;
-
-    /*
-    Immagine di fallback.
-    Se JavaScript non carica quella configurata,
-    questa rimane come immagine predefinita.
-    */
-
-    background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.48),
-            rgba(0, 0, 0, 0.48)
-        ),
-        url("../assets/images/hero.jpg");
-
-    /* L'immagine riempie tutto il contenitore */
-
-    background-size: cover;
-
-    /* Centra l'immagine */
-
-    background-position: center;
-
-    color: var(--color-text-white);
-}
-
-
-/* Contenitore del contenuto Hero */
-
-.hero-content {
-
-    width: min(900px, 100%);
-
-    text-align: center;
-}
-
-
-/* Piccolo sottotitolo del Hero */
-
-.hero-subtitle {
-
-    margin-bottom: 18px;
-
-    color: var(--color-secondary);
-
-    font-size: 14px;
-
-    font-weight: 700;
-
     letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
-
-/* Titolo principale */
-
-.hero h1 {
-
-    margin-bottom: 24px;
-
-    color: var(--color-text-white);
-
-    font-size: clamp(
-        48px,
-        9vw,
-        86px
-    );
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--color-primary-dark);
+    text-wrap: balance;
 }
 
+h2 { margin-bottom: 20px; font-size: clamp(34px, 4.6vw, 50px); }
+h3 { font-size: 25px; }
 
-/* Descrizione del Hero */
+.section-heading p:last-child,
+.lead { color: var(--color-text-light); font-size: 18px; }
 
-.hero-description {
+p { color: var(--color-text-light); }
 
-    max-width: 650px;
-
-    margin: 0 auto 35px;
-
-    color: rgba(255, 255, 255, 0.9);
-
-    font-size: 18px;
-}
-
-
-/* Contenitore dei pulsanti */
-
-.hero-buttons {
-
-    display: flex;
-
-    justify-content: center;
-
-    /* Permette ai pulsanti di andare a capo */
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-}
-
-
-
-/* ============================================================
-   7. ABOUT / CHI SIAMO
-============================================================ */
-
-.about {
-
-    padding: var(--section-padding) 0;
-
-    background-color: var(--color-background-light);
-}
-
-
-/* Layout a due colonne su desktop */
-
-.about-content {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
+/* ---------- 5. PULSANTI ---------- */
+.button, .btn {
+    display: inline-flex;
     align-items: center;
-
-    gap: 70px;
-}
-
-
-/* Larghezza massima del testo */
-
-.about-text {
-
-    max-width: 520px;
-}
-
-
-/* Spazio sotto il titolo */
-
-.about-text h2 {
-
-    margin-bottom: 25px;
-}
-
-
-/* Spazio tra i paragrafi */
-
-.about-text p {
-
-    margin-bottom: 16px;
-}
-
-
-/* Contenitore dell'immagine */
-
-.about-image {
-
-    overflow: hidden;
-
-    border-radius: var(--border-radius);
-}
-
-
-/* Immagine della sezione About */
-
-.about-image img {
-
-    /*
-    Mantiene un rapporto 4:3.
-    */
-
-    aspect-ratio: 4 / 3;
-
-    /* Ritaglia l'immagine senza deformarla */
-
-    object-fit: cover;
-}
-
-
-
-/* ============================================================
-   8. FEATURES / PUNTI DI FORZA
-
-   Le card vengono generate da script.js utilizzando:
-
-   restaurantConfig.features.items
-============================================================ */
-
-.features {
-
-    padding: var(--section-padding) 0;
-}
-
-
-/* Griglia delle card */
-
-.features-grid {
-
-    display: grid;
-
-    /*
-    3 colonne di uguale larghezza.
-    */
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 30px;
-}
-
-
-/* Singola card */
-
-.feature-card {
-
-    padding: 35px 25px;
-
-    border:
-        1px solid
-        rgba(0, 0, 0, 0.08);
-
-    border-radius: var(--border-radius);
-
-    background-color:
-        var(--color-background-light);
-
-    text-align: center;
-
-    transition:
-        transform var(--transition-normal),
-        box-shadow var(--transition-normal);
-}
-
-
-/* Effetto hover della card */
-
-.feature-card:hover {
-
-    transform: translateY(-5px);
-
-    box-shadow: var(--shadow-medium);
-}
-
-
-/* Contenitore circolare dell'icona */
-
-.feature-icon {
-
-    display: flex;
-
-    align-items: center;
-
     justify-content: center;
-
-    width: 70px;
-
-    height: 70px;
-
-    margin: 0 auto 25px;
-
-    overflow: hidden;
-
-    border-radius: 50%;
-
+    min-height: 52px;
+    padding: 13px 32px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--button-radius);
     background-color: var(--color-primary);
-
     color: var(--color-text-white);
-
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color var(--transition-normal), color var(--transition-normal),
+        border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-
-
-/* Immagine dell'icona */
-
-.feature-icon img {
-
-    width: 100%;
-
-    height: 100%;
-
-    /*
-    Contiene l'immagine nel cerchio senza deformarla.
-    */
-
-    object-fit: contain;
-
-    padding: 12px;
-}
-
-
-/* Titolo della card */
-
-.feature-card h3 {
-
-    margin-bottom: 15px;
-}
-
-
-
-/* ============================================================
-   9. FEATURED MENU / MENU IN EVIDENZA
-
-   script.js genera le card dentro:
-
-   .featured-menu-grid
-
-   .menu-preview-grid viene mantenuta per compatibilità
-   con eventuali versioni precedenti del template.
-============================================================ */
-
-.featured-menu {
-
-    padding: var(--section-padding) 0;
-
-    background-color: var(--color-background-light);
-}
-
-
-/* Griglia dei piatti */
-
-.featured-menu-grid,
-.menu-preview-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 30px;
-}
-
-
-/* Singola card del menu */
-
-.menu-card {
-
-    overflow: hidden;
-
-    border-radius: var(--border-radius);
-
-    background-color: var(--color-background);
-
+.button:hover, .btn:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-small);
 }
-
-
-/* Contenitore immagine */
-
-.menu-card-image {
-
-    overflow: hidden;
+.button-secondary, .btn-secondary {
+    border-color: rgba(255, 255, 255, 0.85);
+    background-color: transparent;
 }
-
-
-/* Immagine del piatto */
-
-.menu-card-image img {
-
-    aspect-ratio: 4 / 3;
-
-    object-fit: cover;
-
-    transition:
-        transform var(--transition-normal);
-}
-
-
-/* Effetto zoom sull'immagine */
-
-.menu-card:hover .menu-card-image img {
-
-    transform: scale(1.04);
-}
-
-
-/* Contenuto della card */
-
-.menu-card-content {
-
-    padding: 25px;
-}
-
-
-/* Titolo del piatto */
-
-.menu-card-content h3 {
-
-    margin-bottom: 10px;
-}
-
-
-/* Descrizione del piatto */
-
-.menu-card-content p {
-
-    margin-bottom: 15px;
-}
-
-
-/* Prezzo */
-
-.price {
-
-    color: var(--color-primary);
-
-    font-weight: 700;
-}
-
-
-/* Contenitore del pulsante sotto la sezione */
-
-.section-button {
-
-    margin-top: 45px;
-
-    text-align: center;
-}
-
-
-
-/* ============================================================
-   10. GALLERY / GALLERIA
-
-   script.js genera automaticamente dei <figure>.
-
-   Per questo gestiamo sia:
-   .gallery-grid figure
-
-   sia:
-   .gallery-item
-
-   così il CSS rimane compatibile anche con versioni
-   precedenti del template.
-============================================================ */
-
-.gallery {
-
-    padding: var(--section-padding) 0;
-}
-
-
-/* Griglia delle immagini */
-
-.gallery-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-
-/* Singola immagine */
-
-.gallery-grid figure,
-.gallery-item {
-
-    overflow: hidden;
-
-    border-radius: var(--border-radius);
-}
-
-
-/* Immagine della galleria */
-
-.gallery-grid figure img,
-.gallery-item img {
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    transition:
-        transform var(--transition-normal);
-}
-
-
-/* Zoom al passaggio del mouse */
-
-.gallery-grid figure:hover img,
-.gallery-item:hover img {
-
-    transform: scale(1.05);
-}
-
-
-
-/* ============================================================
-   11. REVIEWS / RECENSIONI
-
-   script.js genera automaticamente:
-
-   .review-card
-   .review-stars
-   <p> con il testo
-   .review-author
-============================================================ */
-
-.reviews {
-
-    padding: var(--section-padding) 0;
-
-    background-color: var(--color-background-light);
-}
-
-
-/* Griglia recensioni */
-
-.reviews-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 30px;
-}
-
-
-/* Singola recensione */
-
-.review-card {
-
-    padding: 35px 30px;
-
-    border:
-        1px solid
-        rgba(0, 0, 0, 0.08);
-
-    border-radius: var(--border-radius);
-
-    text-align: center;
-}
-
-
-/* Stelle */
-
-.review-stars {
-
-    margin-bottom: 20px;
-
-    color: var(--color-secondary);
-
-    letter-spacing: 3px;
-}
-
-
-/* Testo della recensione */
-
-.review-card p {
-
-    margin-bottom: 20px;
-
-    color: var(--color-text);
-
-    font-family: var(--font-title);
-
-    font-size: 18px;
-
-    line-height: 1.6;
-}
-
-
-/* Nome del cliente */
-
-.review-author {
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-
-/* ============================================================
-   12. RESERVATION CTA
-
-   Call To Action finale dedicata alla prenotazione.
-============================================================ */
-
-.reservation-cta {
-
-    padding: 110px 20px;
-
-    background-color: var(--color-primary);
-
-    color: var(--color-text-white);
-}
-
-
-/* Contenitore centrale della CTA */
-
-.cta-content {
-
-    max-width: 700px;
-
-    margin: 0 auto;
-
-    text-align: center;
-}
-
-
-/* Titolo */
-
-.cta-content h2 {
-
-    color: var(--color-text-white);
-}
-
-
-/* Descrizione */
-
-.cta-content p {
-
-    margin-bottom: 30px;
-
-    color: rgba(255, 255, 255, 0.8);
-}
-
-
-/* Pulsante della CTA */
-
-.cta-content .button {
-
-    border-color: var(--color-secondary);
-
-    background-color: var(--color-secondary);
-
-    color: var(--color-primary);
-}
-
-
-/* Hover del pulsante */
-
-.cta-content .button:hover {
-
+.button-secondary:hover, .btn-secondary:hover {
     background-color: var(--color-text-white);
-
     border-color: var(--color-text-white);
+    color: var(--color-primary);
 }
-
-
-
-/* ============================================================
-   13. FOOTER
-
-   Piè di pagina del sito.
-============================================================ */
-
-.site-footer {
-
-    padding-top: 70px;
-
-    background-color: var(--color-background-dark);
-
+.button-gold {
+    border-color: var(--color-secondary);
+    background-color: var(--color-secondary);
+    color: var(--color-primary-dark);
+}
+.button-gold:hover {
+    background-color: var(--color-text-white);
+    border-color: var(--color-text-white);
+    color: var(--color-primary);
+}
+.button-outline {
+    background: transparent;
+    color: var(--color-primary);
+}
+.button-outline:hover {
+    background: var(--color-primary);
     color: var(--color-text-white);
 }
 
+/* ---------- 6. HEADER / NAVBAR ---------- */
+.site-header {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 100;
+}
+.site-header--solid {
+    position: sticky;
+    background: var(--color-primary-dark);
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+}
 
-/* Griglia principale del footer */
-
-.footer-container {
-
-    display: grid;
-
-    /*
-    La prima colonna è più larga delle altre.
-    */
-
-    grid-template-columns:
-        2fr 1fr 1fr 1fr;
-
-    gap: 50px;
-
-    width: min(
-        calc(100% - 40px),
-        var(--container-width)
-    );
-
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: min(calc(100% - 48px), var(--container-width));
+    min-height: 88px;
     margin: 0 auto;
-
-    padding-bottom: 60px;
 }
 
-
-/* Titoli delle colonne */
-
-.footer-column h3 {
-
-    margin-bottom: 20px;
-
+.logo {
+    display: inline-flex;
+    align-items: center;
     color: var(--color-text-white);
-
-    font-family: var(--font-body);
-
-    font-size: 16px;
-
+    font-family: var(--font-title);
+    font-size: 25px;
     font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+}
+.logo-image { display: none; width: auto; max-width: 190px; max-height: 60px; object-fit: contain; }
+
+.nav-menu { display: flex; align-items: center; gap: 34px; }
+.nav-menu a {
+    position: relative;
+    padding: 6px 0;
+    color: var(--color-text-white);
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 2px;
+    background: var(--color-secondary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
+}
+.nav-menu a:hover { color: var(--color-secondary); }
+.nav-menu a:hover::after,
+.nav-menu a[aria-current="page"]::after { transform: scaleX(1); }
+.nav-menu a[aria-current="page"] { color: var(--color-secondary); }
+
+.nav-button {
+    padding: 11px 26px;
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--button-radius);
+    color: var(--color-text-white);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.nav-button:hover { background-color: var(--color-secondary); color: var(--color-primary-dark); }
+
+/* Hamburger: icona SVG, visibile solo su mobile */
+.mobile-menu-button {
+    display: none;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-text-white);
+    cursor: pointer;
+}
+.mobile-menu-button svg { display: block; width: 26px; height: 26px; }
+.mobile-menu-button .icon-close { display: none; }
+.mobile-menu-button[aria-expanded="true"] .icon-open { display: none; }
+.mobile-menu-button[aria-expanded="true"] .icon-close { display: block; }
+
+/* ---------- 7. HERO ---------- */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: max(640px, 92svh);
+    padding: 140px 24px 90px;
+    background-image:
+        linear-gradient(rgba(16, 36, 28, 0.62), rgba(16, 36, 28, 0.45)),
+        url("../assets/images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--color-text-white);
+    text-align: center;
+    overflow: clip;
+}
+.hero::after {
+    /* fregio floreale inferiore: separatore elegante tra hero e contenuti */
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 72px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 72' preserveAspectRatio='none'%3E%3Cpath d='M0 72h1440V28C1200 62 960 68 720 50 480 32 240 34 0 58z' fill='%23f8f6f0'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%;
 }
 
-
-/* Paragrafi */
-
-.footer-column p {
-
-    margin-bottom: 8px;
-
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 14px;
+.hero-content { width: min(920px, 100%); }
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    color: var(--color-secondary);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
-
-
-/* Link */
-
-.footer-column a {
-
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 14px;
-
-    transition:
-        color var(--transition-fast);
+.hero-eyebrow::before, .hero-eyebrow::after {
+    content: "";
+    width: 44px; height: 1px;
+    background: var(--color-secondary);
+    opacity: 0.8;
 }
+.hero h1 {
+    margin-bottom: 22px;
+    color: var(--color-text-white);
+    font-size: clamp(52px, 9vw, 96px);
+    font-weight: 500;
+}
+.hero-description {
+    max-width: 660px;
+    margin: 0 auto 38px;
+    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-title);
+    font-size: clamp(19px, 2.4vw, 23px);
+    font-style: italic;
+}
+.hero-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+.hero-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-top: 44px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14.5px;
+    letter-spacing: 0.4px;
+}
+.hero-meta a { border-bottom: 1px solid rgba(200, 169, 107, 0.6); }
+.hero-meta a:hover { color: var(--color-secondary); }
 
+/* Hero compatta delle pagine interne */
+.page-hero {
+    min-height: 420px;
+    padding: 170px 24px 90px;
+}
+.page-hero h1 { font-size: clamp(44px, 7vw, 72px); }
+.page-hero .hero-description { margin-bottom: 0; }
 
-/* Hover dei link */
+/* Breadcrumb */
+.breadcrumb { margin-bottom: 18px; font-size: 13.5px; letter-spacing: 1.5px; text-transform: uppercase; }
+.breadcrumb a { color: var(--color-secondary); }
+.breadcrumb [aria-current] { color: rgba(255, 255, 255, 0.75); }
 
-.footer-column a:hover {
+/* ---------- 8. SEZIONI GENERICHE ---------- */
+.page-section { padding: var(--section-padding) 0; }
+.page-section--alt { background: var(--color-background-light); }
 
+/* ---------- 9. ABOUT ---------- */
+.about { padding: var(--section-padding) 0; background: var(--color-background-light); }
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 72px;
+}
+.about-text { max-width: 540px; }
+.about-text h2 { margin-bottom: 24px; }
+.about-text p { margin-bottom: 16px; }
+.about-signature {
+    margin-top: 22px;
+    font-family: var(--font-title);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--color-primary);
+}
+.about-image { overflow: hidden; border-radius: var(--border-radius); box-shadow: var(--shadow-medium); }
+.about-image img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
+
+/* ---------- 10. FEATURES ---------- */
+.features { padding: var(--section-padding) 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.feature-card {
+    padding: 40px 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-background-light);
+    text-align: center;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); }
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px; height: 76px;
+    margin: 0 auto 26px;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+.feature-icon img { width: 100%; height: 100%; padding: 14px; object-fit: contain; }
+.feature-card h3 { margin-bottom: 12px; }
+
+/* ---------- 11. MENU IN EVIDENZA ---------- */
+.featured-menu { padding: var(--section-padding) 0; background: var(--color-background-light); }
+.featured-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.menu-card {
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background: var(--color-background);
+    box-shadow: var(--shadow-small);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+.menu-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); }
+.menu-card-image { overflow: hidden; }
+.menu-card-image img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; transition: transform var(--transition-normal); }
+.menu-card:hover .menu-card-image img { transform: scale(1.05); }
+.menu-card-content { padding: 26px; }
+.menu-card-content h3 { margin-bottom: 8px; font-size: 24px; }
+.menu-card-content p { margin-bottom: 14px; font-size: 15.5px; }
+.price { color: var(--color-primary); font-family: var(--font-title); font-size: 21px; font-weight: 600; }
+.section-button { margin-top: 48px; text-align: center; }
+
+/* ---------- 12. GALLERIA ---------- */
+.gallery { padding: var(--section-padding) 0; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.gallery-grid figure { overflow: hidden; border-radius: var(--border-radius); }
+.gallery-grid img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+.gallery-grid figure:hover img { transform: scale(1.05); }
+
+/* ---------- 13. RECENSIONI ---------- */
+.reviews { padding: var(--section-padding) 0; background: var(--color-background-light); }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.review-card {
+    display: flex;
+    flex-direction: column;
+    padding: 38px 30px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-background);
+    text-align: center;
+}
+.review-card::before {
+    content: "“";
+    font-family: var(--font-title);
+    font-size: 54px;
+    line-height: 1;
     color: var(--color-secondary);
 }
+.review-stars { margin: 6px 0 18px; color: var(--color-secondary-dark); font-size: 17px; letter-spacing: 4px; }
+.review-card blockquote { margin-bottom: 20px; font-family: var(--font-title); font-size: 19px; color: var(--color-text); }
+.review-author { margin-top: auto; font-size: 13.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-light); }
 
-
-/* Logo testuale del footer */
-
-.footer-logo {
-
-    margin-bottom: 15px;
-
-    color: var(--color-text-white) !important;
-
-    font-family: var(--font-title);
-
-    font-size: 24px !important;
+/* ---------- 14. CTA PRENOTAZIONE ---------- */
+.reservation-cta {
+    position: relative;
+    padding: 120px 24px;
+    background: var(--color-primary-dark);
+    color: var(--color-text-white);
+    overflow: clip;
 }
+.reservation-cta::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 90% at 50% 110%, rgba(200, 169, 107, 0.22), transparent 65%);
+    pointer-events: none;
+}
+.cta-content { position: relative; max-width: 700px; margin: 0 auto; text-align: center; }
+.cta-content .section-label { color: var(--color-secondary); }
+.cta-content h2 { color: var(--color-text-white); }
+.cta-content p { margin-bottom: 32px; color: rgba(255, 255, 255, 0.82); font-size: 18px; }
+.cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 
-
-/* Parte inferiore del footer */
-
-.footer-bottom {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    width: min(
-        calc(100% - 40px),
-        var(--container-width)
-    );
-
+/* ---------- 15. FOOTER ---------- */
+.site-footer { padding-top: 72px; background: var(--color-background-dark); color: var(--color-text-white); }
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    width: min(calc(100% - 48px), var(--container-width));
     margin: 0 auto;
+    padding-bottom: 56px;
+}
+.footer-column h2, .footer-column h3 {
+    margin-bottom: 20px;
+    color: var(--color-text-white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.footer-column p { margin-bottom: 8px; color: rgba(255, 255, 255, 0.68); font-size: 14.5px; }
+.footer-column a {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 14.5px;
+    transition: color var(--transition-fast);
+}
+.footer-column a:hover { color: var(--color-secondary); }
+.footer-logo { margin-bottom: 14px; font-family: var(--font-title); font-size: 26px; color: var(--color-text-white); }
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    flex-wrap: wrap;
+    width: min(calc(100% - 48px), var(--container-width));
+    margin: 0 auto;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-bottom p { color: rgba(255, 255, 255, 0.45); font-size: 12.5px; }
 
-    padding: 25px 0;
+/* ---------- 16. PAGINA CONTATTI ---------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 72px;
+}
+.contact-card {
+    padding: 36px 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-background-light);
+    text-align: center;
+}
+.contact-card h2, .contact-card h3 { margin-bottom: 12px; font-size: 24px; }
+.contact-card p { margin-bottom: 6px; font-size: 16px; }
+.contact-card a { font-weight: 500; color: var(--color-primary); border-bottom: 1px solid var(--color-secondary); }
+.contact-card a:hover { color: var(--color-secondary-dark); }
+.hours-list { max-width: 560px; margin: 0 auto; text-align: left; }
+.hours-list > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--color-border);
+}
+.hours-list > div:last-child { border-bottom: none; }
+.hours-list dt, .hours-list .day { font-weight: 600; color: var(--color-text); }
+.hours-list dd, .hours-list .time { color: var(--color-text-light); }
 
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.1);
+/* Form */
+.booking { padding: var(--section-padding) 0; background: var(--color-background-light); }
+.booking-form {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px;
+    border-radius: var(--border-radius);
+    background: var(--color-background);
+    box-shadow: var(--shadow-small);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-field { margin-bottom: 20px; }
+.form-field label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; letter-spacing: 0.4px; color: var(--color-text); }
+.form-field input, .form-field select, .form-field textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-background-light);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 16px;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px var(--color-gold-soft);
+}
+.form-field [aria-invalid="true"] { border-color: #b3261e; }
+.field-error { display: none; margin-top: 6px; font-size: 13.5px; color: #b3261e; }
+.field-error--visible { display: block; }
+.form-note { margin: 6px 0 24px; font-size: 14.5px; }
+.form-status { margin-top: 20px; padding: 16px 20px; border-radius: 8px; font-size: 15.5px; }
+.form-status--success { background: rgba(25, 53, 42, 0.1); color: var(--color-primary-dark); }
+.form-status--error { background: rgba(179, 38, 30, 0.08); color: #b3261e; }
+
+/* ---------- 17. REVEAL ON SCROLL (sicuro senza JS) ---------- */
+/* Lo stato nascosto vale SOLO quando JS è attivo (classe html.js). */
+html.js .about, html.js .features, html.js .featured-menu,
+html.js .gallery, html.js .reviews, html.js .reservation-cta,
+html.js .page-section--reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+html.js .section-visible { opacity: 1; transform: none; }
+
+/* ---------- 18. TABLET LANDSCAPE (≤1024px) ---------- */
+@media (max-width: 1024px) {
+    :root { --section-padding: 88px; }
+    .nav-menu { gap: 22px; }
+    .nav-menu a { font-size: 13px; }
+    .features-grid, .featured-menu-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-container { grid-template-columns: repeat(2, 1fr); }
 }
 
-
-/* Testo copyright */
-
-.footer-bottom p {
-
-    color: rgba(255, 255, 255, 0.45);
-
-    font-size: 12px;
+/* ---------- 19. TABLET PORTRAIT (≤860px) ---------- */
+@media (max-width: 860px) {
+    .nav-button { padding: 9px 16px; font-size: 12.5px; }
+    .about-content { grid-template-columns: 1fr; gap: 44px; }
+    .about-text { max-width: none; }
+    .contact-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+    .booking-form { padding: 32px 24px; }
 }
 
-
-
-/* ============================================================
-   14. TABLET
-
-   Tra 701px e 900px riduciamo gli spazi e cambiamo
-   la struttura del footer.
-============================================================ */
-
-@media (max-width: 900px) {
-
-    /* Riduce lo spazio verticale delle sezioni */
-
-    :root {
-
-        --section-padding: 80px;
-    }
-
-
-    /* Navbar più compatta */
-
-    .nav-menu {
-
-        gap: 18px;
-    }
-
-
-    /*
-    Nasconde il pulsante prenotazione per recuperare
-    spazio nella navbar.
-    */
-
-    .nav-button {
-
-        display: none;
-    }
-
-
-    /* Riduce lo spazio tra testo e immagine About */
-
-    .about-content {
-
-        gap: 40px;
-    }
-
-
-    /* Riduce gli spazi delle griglie */
-
-    .features-grid,
-    .featured-menu-grid,
-    .menu-preview-grid,
-    .reviews-grid {
-
-        gap: 20px;
-    }
-
-
-    /* Footer passa a due colonne */
-
-    .footer-container {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-}
-
-
-
-/* ============================================================
-   15. MOBILE
-
-   Sotto i 700px il layout viene adattato agli smartphone.
-============================================================ */
-
+/* ---------- 20. MOBILE (≤700px) ---------- */
 @media (max-width: 700px) {
-
-    /* Riduce ulteriormente lo spazio delle sezioni */
-
-    :root {
-
-        --section-padding: 65px;
-    }
-
-
-    /* Contenitori più stretti */
-
-    .section-container {
-
-        width: min(
-            calc(100% - 30px),
-            var(--container-width)
-        );
-    }
-
-
-    /* Navbar */
-
-    .navbar {
-
-        width: calc(100% - 30px);
-
-        min-height: 70px;
-    }
-
-
-    /* Nasconde il menu desktop */
-
-    .nav-menu {
-
-        display: none;
-    }
-
-
-    /* Mostra il pulsante hamburger */
-
-    .mobile-menu-button {
-
-        display: block;
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        min-height: 650px;
-
-        padding: 110px 15px 70px;
-    }
-
-
-    /* Descrizione Hero più piccola */
-
-    .hero-description {
-
-        font-size: 16px;
-    }
-
-
-    /* Pulsanti Hero impilati verticalmente */
-
-    .hero-buttons {
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        width: min(
-            100%,
-            320px
-        );
-
-        margin: 0 auto;
-    }
-
-
-    /* ABOUT */
-
-    /*
-    Le due colonne diventano una sola:
-    prima testo, poi immagine.
-    */
-
-    .about-content {
-
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-    }
-
-
-    .about-text {
-
-        max-width: none;
-    }
-
-
-    /* FEATURES / MENU / RECENSIONI */
-
-    /*
-    Tutte le card vengono disposte verticalmente.
-    */
-
-    .features-grid,
-    .featured-menu-grid,
-    .menu-preview-grid,
-    .reviews-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    /* GALLERIA */
-
-    /*
-    Due immagini per riga su smartphone.
-    */
-
-    .gallery-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 10px;
-    }
-
-
-    /* CTA */
-
-    .reservation-cta {
-
-        padding: 80px 15px;
-    }
-
-
-    /* FOOTER */
-
-    /*
-    Le colonne del footer diventano una sola colonna.
-    */
-
-    .footer-container {
-
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-
-        padding-bottom: 40px;
-    }
-
-
-    /* Parte inferiore del footer in verticale */
-
-    .footer-bottom {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 20px 0;
-    }
-}
-
-
-
-/* ============================================================
-   16. SMALL MOBILE
-
-   Ottimizzazioni per schermi molto piccoli.
-============================================================ */
-
-@media (max-width: 400px) {
-
-
-    /* Titolo Hero leggermente più piccolo */
-
-    .hero h1 {
-
-        font-size: 42px;
-    }
-
-
-    /* Una sola immagine per riga nella galleria */
-
-    .gallery-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    /* Riduce lo spazio sotto il titolo */
-
-    .section-heading {
-
-        margin-bottom: 35px;
-    }
-}
-
-
-
-/* ============================================================
-   17. MOBILE MENU — GESTITO DA JAVASCRIPT
-
-   Questa classe viene aggiunta da script.js quando l'utente
-   apre il menu hamburger.
-
-   Non viene aggiunta manualmente nell'HTML.
-============================================================ */
-
-@media (max-width: 700px) {
-
-
-    /* Menu mobile aperto */
+    :root { --section-padding: 68px; }
+    body { font-size: 16px; }
+    .section-container, .navbar, .footer-container, .footer-bottom { width: calc(100% - 32px); }
+    .navbar { min-height: 72px; }
+    .nav-menu, .navbar .nav-button { display: none; }
+    .mobile-menu-button { display: block; }
 
     .nav-menu.mobile-menu-open {
-
         position: absolute;
-
-        top: 70px;
-
-        left: 15px;
-
-        right: 15px;
-
+        top: 78px; left: 16px; right: 16px;
         display: flex;
-
         flex-direction: column;
-
         align-items: stretch;
-
         gap: 0;
-
-        padding: 15px;
-
-        border-radius: 6px;
-
-        background-color: var(--color-primary-dark);
-
+        padding: 12px 18px;
+        border: 1px solid rgba(200, 169, 107, 0.35);
+        border-radius: 12px;
+        background: var(--color-primary-dark);
         box-shadow: var(--shadow-medium);
     }
+    .nav-menu.mobile-menu-open a { display: block; padding: 15px 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.09); }
+    .nav-menu.mobile-menu-open li:last-child a { border-bottom: none; }
+    body.menu-open { overflow: hidden; }
 
+    .hero { min-height: 100svh; padding: 120px 16px 90px; }
+    .hero-buttons { flex-direction: column; align-items: stretch; width: min(100%, 340px); margin: 0 auto; }
+    .hero-meta { gap: 8px 18px; font-size: 13.5px; }
 
-    /* Ogni voce occupa tutta la larghezza */
+    .features-grid, .featured-menu-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .form-row { grid-template-columns: 1fr; }
 
-    .nav-menu.mobile-menu-open li {
+    .reservation-cta { padding: 84px 16px; }
+    .cta-actions { flex-direction: column; align-items: stretch; max-width: 340px; margin: 0 auto; }
 
-        width: 100%;
-    }
-
-
-    /* Area cliccabile più grande su smartphone */
-
-    .nav-menu.mobile-menu-open a {
-
-        display: block;
-
-        width: 100%;
-
-        padding: 14px 10px;
-
-        border-bottom:
-            1px solid
-            rgba(255, 255, 255, 0.08);
-    }
-
-
-    /* L'ultima voce non ha il bordo */
-
-    .nav-menu.mobile-menu-open li:last-child a {
-
-        border-bottom: none;
-    }
-
-
-    /*
-    Quando il menu è aperto impediamo alla pagina sottostante
-    di scorrere.
-    */
-
-    body.menu-open {
-
-        overflow: hidden;
-    }
-
+    .footer-container { grid-template-columns: 1fr; gap: 36px; padding-bottom: 40px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
 
-
-
-/* ============================================================
-   18. SECTION REVEAL
-
-   script.js aggiunge la classe .section-visible quando
-   una sezione entra nella viewport.
-
-   PRIMA:
-   - trasparente
-   - spostata verso il basso
-
-   DOPO:
-   - visibile
-   - posizione originale
-============================================================ */
-
-
-/* Stato iniziale */
-
-.about,
-.features,
-.featured-menu,
-.gallery,
-.reviews,
-.reservation-cta {
-
-    opacity: 0;
-
-    transform: translateY(25px);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+/* ---------- 21. SMALL MOBILE (≤400px) ---------- */
+@media (max-width: 400px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .section-heading { margin-bottom: 38px; }
+    .booking-form { padding: 26px 18px; }
 }
 
-
-/* Stato finale dopo l'animazione */
-
-.about.section-visible,
-.features.section-visible,
-.featured-menu.section-visible,
-.gallery.section-visible,
-.reviews.section-visible,
-.reservation-cta.section-visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
+/* ---------- 22. MOVIMENTO RIDOTTO ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html.js .about, html.js .features, html.js .featured-menu,
+    html.js .gallery, html.js .reviews, html.js .reservation-cta,
+    html.js .page-section--reveal { opacity: 1; transform: none; }
 }
-
-
-
-/* ============================================================
-   FINE STYLE.CSS V1.0
-
-   PER UN NUOVO CLIENTE:
-
-   → contenuti        = js/config.js
-   → immagini         = assets/
-   → colori           = js/config.js
-   → struttura        = index.html
-   → comportamento    = js/script.js
-   → stile generale   = questo file
-
-   Se il template è già adatto al cliente,
-   normalmente NON è necessario modificare questo file.
-============================================================ */
