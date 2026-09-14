@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contatti e prenotazioni | Pastime</title>
+    <meta name="description" content="Contatta Pastime, bar trattoria pizzeria: indirizzo, telefono, orari e modulo di richiesta prenotazione.">
+    <link rel="canonical" href="https://www.esempio.it/contatti.html">
+    <meta name="theme-color" content="#10241c">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Pastime">
+    <meta property="og:title" content="Contatti e prenotazioni | Pastime">
+    <meta property="og:description" content="Indirizzo, telefono, orari e modulo di richiesta prenotazione.">
+    <meta property="og:image" content="https://www.esempio.it/assets/images/hero.jpg">
+    <meta property="og:url" content="https://www.esempio.it/contatti.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pastime.css">
+
+    <script type="application/ld+json" id="schema-contact">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Pastime",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via Esempio 00",
+            "addressLocality": "Città",
+            "addressCountry": "IT"
+        },
+        "telephone": "+39 000 000 0000",
+        "url": "https://www.esempio.it/contatti.html"
+    }
+    </script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+    <header class="site-header site-header--solid">
+        <nav class="navbar" aria-label="Navigazione principale">
+            <a href="index.html" class="logo">
+                <span class="logo-text" data-config="name">Pastime</span>
+                <img src="assets/logo/logo-pastime.jpg" alt="Pastime — logo" class="logo-image" width="170" height="120">
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li data-section-link="about"><a href="index.html#chi-siamo">Chi siamo</a></li>
+                <li><a href="menu.html" class="menu-link">Menu</a></li>
+                <li data-section-link="gallery"><a href="index.html#galleria">Galleria</a></li>
+                <li><a href="contatti.html" aria-current="page">Contatti</a></li>
+            </ul>
+
+            <a href="#prenota" class="nav-button" data-section-link="reservation">Prenota</a>
+
+            <button class="mobile-menu-button" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-menu">
+                <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="contenuto">
+        <section class="hero page-hero" aria-labelledby="contact-title">
+            <div class="hero-content">
+                <nav class="breadcrumb" aria-label="Percorso"><a href="index.html">Home</a> · <span aria-current="page">Contatti</span></nav>
+                <p class="hero-eyebrow" data-config="contactPage.label">CONTATTI</p>
+                <h1 id="contact-title" data-config="contactPage.title">Vieni a trovarci</h1>
+                <p class="hero-description" data-config="contactPage.description">Ci trovi in centro, a pochi minuti dalla piazza principale.</p>
+            </div>
+        </section>
+
+        <section class="page-section" aria-label="Informazioni di contatto">
+            <div class="section-container">
+                <div class="contact-grid">
+                    <article class="contact-card">
+                        <h2>Dove siamo</h2>
+                        <p data-config="contact.address">Via Esempio 00</p>
+                        <p data-config="contact.city">00000 Città (PR)</p>
+                        <p><a href="https://maps.google.com/?q=Via+Esempio+00+Città" class="maps-link" target="_blank" rel="noopener">Come raggiungerci →</a></p>
+                    </article>
+                    <article class="contact-card">
+                        <h2>Contattaci</h2>
+                        <p><a href="tel:+390000000000" class="phone-link"><span data-config="contact.phone">+39 000 000 0000</span></a></p>
+                        <p><a href="mailto:info@esempio.it" class="email-link"><span data-config="contact.email">info@esempio.it</span></a></p>
+                        <p><a href="https://wa.me/390000000000" class="whatsapp-link" target="_blank" rel="noopener">Scrivici su WhatsApp</a></p>
+                    </article>
+                    <article class="contact-card">
+                        <h2>Orari</h2>
+                        <dl class="hours-list">
+                            <div><dt>Lunedì</dt><dd data-config="openingHours.monday">Chiuso</dd></div>
+                            <div><dt>Martedì</dt><dd data-config="openingHours.tuesday">19:00 – 23:00</dd></div>
+                            <div><dt>Mercoledì</dt><dd data-config="openingHours.wednesday">19:00 – 23:00</dd></div>
+                            <div><dt>Giovedì</dt><dd data-config="openingHours.thursday">19:00 – 23:00</dd></div>
+                            <div><dt>Venerdì</dt><dd data-config="openingHours.friday">19:00 – 23:30</dd></div>
+                            <div><dt>Sabato</dt><dd data-config="openingHours.saturday">12:00 – 15:00 / 19:00 – 23:30</dd></div>
+                            <div><dt>Domenica</dt><dd data-config="openingHours.sunday">12:00 – 15:00 / 19:00 – 23:00</dd></div>
+                        </dl>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking" id="prenota" aria-labelledby="booking-title">
+            <div class="section-container">
+                <div class="section-heading">
+                    <p class="section-label" data-config="reservation.label">TI ASPETTIAMO</p>
+                    <h2 id="booking-title" data-config="contactPage.formTitle">Richiedi una prenotazione</h2>
+                    <p data-config="contactPage.formNote">Compila il modulo: ti ricontatteremo per confermare la disponibilità.</p>
+                </div>
+
+                <form class="booking-form" id="booking-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="f-nome">Nome e cognome *</label>
+                            <input type="text" id="f-nome" name="nome" autocomplete="name" required minlength="2" aria-describedby="e-nome">
+                            <p class="field-error" id="e-nome">Inserisci il tuo nome.</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="f-tel">Telefono *</label>
+                            <input type="tel" id="f-tel" name="telefono" autocomplete="tel" inputmode="tel" required aria-describedby="e-tel">
+                            <p class="field-error" id="e-tel">Inserisci un numero di telefono valido.</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="f-data">Data *</label>
+                            <input type="date" id="f-data" name="data" required aria-describedby="e-data">
+                            <p class="field-error" id="e-data">Scegli una data futura.</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="f-ora">Ora *</label>
+                            <select id="f-ora" name="ora" required aria-describedby="e-ora">
+                                <option value="">Seleziona…</option>
+                                <option>12:00</option>
+                                <option>12:30</option>
+                                <option>13:00</option>
+                                <option>13:30</option>
+                                <option>19:00</option>
+                                <option>19:30</option>
+                                <option>20:00</option>
+                                <option>20:30</option>
+                                <option>21:00</option>
+                                <option>21:30</option>
+                            </select>
+                            <p class="field-error" id="e-ora">Scegli un orario.</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="f-ospiti">Ospiti *</label>
+                            <select id="f-ospiti" name="ospiti" required aria-describedby="e-ospiti">
+                                <option value="">Seleziona…</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7+</option>
+                            </select>
+                            <p class="field-error" id="e-ospiti">Indica il numero di ospiti.</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="f-note">Note <span aria-hidden="true">(facoltative)</span></label>
+                            <input type="text" id="f-note" name="note" placeholder="Allergie, seggiolone, occasioni speciali…">
+                        </div>
+                    </div>
+                    <p class="form-note">Inviando accetti di essere ricontattato per la conferma. Nessun pagamento richiesto.</p>
+                    <button type="submit" class="button">Invia la richiesta</button>
+                    <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+                    <noscript><p class="form-note">Senza JavaScript puoi prenotare chiamando il <a class="phone-link" href="tel:+390000000000">+39 000 000 0000</a>.</p></noscript>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo" data-config="name">Pastime</a>
+                <p data-config="description">Bar, trattoria e pizzeria: pizze anche alla pala, antipasti, primi e secondi della tradizione.</p>
+                <p class="footer-vat" data-vat-line style="display:none">P.IVA <span data-config="contact.vat"></span></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Contatti</h2>
+                <p data-config="contact.address">Via Esempio 00</p>
+                <p data-config="contact.city">00000 Città (PR)</p>
+                <p><a href="tel:+390000000000" class="phone-link"><span data-config="contact.phone">+39 000 000 0000</span></a></p>
+                <p><a href="mailto:info@esempio.it" class="email-link"><span data-config="contact.email">info@esempio.it</span></a></p>
+                <p><a href="https://maps.google.com/?q=Via+Esempio+00+Città" class="maps-link" target="_blank" rel="noopener">Come raggiungerci →</a></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Orari</h2>
+                <p>Lunedì: <span data-config="openingHours.monday">Chiuso</span></p>
+                <p>Martedì: <span data-config="openingHours.tuesday">19:00 – 23:00</span></p>
+                <p>Mercoledì: <span data-config="openingHours.wednesday">19:00 – 23:00</span></p>
+                <p>Giovedì: <span data-config="openingHours.thursday">19:00 – 23:00</span></p>
+                <p>Venerdì: <span data-config="openingHours.friday">19:00 – 23:30</span></p>
+                <p>Sabato: <span data-config="openingHours.saturday">12:00 – 15:00 / 19:00 – 23:30</span></p>
+                <p>Domenica: <span data-config="openingHours.sunday">12:00 – 15:00 / 19:00 – 23:00</span></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Seguici</h2>
+                <a href="https://instagram.com/" data-social="instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://facebook.com/" data-social="facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="#" data-social="tiktok" target="_blank" rel="noopener noreferrer" style="display:none">TikTok</a>
+                <a href="#" data-social="tripadvisor" target="_blank" rel="noopener noreferrer" style="display:none">TripAdvisor</a>
+                <a href="#" data-social="google" target="_blank" rel="noopener noreferrer" style="display:none">Recensioni Google</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span class="current-year">2026</span> <span data-config="name">Pastime</span>. Tutti i diritti riservati.</p>
+            <p>Website by FC Studio</p>
+        </div>
+    </footer>
+
+    <script>
+    // Pastime: nasconde i collegamenti non ancora configurati (social/WhatsApp
+    // con URL segnaposto) e la colonna social se vuota. Rimuovere quando i
+    // dati reali saranno inseriti in js/config.js.
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('a[href*="000000"], a[href="#"]').forEach(function (a) {
+            if (a.classList.contains("whatsapp-link") || a.hasAttribute("data-social")) {
+                a.style.display = "none";
+            }
+        });
+        try {
+            var cols = document.querySelectorAll(".footer-column");
+            Array.prototype.forEach.call(cols, function (col) {
+                if (!col.querySelector("a[data-social]")) return;
+                var visible = Array.prototype.some.call(
+                    col.querySelectorAll("a[data-social]"),
+                    function (a) { return a.style.display !== "none"; }
+                );
+                if (!visible) col.style.display = "none";
+            });
+        } catch (e) { /* colonna social invariata */ }
+    });
+    </script>
+    <script src="js/config.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>
