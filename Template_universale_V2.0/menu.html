@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu | Nome del Locale — Ristorante italiano</title>
+    <meta name="description" content="Scopri il menu di Nome del Locale: antipasti, primi, secondi e dolci della tradizione italiana.">
+    <link rel="canonical" href="https://www.esempio.it/menu.html">
+    <meta name="theme-color" content="#10241c">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Nome del Locale">
+    <meta property="og:title" content="Menu | Nome del Locale">
+    <meta property="og:description" content="Antipasti, primi, secondi e dolci della tradizione italiana.">
+    <meta property="og:image" content="https://www.esempio.it/assets/images/hero.jpg">
+    <meta property="og:url" content="https://www.esempio.it/menu.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+
+    <script type="application/ld+json" id="schema-menu">
+    {
+        "@context": "https://schema.org",
+        "@type": "Menu",
+        "name": "Menu del Nome del Locale",
+        "url": "https://www.esempio.it/menu.html"
+    }
+    </script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+    <header class="site-header site-header--solid">
+        <nav class="navbar" aria-label="Navigazione principale">
+            <a href="index.html" class="logo">
+                <span class="logo-text" data-config="name">Nome del Locale</span>
+                <img src="assets/logo/logo.svg" alt="Nome del Locale — logo" class="logo-image" width="190" height="60">
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li data-section-link="about"><a href="index.html#chi-siamo">Chi siamo</a></li>
+                <li><a href="menu.html" class="menu-link" aria-current="page">Menu</a></li>
+                <li data-section-link="gallery"><a href="index.html#galleria">Galleria</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+
+            <a href="contatti.html" class="nav-button" data-navbar-button="reservation" data-section-link="reservation">Prenota</a>
+
+            <button class="mobile-menu-button" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-menu">
+                <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="contenuto">
+        <section class="hero page-hero" aria-labelledby="menu-title">
+            <div class="hero-content">
+                <nav class="breadcrumb" aria-label="Percorso"><a href="index.html">Home</a> · <span aria-current="page">Menu</span></nav>
+                <p class="hero-eyebrow" data-config="menu.label">IL NOSTRO MENU</p>
+                <h1 id="menu-title" data-config="menu.title">Sapori autentici</h1>
+                <p class="hero-description" data-config="menu.description">Il menu segue le stagioni e il mercato: alcuni piatti possono variare.</p>
+            </div>
+        </section>
+
+        <div class="page-section">
+            <div class="section-container">
+                <div id="menu-container">
+                    <noscript>
+                        <section class="menu-category" aria-label="Antipasti">
+                            <div class="menu-category-header"><h2>Antipasti</h2></div>
+                            <div class="menu-list">
+                                <article class="menu-item"><div class="menu-item-head"><h3>Tagliere della casa</h3><span class="menu-dots" aria-hidden="true"></span></div><span class="price">€ 14,00</span><p class="menu-item-desc">Salumi e formaggi del territorio, miele e noci.</p></article>
+                                <article class="menu-item"><div class="menu-item-head"><h3>Bruschette miste</h3><span class="menu-dots" aria-hidden="true"></span></div><span class="price">€ 9,00</span><p class="menu-item-desc">Pomodoro, funghi e crema di olive su pane toscano.</p></article>
+                            </div>
+                        </section>
+                        <p class="menu-note">Abilita JavaScript per vedere il menu completo e aggiornato.</p>
+                    </noscript>
+                </div>
+
+                <p class="menu-note" data-config="menu.note">Prezzi in euro, servizio incluso.</p>
+
+                <div class="menu-cta">
+                    <p>Hai allergie o intolleranze? Parlane con noi al momento della prenotazione.</p>
+                    <a href="contatti.html" class="button" data-button="reservation">Prenota ora</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo" data-config="name">Nome del Locale</a>
+                <p data-config="description">Un luogo dove la cucina italiana incontra l'ospitalità autentica.</p>
+                <p class="footer-vat" data-vat-line style="display:none">P.IVA <span data-config="contact.vat"></span></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Contatti</h2>
+                <p data-config="contact.address">Via Esempio 00</p>
+                <p data-config="contact.city">00000 Città (PR)</p>
+                <p><a href="tel:+390000000000" class="phone-link"><span data-config="contact.phone">+39 000 000 0000</span></a></p>
+                <p><a href="mailto:info@esempio.it" class="email-link"><span data-config="contact.email">info@esempio.it</span></a></p>
+                <p><a href="https://maps.google.com/?q=Via+Esempio+00+Città" class="maps-link" target="_blank" rel="noopener">Come raggiungerci →</a></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Orari</h2>
+                <p>Lunedì: <span data-config="openingHours.monday">Chiuso</span></p>
+                <p>Martedì: <span data-config="openingHours.tuesday">19:00 – 23:00</span></p>
+                <p>Mercoledì: <span data-config="openingHours.wednesday">19:00 – 23:00</span></p>
+                <p>Giovedì: <span data-config="openingHours.thursday">19:00 – 23:00</span></p>
+                <p>Venerdì: <span data-config="openingHours.friday">19:00 – 23:30</span></p>
+                <p>Sabato: <span data-config="openingHours.saturday">12:00 – 15:00 / 19:00 – 23:30</span></p>
+                <p>Domenica: <span data-config="openingHours.sunday">12:00 – 15:00 / 19:00 – 23:00</span></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Seguici</h2>
+                <a href="https://instagram.com/" data-social="instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://facebook.com/" data-social="facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="#" data-social="tiktok" target="_blank" rel="noopener noreferrer" style="display:none">TikTok</a>
+                <a href="#" data-social="tripadvisor" target="_blank" rel="noopener noreferrer" style="display:none">TripAdvisor</a>
+                <a href="#" data-social="google" target="_blank" rel="noopener noreferrer" style="display:none">Recensioni Google</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span class="current-year">2026</span> <span data-config="name">Nome del Locale</span>. Tutti i diritti riservati.</p>
+            <p>Website by FC Studio</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>

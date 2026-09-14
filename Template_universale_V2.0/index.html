@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO: testi statici allineati a js/config.js (leggibili anche senza JavaScript) -->
+    <title>Nome del Locale | Ristorante italiano — Città</title>
+    <meta name="description" content="Nome del Locale: ristorante italiano a Città. Scopri il menu, la nostra storia, la galleria e prenota il tuo tavolo.">
+    <link rel="canonical" href="https://www.esempio.it/index.html">
+    <meta name="theme-color" content="#10241c">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="restaurant">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Nome del Locale">
+    <meta property="og:title" content="Nome del Locale | Ristorante italiano — Città">
+    <meta property="og:description" content="Cucina italiana, ingredienti selezionati e ospitalità autentica. Scopri il menu e prenota il tuo tavolo.">
+    <meta property="og:image" content="https://www.esempio.it/assets/images/hero.jpg">
+    <meta property="og:url" content="https://www.esempio.it/index.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preload" as="image" href="assets/images/hero.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dati strutturati: aggiornati da script.js con i dati di config.js -->
+    <script type="application/ld+json" id="schema-restaurant">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Nome del Locale",
+        "servesCuisine": "Italiana",
+        "description": "Ristorante italiano: ingredienti selezionati, ricette della tradizione e ospitalità autentica.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via Esempio 00",
+            "addressLocality": "Città",
+            "addressCountry": "IT"
+        },
+        "telephone": "+39 000 000 0000",
+        "url": "https://www.esempio.it/index.html",
+        "image": "https://www.esempio.it/assets/images/hero.jpg",
+        "priceRange": "€€",
+        "acceptsReservations": "True"
+    }
+    </script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+    <header class="site-header">
+        <nav class="navbar" aria-label="Navigazione principale">
+            <a href="index.html" class="logo" aria-current="page">
+                <span class="logo-text" data-config="name">Nome del Locale</span>
+                <img src="assets/logo/logo.svg" alt="Nome del Locale — logo" class="logo-image" width="190" height="60" fetchpriority="high">
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li data-section-link="about"><a href="#chi-siamo">Chi siamo</a></li>
+                <li><a href="menu.html" class="menu-link">Menu</a></li>
+                <li data-section-link="gallery"><a href="#galleria">Galleria</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+
+            <a href="contatti.html" class="nav-button" data-navbar-button="reservation" data-section-link="reservation">Prenota</a>
+
+            <button class="mobile-menu-button" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-menu">
+                <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="contenuto">
+
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="hero-eyebrow" data-config="type">Ristorante — Cucina italiana</p>
+                <h1 id="hero-title" data-config="name">Nome del Locale</h1>
+                <p class="hero-description" data-config="slogan">Tradizione, gusto e accoglienza nel cuore della città.</p>
+                <div class="hero-buttons">
+                    <a href="menu.html" class="button" data-button="heroPrimary">Scopri il menu</a>
+                    <a href="contatti.html" class="button button-secondary" data-button="heroSecondary">Prenota un tavolo</a>
+                </div>
+                <div class="hero-meta">
+                    <span data-config="contact.address">Via Esempio 00</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Oggi: <span data-config="openingHours.saturday">12:00 – 15:00 / 19:00 – 23:30</span></span>
+                    <span aria-hidden="true">·</span>
+                    <a href="tel:+390000000000" class="phone-link"><span data-config="contact.phone">+39 000 000 0000</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHI SIAMO -->
+        <section id="chi-siamo" class="about" aria-labelledby="about-title">
+            <div class="section-container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="section-label" data-config="about.label">CHI SIAMO</p>
+                        <h2 id="about-title" data-config="about.title">La nostra storia</h2>
+                        <p data-config="about.text1">Da anni accogliamo i nostri ospiti con la stessa passione del primo giorno: una cucina che parte dagli ingredienti del territorio e li trasforma in piatti sinceri.</p>
+                        <p data-config="about.text2">In sala troverai un ambiente elegante e familiare, curato nei dettagli per farti sentire a casa.</p>
+                        <p class="about-signature">— La famiglia del Nome del Locale</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/images/about.jpg" alt="Nome del Locale — la sala del ristorante" class="about-image-element" width="626" height="393" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUNTI DI FORZA -->
+        <section class="features" aria-labelledby="features-title">
+            <div class="section-container">
+                <div class="section-heading">
+                    <p class="section-label" data-config="features.label">PERCHÉ SCEGLIERCI</p>
+                    <h2 id="features-title" data-config="features.title">Qualità e passione</h2>
+                </div>
+                <div class="features-grid" id="features-container">
+                    <noscript><p>Abilita JavaScript per vedere i nostri punti di forza.</p></noscript>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU IN EVIDENZA -->
+        <section class="featured-menu" aria-labelledby="featured-title">
+            <div class="section-container">
+                <div class="section-heading">
+                    <p class="section-label" data-config="featuredMenu.label">DALLA NOSTRA CUCINA</p>
+                    <h2 id="featured-title" data-config="featuredMenu.title">Le nostre proposte</h2>
+                    <p data-config="featuredMenu.description">Una selezione dei piatti più amati dai nostri ospiti.</p>
+                </div>
+                <div class="featured-menu-grid" id="featured-menu-container">
+                    <noscript><p>Abilita JavaScript per vedere le proposte della cucina. Il <a href="menu.html">menu completo è qui</a>.</p></noscript>
+                </div>
+                <div class="section-button">
+                    <a href="menu.html" class="button button-outline" data-button="featuredMenu">Vedi il menu completo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERIA -->
+        <section id="galleria" class="gallery" aria-labelledby="gallery-title">
+            <div class="section-container">
+                <div class="section-heading">
+                    <p class="section-label" data-config="gallery.label">GALLERIA</p>
+                    <h2 id="gallery-title" data-config="gallery.title">L'atmosfera del locale</h2>
+                </div>
+                <div class="gallery-grid" id="gallery-container">
+                    <noscript><p>Abilita JavaScript per vedere la galleria fotografica.</p></noscript>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECENSIONI -->
+        <section class="reviews" aria-labelledby="reviews-title">
+            <div class="section-container">
+                <div class="section-heading">
+                    <p class="section-label" data-config="reviews.label">RECENSIONI</p>
+                    <h2 id="reviews-title" data-config="reviews.title">Cosa dicono i nostri ospiti</h2>
+                </div>
+                <div class="reviews-grid" id="reviews-container">
+                    <noscript><p>Abilita JavaScript per leggere le recensioni dei nostri ospiti.</p></noscript>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA PRENOTAZIONE -->
+        <section class="reservation-cta" aria-labelledby="cta-title">
+            <div class="section-container">
+                <div class="cta-content">
+                    <p class="section-label" data-config="reservation.label">TI ASPETTIAMO</p>
+                    <h2 id="cta-title" data-config="reservation.title">Prenota il tuo tavolo</h2>
+                    <p data-config="reservation.description">Chiamaci, scrivici su WhatsApp o compila il modulo nella pagina contatti.</p>
+                    <div class="cta-actions">
+                        <a href="contatti.html" class="button button-gold" data-button="reservation">Prenota ora</a>
+                        <a href="https://wa.me/390000000000" class="button button-secondary whatsapp-link" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo" data-config="name">Nome del Locale</a>
+                <p data-config="description">Un luogo dove la cucina italiana incontra l'ospitalità autentica.</p>
+                <p class="footer-vat" data-vat-line style="display:none">P.IVA <span data-config="contact.vat"></span></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Contatti</h2>
+                <p data-config="contact.address">Via Esempio 00</p>
+                <p data-config="contact.city">00000 Città (PR)</p>
+                <p><a href="tel:+390000000000" class="phone-link"><span data-config="contact.phone">+39 000 000 0000</span></a></p>
+                <p><a href="mailto:info@esempio.it" class="email-link"><span data-config="contact.email">info@esempio.it</span></a></p>
+                <p><a href="https://maps.google.com/?q=Via+Esempio+00+Città" class="maps-link" target="_blank" rel="noopener">Come raggiungerci →</a></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Orari</h2>
+                <p>Lunedì: <span data-config="openingHours.monday">Chiuso</span></p>
+                <p>Martedì: <span data-config="openingHours.tuesday">19:00 – 23:00</span></p>
+                <p>Mercoledì: <span data-config="openingHours.wednesday">19:00 – 23:00</span></p>
+                <p>Giovedì: <span data-config="openingHours.thursday">19:00 – 23:00</span></p>
+                <p>Venerdì: <span data-config="openingHours.friday">19:00 – 23:30</span></p>
+                <p>Sabato: <span data-config="openingHours.saturday">12:00 – 15:00 / 19:00 – 23:30</span></p>
+                <p>Domenica: <span data-config="openingHours.sunday">12:00 – 15:00 / 19:00 – 23:00</span></p>
+            </div>
+
+            <div class="footer-column">
+                <h2>Seguici</h2>
+                <a href="https://instagram.com/" data-social="instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://facebook.com/" data-social="facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="#" data-social="tiktok" target="_blank" rel="noopener noreferrer" style="display:none">TikTok</a>
+                <a href="#" data-social="tripadvisor" target="_blank" rel="noopener noreferrer" style="display:none">TripAdvisor</a>
+                <a href="#" data-social="google" target="_blank" rel="noopener noreferrer" style="display:none">Recensioni Google</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span class="current-year">2026</span> <span data-config="name">Nome del Locale</span>. Tutti i diritti riservati.</p>
+            <p>Website by FC Studio</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>

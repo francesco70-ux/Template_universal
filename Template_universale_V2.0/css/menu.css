@@ -1,0 +1,66 @@
+/* ============================================================
+   FC STUDIO — UNIVERSAL TEMPLATE V2.0 · menu.css
+   Stili dedicati alla pagina menu.html.
+   Richiede css/style.css (design tokens condivisi).
+   ============================================================ */
+
+.menu-intro { max-width: 720px; margin: 0 auto 8px; text-align: center; }
+.menu-intro p { font-size: 18px; }
+.menu-note {
+    max-width: 720px;
+    margin: 26px auto 0;
+    padding: 16px 24px;
+    border: 1px dashed var(--color-secondary);
+    border-radius: var(--border-radius);
+    background: var(--color-gold-soft);
+    text-align: center;
+    font-size: 15px;
+}
+
+.menu-category { padding: 56px 0 8px; }
+.menu-category:first-of-type { padding-top: 40px; }
+.menu-category-header { text-align: center; margin-bottom: 12px; }
+.menu-category-header h2 { font-size: clamp(30px, 4vw, 42px); }
+.menu-category-header .section-label { margin-bottom: 8px; }
+.menu-category-note { color: var(--color-text-light); font-style: italic; }
+
+.menu-list { max-width: 820px; margin: 28px auto 0; }
+.menu-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 20px;
+    align-items: baseline;
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--color-border);
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item-head { display: flex; align-items: baseline; gap: 12px; }
+.menu-item-head h3 { font-size: 24px; }
+.menu-dots {
+    flex: 1;
+    min-width: 32px;
+    border-bottom: 2px dotted rgba(200, 169, 107, 0.7);
+    transform: translateY(-5px);
+}
+.menu-item .price { white-space: nowrap; }
+.menu-item-desc { grid-column: 1 / -1; font-size: 15.5px; }
+.menu-tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.menu-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: var(--color-gold-soft);
+    color: var(--color-primary-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.menu-cta { text-align: center; padding: 64px 0 0; }
+.menu-cta p { margin-bottom: 24px; font-family: var(--font-title); font-size: 21px; font-style: italic; color: var(--color-primary); }
+
+@media (max-width: 700px) {
+    .menu-category { padding: 44px 0 4px; }
+    .menu-item-head h3 { font-size: 21px; }
+}
