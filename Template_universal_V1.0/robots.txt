@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sostituire con l'URL assoluto quando il dominio sarà definitivo, es.:
+# Sitemap: https://www.esempio.it/sitemap.xml

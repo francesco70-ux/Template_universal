@@ -1,517 +1,202 @@
 /*
 ============================================================
-FC STUDIO — RESTAURANT TEMPLATE V1.0
+PASTIME — Bar · Trattoria · Pizzeria
 FILE: config.js
 
-Questo è il file PRINCIPALE da modificare per ogni nuovo cliente.
+File principale dei CONTENUTI del sito.
+- Testi, contatti, social, immagini e impostazioni vivono qui.
+- script.js legge questo oggetto e popola gli elementi HTML
+  che hanno l'attributo data-config="percorso.chiave".
+- Il menu completo è in js/menu-data.js.
 
-OBIETTIVO:
-- Il codice HTML non va riscritto per ogni locale.
-- Qui inseriamo testi, immagini, contatti, colori, orari e collegamenti.
-- Per creare un nuovo sito: duplica il template e modifica soprattutto
-  questo file.
-
-IMPORTANTE:
-- I percorsi delle immagini devono corrispondere ai file presenti
-  nella cartella assets/.
-- Non modificare la struttura delle proprietà senza aggiornare
-  anche script.js.
+REGOLE:
+- Un valore impostato a null nasconde automaticamente
+  l'elemento HTML collegato (es. email non ancora disponibile).
+- I percorsi delle immagini sono relativi alla root del sito.
 ============================================================
 */
 
-
-/* ========================================================
-   SEZIONI DEL SITO
-
-   true  = sezione visibile
-   false = sezione nascosta
-
-   Per un nuovo cliente puoi disattivare facilmente
-   una sezione senza cancellare il codice HTML.
-======================================================== */
-
 const restaurantConfig = {
 
+    /* ---------- SEZIONI HOMEPAGE (true = visibile) ---------- */
     sections: {
-
         about: true,
-
         features: true,
-
         featuredMenu: true,
-
         gallery: true,
-
-        reviews: true,
-
+        reviews: false,      // nessuna recensione reale disponibile: sezione disattivata
         reservation: true
     },
 
-
-    /* ========================================================
-       INFORMAZIONI GENERALI DEL LOCALE
-
-       Questi dati vengono utilizzati nelle varie parti
-       testuali della homepage.
-    ======================================================== */
-
-    name: "Nome del locale",
-
-    type: "Bar - Trattoria - Pizzeria",
-
-    slogan: "Tradizione, gusto e convivialità.",
-
+    /* ---------- IDENTITÀ ---------- */
+    name: "Pastime",
+    owner: "Simone De Iuliis",
+    type: "Bar · Trattoria · Pizzeria",
+    slogan: "Pizza, cucina della tradizione e buona compagnia a Pizzoferrato.",
     description:
-        "Breve descrizione del locale, della sua identità e dell'esperienza che offre.",
+        "Pastime è bar, trattoria e pizzeria a Pizzoferrato, in Abruzzo: pizze rosse e bianche anche alla pala, primi fatti in casa, arrosticini, carni e stuzzicheria.",
 
-
-    /* ========================================================
-       SEO
-
-       Dati utilizzati nel <title> e nella meta description
-       della pagina.
-
-       Per ogni cliente conviene personalizzare entrambi.
-    ======================================================== */
-
+    /* ---------- SEO ---------- */
     seo: {
-
-        title: "Nome del locale | Bar - Trattoria - Pizzeria",
-
+        title: "Pastime | Bar · Trattoria · Pizzeria a Pizzoferrato (CH)",
         description:
-            "Scopri Nome del locale: cucina, ambiente, menu, contatti e informazioni."
+            "Pastime, bar trattoria pizzeria a Pizzoferrato (Chieti): pizze rosse e bianche anche alla pala, chitarrina, arrosticini, carni alla griglia e stuzzicheria. Chiama lo 0872 946641.",
+        // Da compilare quando il dominio sarà definitivo (URL assoluto, es. https://www.esempio.it/)
+        siteUrl: null
     },
 
-
-    /* ========================================================
-       CHI SIAMO
-
-       Contiene il testo della sezione dedicata alla storia
-       e all'identità del locale.
-    ======================================================== */
-
+    /* ---------- CHI SIAMO ---------- */
     about: {
-
-        label: "CHI SIAMO",
-
-        title: "La nostra storia",
-
+        label: "Chi siamo",
+        title: "Un unico posto, tre modi di stare a tavola",
         text1:
-            "Racconta qui la storia del locale, delle persone che lo hanno creato e della sua identità.",
-
+            "Pastime è il bar, trattoria e pizzeria di Simone De Iuliis a Pizzoferrato, tra le montagne della provincia di Chieti. Un locale dove fermarsi per un caffè, una pizza con gli amici o una cena della tradizione abruzzese.",
         text2:
-            "Utilizza questo spazio per descrivere la filosofia, la cucina e l'esperienza proposta ai clienti."
+            "In cucina trovi la chitarrina al ragù, le tagliatelle ai porcini, gli arrosticini di pecora e le carni alla griglia; al forno oltre quaranta pizze rosse e bianche, disponibili anche alla pala. Per chi ha meno tempo, stuzzicheria e panini."
     },
 
-
-    /* ========================================================
-       PUNTI DI FORZA
-
-       Ogni elemento può avere:
-       - icon: percorso dell'immagine
-       - title: titolo
-       - description: descrizione
-
-       Per un nuovo cliente basta sostituire i dati qui sotto.
-    ======================================================== */
-
+    /* ---------- PUNTI DI FORZA (le tre anime del locale) ---------- */
     features: {
-
-        label: "PERCHÉ SCEGLIERCI",
-
-        title: "Qualità e passione",
-
+        label: "Le tre anime di Pastime",
+        title: "Bar, trattoria e pizzeria",
         items: [
-
             {
-                icon: "assets/icons/feature-1.png",
-
-                title: "Ingredienti di qualità",
-
+                icon: "pizza",
+                title: "Pizzeria",
                 description:
-                    "Selezioniamo ingredienti di qualità per offrire un'esperienza autentica."
+                    "Oltre quaranta pizze tra rosse e bianche, dalla Margherita alla Pastime con rucola, crudo e scaglie di grana. Tutte disponibili anche alla pala."
             },
-
             {
-                icon: "assets/icons/feature-2.png",
-
-                title: "Cucina autentica",
-
+                icon: "pasta",
+                title: "Trattoria",
                 description:
-                    "Una cucina che unisce tradizione, creatività e attenzione ai dettagli."
+                    "Primi della tradizione come chitarrina, tagliatelle e ravioli, secondi di carne, arrosticini di pecora e contorni di verdure grigliate."
             },
-
             {
-                icon: "assets/icons/feature-3.png",
-
-                title: "Atmosfera unica",
-
+                icon: "cup",
+                title: "Bar",
                 description:
-                    "Un ambiente pensato per vivere un'esperienza piacevole e conviviale."
+                    "Il punto d'incontro del paese: stuzzicheria, panini e hamburger per una pausa veloce o una serata informale in compagnia."
             }
         ]
     },
 
-
-    /* ========================================================
-       MENU IN EVIDENZA
-
-       Questa NON è la pagina menu completa.
-
-       Qui inseriamo soltanto 3 prodotti/piatti rappresentativi
-       da mostrare nella homepage.
-    ======================================================== */
-
+    /* ---------- MENU IN EVIDENZA (piatti reali dal menu) ---------- */
     featuredMenu: {
-
-        label: "DALLA NOSTRA CUCINA",
-
-        title: "Le nostre proposte",
-
+        label: "Dal nostro menu",
+        title: "Le specialità della casa",
         description:
-            "Una selezione dei piatti più rappresentativi del locale.",
-
+            "Una selezione di ciò che ci rappresenta di più. Il menu completo, con tutti i prezzi, è sempre aggiornato.",
         items: [
-
             {
-                name: "Nome del piatto",
-
-                description:
-                    "Breve descrizione del piatto.",
-
-                price: "€ 00,00",
-
-                image:
-                    "assets/images/dish-1.jpg",
-
-                imageAlt:
-                    "Nome del piatto"
+                category: "Pizza rossa",
+                name: "Pastime",
+                description: "Pomodoro, mozzarella, rucola, prosciutto crudo, scaglie di grana",
+                price: "€ 8,00"
             },
-
             {
-                name: "Nome del piatto",
-
-                description:
-                    "Breve descrizione del piatto.",
-
-                price: "€ 00,00",
-
-                image:
-                    "assets/images/dish-2.jpg",
-
-                imageAlt:
-                    "Nome del piatto"
+                category: "Antipasto",
+                name: "AntiPastime",
+                description: "Salumi, formaggi, bruschette e antipasti caldi",
+                price: "€ 9,00"
             },
-
             {
-                name: "Nome del piatto",
-
-                description:
-                    "Breve descrizione del piatto.",
-
-                price: "€ 00,00",
-
-                image:
-                    "assets/images/dish-3.jpg",
-
-                imageAlt:
-                    "Nome del piatto"
+                category: "Primo piatto",
+                name: "Chitarrina al ragù di cinghiale",
+                description: "Pasta alla chitarra della tradizione abruzzese",
+                price: "€ 8,50"
+            },
+            {
+                category: "Secondo piatto",
+                name: "Arrosticini di pecora",
+                description: "30 gr al pezzo, minimo 5 pezzi",
+                price: "€ 1,20"
             }
         ]
     },
 
-
-    /* ========================================================
-       GALLERIA
-
-       Inserisci qui le fotografie del locale.
-
-       È possibile utilizzare da 1 a 6 immagini senza modificare
-       la struttura principale del sito.
-    ======================================================== */
-
+    /* ---------- GALLERIA ----------
+       NOTA: le fotografie attuali sono immagini d'archivio del template,
+       da sostituire con foto reali del locale appena disponibili.
+       Mantenere lo stesso schema { src, webp, width, height, alt }.
+    -------------------------------------------------------- */
     gallery: {
-
-        label: "GALLERIA",
-
-        title: "Scopri il nostro locale",
-
+        label: "Galleria",
+        title: "L'atmosfera di Pastime",
         images: [
-
-            {
-                src: "assets/images/gallery-1.jpg",
-                alt: "Interno del locale"
-            },
-
-            {
-                src: "assets/images/gallery-2.jpg",
-                alt: "Piatto del locale"
-            },
-
-            {
-                src: "assets/images/gallery-3.jpg",
-                alt: "Dettaglio del locale"
-            },
-
-            {
-                src: "assets/images/gallery-4.jpg",
-                alt: "Atmosfera del locale"
-            },
-
-            {
-                src: "assets/images/gallery-5.jpg",
-                alt: "Piatto del locale"
-            },
-
-            {
-                src: "assets/images/gallery-6.jpg",
-                alt: "Esterno del locale"
-            }
+            { src: "assets/images/gallery-1.jpg", webp: "assets/images/gallery-1.webp", width: 1199, height: 672, alt: "Tavolo apparecchiato con calici e tovaglia bianca" },
+            { src: "assets/images/gallery-4.jpg", webp: "assets/images/gallery-4.webp", width: 736, height: 1307, alt: "Pizze margherita appena sfornate" },
+            { src: "assets/images/dish-3.jpg", webp: "assets/images/dish-3.webp", width: 720, height: 404, alt: "Sala del bar con luce naturale e piante" },
+            { src: "assets/images/gallery-3.jpg", webp: "assets/images/gallery-3.webp", width: 1200, height: 857, alt: "Bancone del bar con bottiglie e bicchieri" },
+            { src: "assets/images/fallback.jpg", webp: "assets/images/fallback.webp", width: 736, height: 1298, alt: "Chef che completa un piatto con erbe fresche" },
+            { src: "assets/images/gallery-2.jpg", webp: "assets/images/gallery-2.webp", width: 1200, height: 799, alt: "Sala ristorante con tavoli apparecchiati e luci calde" }
         ]
     },
 
-
-    /* ========================================================
-       RECENSIONI
-
-       Le recensioni vengono generate automaticamente da
-       script.js.
-
-       stars deve essere un numero da 1 a 5.
-    ======================================================== */
-
+    /* ---------- RECENSIONI (disattivate: nessuna recensione reale) ---------- */
     reviews: {
-
-        label: "RECENSIONI",
-
+        label: "Recensioni",
         title: "Cosa dicono i nostri clienti",
-
-        items: [
-
-            {
-                stars: 5,
-                text: "Una breve recensione del cliente.",
-                author: "Nome Cliente"
-            },
-
-            {
-                stars: 5,
-                text: "Una breve recensione del cliente.",
-                author: "Nome Cliente"
-            },
-
-            {
-                stars: 5,
-                text: "Una breve recensione del cliente.",
-                author: "Nome Cliente"
-            }
-        ]
+        items: []
     },
 
+    /* ---------- CTA FINALE / DOVE SIAMO ---------- */
+    reservation: {
+        label: "Ti aspettiamo",
+        title: "Prenota un tavolo o ordina la tua pizza",
+        description:
+            "Chiamaci per prenotare, per informazioni su orari e disponibilità o per ordinare le pizze da asporto, anche alla pala."
+    },
 
-    /* ========================================================
-       PRENOTAZIONE
-
-       Testi della call to action finale della homepage.
-    ======================================================== */
-
-   reservation: {
-
-    label: "TI ASPETTIAMO",
-
-    title: "Prenota il tuo tavolo",
-
-    description:
-        "Contattaci per prenotare il tuo tavolo e vivere la nostra esperienza."
-},
-
-
-    /* ========================================================
-       CONTATTI
-
-       Informazioni principali del locale.
-    ======================================================== */
-
+    /* ---------- CONTATTI ----------
+       address / email: null = non ancora disponibili (elementi nascosti). */
     contact: {
-
-        phone: "+39 000 000 0000",
-
-        email: "email@esempio.it",
-
-        address: "Via Esempio 00",
-
-        city: "00000 Città (Provincia)"
+        phone: "0872 946641",
+        phoneInternational: "+390872946641",
+        email: null,
+        address: null,
+        city: "Pizzoferrato (CH)",
+        region: "Abruzzo"
     },
 
-
-    /* ========================================================
-       SOCIAL
-
-       Inserisci gli URL reali dei profili del cliente.
-    ======================================================== */
-
+    /* ---------- SOCIAL ---------- */
     social: {
-
-        instagram: "https://instagram.com/",
-
-        facebook: "https://facebook.com/"
+        instagram: "https://www.instagram.com/pastime.pizzoferrato_official/",
+        instagramHandle: "@pastime.pizzoferrato_official",
+        facebook: null,           // pagina "Pastime": URL da confermare
+        facebookHandle: "Pastime"
     },
 
-
-    /* ========================================================
-       LINK PRINCIPALI
-
-       Centralizziamo qui i collegamenti del sito.
-    ======================================================== */
-
+    /* ---------- LINK ---------- */
     links: {
-
         menu: "menu.html",
-
-        reservation: "contatti.html",
-
-        whatsapp: "https://wa.me/390000000000",
-
-        googleMaps: "https://maps.google.com/"
+        contact: "contatti.html",
+        reservation: "tel:+390872946641",
+        whatsapp: null,
+        googleMaps: "https://www.google.com/maps/search/?api=1&query=Pastime+Bar+Trattoria+Pizzeria+Pizzoferrato"
     },
 
-
-    /* ========================================================
-       PULSANTI
-
-       Ogni pulsante importante ha:
-       - text = testo visualizzato
-       - link = destinazione
-
-       Per cambiare un pulsante del sito si modifica quindi
-       questo blocco, senza intervenire nell'HTML.
-    ======================================================== */
-
+    /* ---------- PULSANTI ---------- */
     buttons: {
-
-        heroPrimary: {
-
-            text: "Scopri il menu",
-
-            link: "menu.html"
-        },
-
-        heroSecondary: {
-
-            text: "Prenota un tavolo",
-
-            link: "contatti.html"
-        },
-
-        featuredMenu: {
-
-            text: "Scopri il menu",
-
-            link: "menu.html"
-        },
-
-        reservation: {
-
-            text: "Prenota ora",
-
-            link: "contatti.html"
-        }
+        heroPrimary: { text: "Scopri il menu", link: "menu.html" },
+        heroSecondary: { text: "Chiama per prenotare", link: "tel:+390872946641" },
+        featuredMenu: { text: "Menu completo", link: "menu.html" },
+        reservation: { text: "Chiama lo 0872 946641", link: "tel:+390872946641" }
     },
-
-
-    /* ========================================================
-       PULSANTE NAVBAR
-
-       Controlla il pulsante di prenotazione presente
-       nella barra di navigazione.
-    ======================================================== */
 
     navbar: {
-
-        reservation: {
-
-            text: "Prenota",
-
-            link: "contatti.html"
-        }
+        reservation: { text: "Prenota", link: "tel:+390872946641" }
     },
 
+    /* ---------- ORARI ----------
+       Non ancora comunicati: null nasconde il blocco orari. */
+    openingHours: null,
 
-    /* ========================================================
-       ORARI
-
-       Gli orari vengono utilizzati nel footer.
-
-       I nomi delle proprietà devono rimanere invariati
-       perché script.js li utilizza per individuare i giorni.
-    ======================================================== */
-
-    openingHours: {
-
-        monday: "Chiuso",
-
-        tuesday: "19:00 - 23:00",
-
-        wednesday: "19:00 - 23:00",
-
-        thursday: "19:00 - 23:00",
-
-        friday: "19:00 - 23:30",
-
-        saturday: "12:00 - 15:00 / 19:00 - 23:30",
-
-        sunday: "12:00 - 15:00 / 19:00 - 23:00"
-    },
-
-
-    /* ========================================================
-       COLORI
-
-       script.js trasforma automaticamente questi valori
-       nelle variabili CSS --color-*.
-
-       Per creare un nuovo stile grafico, normalmente basta
-       modificare questi colori.
-    ======================================================== */
-
-    colors: {
-
-        primary: "#19352A",
-
-        primaryDark: "#10241C",
-
-        secondary: "#C8A96B",
-
-        background: "#F8F6F0",
-
-        backgroundLight: "#FFFFFF",
-
-        backgroundDark: "#17241E",
-
-        text: "#222222",
-
-        textLight: "#6B6B6B"
-    },
-
-
-    /* ========================================================
-       IMMAGINI PRINCIPALI
-
-       Tutte le immagini fondamentali del sito vengono
-       centralizzate qui.
-
-       fallback = immagine utilizzata quando un'immagine
-       principale non è disponibile.
-    ======================================================== */
-
+    /* ---------- IMMAGINI ---------- */
     images: {
-
         logo: "assets/logo/logo.png",
-
         hero: "assets/images/hero.jpg",
-
         about: "assets/images/about.jpg",
-
         fallback: "assets/images/fallback.jpg"
     }
 };

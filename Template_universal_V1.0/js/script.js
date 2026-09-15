@@ -1,1511 +1,640 @@
 /*
 ============================================================
-FC STUDIO — RESTAURANT TEMPLATE V1.0
-FILE: script.js
+PASTIME — FILE: script.js
 
-Questo file contiene la LOGICA del sito.
+Comportamento condiviso da tutte le pagine.
+Ogni funzionalità è una funzione indipendente, avviata da init().
 
-REGOLA PRINCIPALE:
-- index.html = struttura
-- config.js = contenuti e impostazioni
-- script.js = comportamento e collegamento tra i due
-
-Per un nuovo cliente, nella maggior parte dei casi NON è
-necessario modificare questo file.
+Moduli:
+  1. Lettura configurazione (getConfigValue)
+  2. Binding testi, link e pulsanti da config.js
+  3. Logo con fallback testuale
+  4. Header sticky + navigazione mobile (drawer accessibile)
+  5. Voce di menu attiva
+  6. Rendering homepage: tre anime, specialità, galleria, recensioni
+  7. Lightbox galleria
+  8. Visibilità sezioni
+  9. Animazioni di ingresso
+ 10. Utilità (anno corrente, supporto WebP)
 ============================================================
 */
 
+(function () {
+    "use strict";
 
-/* ============================================================
-   1. FUNZIONE DI LETTURA DELLA CONFIGURAZIONE
+    /* config.js dichiara restaurantConfig con const: non è una proprietà di window. */
+    const config = typeof restaurantConfig !== "undefined" ? restaurantConfig : {};
 
-   Permette di leggere anche proprietà annidate di config.js.
+    /* ------------------------------------------------------------
+       1. CONFIGURAZIONE
+    ------------------------------------------------------------ */
 
-   Esempio:
-   getConfigValue("contact.phone")
-   restituisce il numero di telefono.
-============================================================ */
-
-function getConfigValue(path) {
-
-    return path
-        .split(".")
-        .reduce(
-            function (object, key) {
-
-                return object
-                    ? object[key]
-                    : undefined;
-
-            },
-            restaurantConfig
-        );
-}
-
-
-/* ============================================================
-   2. TESTI DINAMICI
-
-   Cerca tutti gli elementi che possiedono:
-   data-config="..."
-
-   e inserisce automaticamente il valore corrispondente
-   presente in config.js.
-============================================================ */
-
-const configElements =
-    document.querySelectorAll("[data-config]");
-
-configElements.forEach(function (element) {
-
-    const configPath =
-        element.dataset.config;
-
-    const value =
-        getConfigValue(configPath);
-
-    if (value !== undefined) {
-
-        element.textContent = value;
-    }
-});
-
-
-/* ============================================================
-   3. SEO
-
-   Aggiorna automaticamente:
-   - titolo della scheda del browser
-   - meta description
-
-   I dati vengono presi dalla sezione seo di config.js.
-============================================================ */
-
-const seoTitle =
-    getConfigValue("seo.title");
-
-const seoDescription =
-    getConfigValue("seo.description");
-
-if (seoTitle) {
-
-    document.title = seoTitle;
-}
-
-const metaDescription =
-    document.querySelector(
-        'meta[name="description"]'
-    );
-
-if (
-    metaDescription &&
-    seoDescription
-) {
-
-    metaDescription.setAttribute(
-        "content",
-        seoDescription
-    );
-}
-
-
-/* ============================================================
-   4. LOGO
-
-   Se config.js contiene un'immagine logo:
-   - mostra il logo
-   - nasconde il testo di fallback
-
-   Se l'immagine non viene caricata, viene mostrato
-   nuovamente il nome del locale.
-============================================================ */
-
-const logoText =
-    document.querySelector(".logo-text");
-
-const logoImage =
-    document.querySelector(".logo-image");
-
-const logoPath =
-    getConfigValue("images.logo");
-
-if (
-    logoImage &&
-    logoPath
-) {
-
-    logoImage.src = logoPath;
-
-    logoImage.alt =
-        getConfigValue("name") || "Logo";
-
-    logoImage.style.display = "block";
-
-    if (logoText) {
-
-        logoText.style.display = "none";
+    function getConfigValue(path) {
+        return path.split(".").reduce(function (object, key) {
+            return object == null ? undefined : object[key];
+        }, config);
     }
 
-    logoImage.addEventListener(
-        "error",
-        function () {
-
-            logoImage.style.display = "none";
-
-            if (logoText) {
-
-                logoText.textContent =
-                    getConfigValue("name") ||
-                    "Nome del locale";
-
-                logoText.style.display = "block";
-            }
-        }
-    );
-}
-
-
-/* ============================================================
-   5. IMMAGINE ABOUT
-
-   Inserisce automaticamente la fotografia configurata
-   nella sezione "Chi siamo".
-
-   Se l'immagine non esiste, utilizza il fallback.
-============================================================ */
-
-const aboutImage =
-    document.querySelector(
-        ".about-image-element"
-    );
-
-const aboutImagePath =
-    getConfigValue("images.about");
-
-const fallbackImage =
-    getConfigValue("images.fallback");
-
-if (
-    aboutImage &&
-    aboutImagePath
-) {
-
-    aboutImage.src =
-        aboutImagePath;
-
-    aboutImage.alt =
-        (getConfigValue("name") || "Locale") +
-        " - " +
-        (getConfigValue("about.title") || "Chi siamo");
-
-    aboutImage.addEventListener(
-        "error",
-        function () {
-
-            if (fallbackImage) {
-
-                aboutImage.src =
-                    fallbackImage;
-            }
-        }
-    );
-}
-
-
-/* ============================================================
-   6. HERO
-
-   Imposta automaticamente l'immagine di sfondo del Hero.
-
-   Prima verifica che l'immagine configurata esista.
-   Se non viene caricata, utilizza automaticamente il fallback.
-
-   L'overlay scuro viene applicato sopra la fotografia
-   per mantenere leggibili i testi.
-============================================================ */
-
-const hero =
-    document.querySelector(".hero");
-
-const heroImage =
-    getConfigValue("images.hero");
-
-if (
-    hero &&
-    heroImage
-) {
-
-    const testImage =
-        new Image();
-
-    testImage.onload =
-        function () {
-
-            hero.style.backgroundImage =
-                `
-                linear-gradient(
-                    rgba(0, 0, 0, 0.48),
-                    rgba(0, 0, 0, 0.48)
-                ),
-                url("${heroImage}")
-                `;
-        };
-
-    testImage.onerror =
-        function () {
-
-            if (fallbackImage) {
-
-                hero.style.backgroundImage =
-                    `
-                    linear-gradient(
-                        rgba(0, 0, 0, 0.48),
-                        rgba(0, 0, 0, 0.48)
-                    ),
-                    url("${fallbackImage}")
-                    `;
-            }
-        };
-
-    testImage.src =
-        heroImage;
-}
-
-/* ============================================================
-   7. COLORI
-
-   Trasforma automaticamente i colori presenti in config.js
-   nelle variabili CSS --color-*.
-
-   Esempio:
-
-   primaryDark
-   diventa:
-   --color-primary-dark
-============================================================ */
-
-const root =
-    document.documentElement;
-
-const colors =
-    restaurantConfig.colors;
-
-if (colors) {
-
-    Object.keys(colors).forEach(
-        function (colorName) {
-
-            const cssVariable =
-                "--color-" +
-                colorName
-                    .replace(
-                        /([A-Z])/g,
-                        "-$1"
-                    )
-                    .toLowerCase();
-
-            root.style.setProperty(
-                cssVariable,
-                colors[colorName]
-            );
-        }
-    );
-}
-
-
-/* ============================================================
-   8. PUNTI DI FORZA
-
-   Genera automaticamente le card della sezione Features.
-
-   Ogni card può contenere:
-   - immagine/icona
-   - titolo
-   - descrizione
-============================================================ */
-
-const featuresContainer =
-    document.querySelector(
-        ".features-grid"
-    );
-
-const featuresItems =
-    getConfigValue(
-        "features.items"
-    );
-
-if (
-    featuresContainer &&
-    Array.isArray(featuresItems)
-) {
-
-    featuresContainer.innerHTML = "";
-
-    featuresItems.forEach(
-        function (feature) {
-
-            const article =
-                document.createElement(
-                    "article"
-                );
-
-            article.className =
-                "feature-card";
-
-
-            /* Immagine / icona */
-
-            const icon =
-                document.createElement(
-                    "div"
-                );
-
-            icon.className =
-                "feature-icon";
-
-            const iconImage =
-                document.createElement(
-                    "img"
-                );
-
-            iconImage.src =
-                feature.icon ||
-                fallbackImage ||
-                "";
-
-            iconImage.alt =
-                feature.title ||
-                "Icona";
-
-            iconImage.addEventListener(
-                "error",
-                function () {
-
-                    if (fallbackImage) {
-
-                        iconImage.src =
-                            fallbackImage;
-                    }
-                }
-            );
-
-            icon.appendChild(
-                iconImage
-            );
-
-
-            /* Titolo */
-
-            const title =
-                document.createElement(
-                    "h3"
-                );
-
-            title.textContent =
-                feature.title || "";
-
-
-            /* Descrizione */
-
-            const description =
-                document.createElement(
-                    "p"
-                );
-
-            description.textContent =
-                feature.description || "";
-
-
-            /* Inserimento nella card */
-
-            article.appendChild(icon);
-
-            article.appendChild(title);
-
-            article.appendChild(
-                description
-            );
-
-            featuresContainer.appendChild(
-                article
-            );
-        }
-    );
-}
-
-
-/* ============================================================
-   9. MENU IN EVIDENZA
-
-   Genera le card dei piatti/prodotti presenti nella
-   configurazione.
-
-   Il menu completo rimane separato nella pagina menu.html.
-============================================================ */
-
-const featuredMenuContainer =
-    document.querySelector(
-        ".featured-menu-grid"
-    );
-
-const featuredMenuItems =
-    getConfigValue(
-        "featuredMenu.items"
-    );
-
-if (
-    featuredMenuContainer &&
-    Array.isArray(featuredMenuItems)
-) {
-
-    featuredMenuContainer.innerHTML = "";
-
-    featuredMenuItems.forEach(
-        function (item) {
-
-            const article =
-                document.createElement(
-                    "article"
-                );
-
-            article.className =
-                "menu-card";
-
-
-            /* Immagine del piatto */
-
-            const imageWrapper =
-                document.createElement(
-                    "div"
-                );
-
-            imageWrapper.className =
-                "menu-card-image";
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-            image.src =
-                item.image ||
-                fallbackImage ||
-                "";
-
-            image.alt =
-                item.imageAlt ||
-                item.name ||
-                "Immagine del piatto";
-
-            image.addEventListener(
-                "error",
-                function () {
-
-                    if (fallbackImage) {
-
-                        image.src =
-                            fallbackImage;
-                    }
-                }
-            );
-
-            imageWrapper.appendChild(
-                image
-            );
-
-
-            /* Contenuto */
-
-            const content =
-                document.createElement(
-                    "div"
-                );
-
-            content.className =
-                "menu-card-content";
-
-
-            /* Nome */
-
-            const title =
-                document.createElement(
-                    "h3"
-                );
-
-            title.textContent =
-                item.name || "";
-
-
-            /* Descrizione */
-
-            const description =
-                document.createElement(
-                    "p"
-                );
-
-            description.textContent =
-                item.description || "";
-
-
-            /* Prezzo */
-
-            const price =
-                document.createElement(
-                    "span"
-                );
-
-            price.className =
-                "price";
-
-            price.textContent =
-                item.price || "";
-
-
-            /* Costruzione della card */
-
-            content.appendChild(title);
-
-            content.appendChild(
-                description
-            );
-
-            content.appendChild(price);
-
-            article.appendChild(
-                imageWrapper
-            );
-
-            article.appendChild(
-                content
-            );
-
-            featuredMenuContainer.appendChild(
-                article
-            );
-        }
-    );
-}
-
-
-/* ============================================================
-   10. GALLERIA
-
-   Genera automaticamente le immagini della galleria
-   a partire da config.js.
-============================================================ */
-
-const galleryContainer =
-    document.querySelector(
-        ".gallery-grid"
-    );
-
-const galleryImages =
-    getConfigValue(
-        "gallery.images"
-    );
-
-if (
-    galleryContainer &&
-    Array.isArray(galleryImages)
-) {
-
-    galleryContainer.innerHTML = "";
-
-    galleryImages.forEach(
-        function (galleryItem) {
-
-            const figure =
-                document.createElement(
-                    "figure"
-                );
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-            image.src =
-                galleryItem.src ||
-                fallbackImage ||
-                "";
-
-            image.alt =
-                galleryItem.alt ||
-                "Immagine del locale";
-
-            image.addEventListener(
-                "error",
-                function () {
-
-                    if (fallbackImage) {
-
-                        image.src =
-                            fallbackImage;
-                    }
-                }
-            );
-
-            figure.appendChild(
-                image
-            );
-
-            galleryContainer.appendChild(
-                figure
-            );
-        }
-    );
-}
-
-
-/* ============================================================
-   11. RECENSIONI
-
-   Genera automaticamente le recensioni.
-
-   Le stelle vengono create in base al numero configurato
-   da 1 a 5.
-============================================================ */
-
-const reviewsContainer =
-    document.querySelector(
-        ".reviews-grid"
-    );
-
-const reviewItems =
-    getConfigValue(
-        "reviews.items"
-    );
-
-if (
-    reviewsContainer &&
-    Array.isArray(reviewItems)
-) {
-
-    reviewsContainer.innerHTML = "";
-
-    reviewItems.forEach(
-        function (review) {
-
-            const article =
-                document.createElement(
-                    "article"
-                );
-
-            article.className =
-                "review-card";
-
-
-            /* Stelle */
-
-            const stars =
-                document.createElement(
-                    "div"
-                );
-
-            stars.className =
-                "review-stars";
-
-            const starCount =
-                Math.min(
-                    5,
-                    Math.max(
-                        0,
-                        Number(
-                            review.stars
-                        ) || 0
-                    )
-                );
-
-            stars.textContent =
-                "★".repeat(
-                    starCount
-                );
-
-
-            /* Testo */
-
-            const text =
-                document.createElement(
-                    "p"
-                );
-
-            text.textContent =
-                review.text || "";
-
-
-            /* Autore */
-
-            const author =
-                document.createElement(
-                    "span"
-                );
-
-            author.className =
-                "review-author";
-
-            author.textContent =
-                review.author || "";
-
-
-            /* Costruzione della recensione */
-
-            article.appendChild(stars);
-
-            article.appendChild(text);
-
-            article.appendChild(author);
-
-            reviewsContainer.appendChild(
-                article
-            );
-        }
-    );
-}
-
-
-/* ============================================================
-   12. TELEFONO
-
-   Trasforma automaticamente il numero configurato in un
-   link "tel:".
-
-   Sul telefono il cliente potrà quindi toccare il numero
-   per avviare una chiamata.
-============================================================ */
-
-const phoneLink =
-    document.querySelector(
-        ".phone-link"
-    );
-
-const phone =
-    getConfigValue(
-        "contact.phone"
-    );
-
-if (
-    phoneLink &&
-    phone
-) {
-
-    phoneLink.href =
-        "tel:" +
-        phone.replace(
-            /\s/g,
-            ""
-        );
-}
-
-
-/* ============================================================
-   13. EMAIL
-
-   Trasforma l'indirizzo configurato in un link "mailto:".
-============================================================ */
-
-const emailLink =
-    document.querySelector(
-        ".email-link"
-    );
-
-const email =
-    getConfigValue(
-        "contact.email"
-    );
-
-if (
-    emailLink &&
-    email
-) {
-
-    emailLink.href =
-        "mailto:" +
-        email;
-}
-
-
-/* ============================================================
-   14. SOCIAL
-
-   Collega automaticamente i pulsanti Instagram e Facebook
-   agli account configurati.
-============================================================ */
-
-const instagramLink =
-    document.querySelector(
-        ".instagram-link"
-    );
-
-const instagram =
-    getConfigValue(
-        "social.instagram"
-    );
-
-if (
-    instagramLink &&
-    instagram
-) {
-
-    instagramLink.href =
-        instagram;
-}
-
-
-const facebookLink =
-    document.querySelector(
-        ".facebook-link"
-    );
-
-const facebook =
-    getConfigValue(
-        "social.facebook"
-    );
-
-if (
-    facebookLink &&
-    facebook
-) {
-
-    facebookLink.href =
-        facebook;
-}
-
-
-/* ============================================================
-   15. PULSANTI CONFIGURABILI
-
-   Collega i pulsanti HTML alle impostazioni presenti
-   in config.js.
-
-   HTML:
-   data-button="heroPrimary"
-
-   Config:
-   buttons.heroPrimary
-============================================================ */
-
-function setupButtons() {
-
-    if (
-        !restaurantConfig.buttons
-    ) {
-
-        return;
+    function isEmpty(value) {
+        return value === null || value === undefined || value === "";
     }
 
-    const buttons =
-        document.querySelectorAll(
-            "[data-button]"
-        );
+    /* Nasconde l'elemento (o il contenitore marcato) quando un valore manca. */
+    function hideForMissingValue(element) {
+        const wrapper = element.closest("[data-hide-if-empty]") || element;
+        wrapper.hidden = true;
+    }
 
-    buttons.forEach(
-        function (button) {
+    /* ------------------------------------------------------------
+       2. BINDING DA CONFIG
+    ------------------------------------------------------------ */
 
-            const buttonName =
-                button.dataset.button;
+    function bindTexts() {
+        document.querySelectorAll("[data-config]").forEach(function (element) {
+            const value = getConfigValue(element.dataset.config);
 
-            const config =
-                restaurantConfig.buttons[
-                    buttonName
-                ];
-
-            if (!config) {
-
+            if (isEmpty(value)) {
+                if (value === null || element.closest("[data-hide-if-empty]")) {
+                    hideForMissingValue(element);
+                }
                 return;
             }
 
-            if (config.text) {
-
-                button.textContent =
-                    config.text;
+            if (typeof value === "string" || typeof value === "number") {
+                element.textContent = value;
             }
+        });
+    }
 
-            if (config.link) {
+    function bindHrefs() {
+        document.querySelectorAll("[data-href]").forEach(function (element) {
+            const value = getConfigValue(element.dataset.href);
 
-                button.href =
-                    config.link;
-            }
-        }
-    );
-}
-
-setupButtons();
-
-
-/* ============================================================
-   16. PULSANTE PRENOTAZIONE NAVBAR
-
-   Gestisce separatamente il pulsante presente nella navbar.
-
-   HTML:
-   data-navbar-button="reservation"
-
-   Config:
-   navbar.reservation
-============================================================ */
-
-function setupNavbarButtons() {
-
-    const navbarButtons =
-        document.querySelectorAll(
-            "[data-navbar-button]"
-        );
-
-    navbarButtons.forEach(
-        function (button) {
-
-            const buttonName =
-                button.dataset.navbarButton;
-
-            const config =
-                getConfigValue(
-                    "navbar." +
-                    buttonName
-                );
-
-            if (!config) {
-
+            if (isEmpty(value)) {
+                hideForMissingValue(element);
                 return;
             }
 
-            if (config.text) {
+            element.href = value;
+        });
+    }
 
-                button.textContent =
-                    config.text;
-            }
+    function bindContactLinks() {
+        const phone = getConfigValue("contact.phoneInternational") || getConfigValue("contact.phone");
+        const email = getConfigValue("contact.email");
+        const instagram = getConfigValue("social.instagram");
+        const facebook = getConfigValue("social.facebook");
 
-            if (config.link) {
+        const linkMap = [
+            [".phone-link", phone ? "tel:" + String(phone).replace(/\s/g, "") : null],
+            [".email-link", email ? "mailto:" + email : null],
+            [".instagram-link", instagram],
+            [".facebook-link", facebook],
+            [".menu-link", getConfigValue("links.menu")],
+            [".whatsapp-link", getConfigValue("links.whatsapp")],
+            [".maps-link", getConfigValue("links.googleMaps")]
+        ];
 
-                button.href =
-                    config.link;
+        linkMap.forEach(function (pair) {
+            document.querySelectorAll(pair[0]).forEach(function (link) {
+                if (isEmpty(pair[1])) {
+                    hideForMissingValue(link);
+                } else {
+                    link.href = pair[1];
+                }
+            });
+        });
+    }
+
+    function bindButtons() {
+        const groups = [
+            ["[data-button]", "button", "buttons."],
+            ["[data-navbar-button]", "navbarButton", "navbar."]
+        ];
+
+        groups.forEach(function (group) {
+            document.querySelectorAll(group[0]).forEach(function (button) {
+                const settings = getConfigValue(group[2] + button.dataset[group[1]]);
+                if (!settings) {
+                    return;
+                }
+
+                if (settings.text) {
+                    /* Mantiene un'eventuale icona SVG già presente nel pulsante. */
+                    const icon = button.querySelector("svg");
+                    button.textContent = "";
+                    if (icon) {
+                        button.appendChild(icon);
+                    }
+                    button.appendChild(document.createTextNode((icon ? " " : "") + settings.text));
+                }
+
+                if (settings.link) {
+                    button.href = settings.link;
+                }
+            });
+        });
+    }
+
+    function bindSeo() {
+        const title = getConfigValue("seo.title");
+        const description = getConfigValue("seo.description");
+        const meta = document.querySelector('meta[name="description"]');
+
+        /* Le pagine interne definiscono il proprio titolo: non lo sovrascriviamo. */
+        if (title && document.body.dataset.page === "home") {
+            document.title = title;
+            if (meta && description) {
+                meta.setAttribute("content", description);
             }
         }
-    );
-}
-
-setupNavbarButtons();
-
-
-/* ============================================================
-   17. MOBILE MENU
-
-   Gestisce:
-   - apertura del menu
-   - chiusura
-   - click fuori dal menu
-   - tasto Escape
-   - blocco dello scroll della pagina
-============================================================ */
-
-const mobileMenuButton =
-    document.querySelector(
-        ".mobile-menu-button"
-    );
-
-const navMenu =
-    document.querySelector(
-        ".nav-menu"
-    );
-
-
-function closeMobileMenu() {
-
-    if (!navMenu) {
-
-        return;
     }
 
-    navMenu.classList.remove(
-        "mobile-menu-open"
-    );
+    /* ------------------------------------------------------------
+       3. LOGO
+    ------------------------------------------------------------ */
 
-    document.body.classList.remove(
-        "menu-open"
-    );
+    function setupLogo() {
+        const image = document.querySelector(".logo-image");
+        const text = document.querySelector(".logo-text");
+        const path = getConfigValue("images.logo");
 
-    if (mobileMenuButton) {
+        if (!image) {
+            return;
+        }
 
-        mobileMenuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+        function showTextFallback() {
+            image.hidden = true;
+            if (text) {
+                text.hidden = false;
+            }
+        }
 
-        mobileMenuButton.setAttribute(
-            "aria-label",
-            "Apri menu"
-        );
+        if (!path) {
+            showTextFallback();
+            return;
+        }
+
+        if (image.getAttribute("src") !== path) {
+            image.src = path;
+        }
+
+        image.addEventListener("error", showTextFallback);
+
+        if (image.complete && image.naturalWidth === 0) {
+            showTextFallback();
+        }
     }
-}
 
+    /* ------------------------------------------------------------
+       4. HEADER STICKY + NAVIGAZIONE MOBILE
+    ------------------------------------------------------------ */
 
-function openMobileMenu() {
+    function setupHeader() {
+        const header = document.querySelector(".site-header");
+        if (!header) {
+            return;
+        }
 
-    if (!navMenu) {
+        function update() {
+            header.classList.toggle("is-scrolled", window.scrollY > 8);
+        }
 
-        return;
+        update();
+        window.addEventListener("scroll", update, { passive: true });
     }
 
-    navMenu.classList.add(
-        "mobile-menu-open"
-    );
+    function setupMobileMenu() {
+        const button = document.querySelector(".mobile-menu-button");
+        const menu = document.querySelector(".nav-menu");
+        if (!button || !menu) {
+            return;
+        }
 
-    document.body.classList.add(
-        "menu-open"
-    );
+        const mobileQuery = window.matchMedia("(max-width: 900px)");
+        let lastFocused = null;
 
-    if (mobileMenuButton) {
+        function focusableItems() {
+            return Array.prototype.slice.call(
+                menu.querySelectorAll('a[href], button:not([disabled])')
+            ).filter(function (el) {
+                return el.offsetParent !== null;
+            });
+        }
 
-        mobileMenuButton.setAttribute(
-            "aria-expanded",
-            "true"
-        );
+        function open() {
+            lastFocused = document.activeElement;
+            menu.classList.add("mobile-menu-open");
+            document.body.classList.add("menu-open");
+            button.setAttribute("aria-expanded", "true");
+            button.setAttribute("aria-label", "Chiudi il menu di navigazione");
 
-        mobileMenuButton.setAttribute(
-            "aria-label",
-            "Chiudi menu"
-        );
-    }
-}
+            const items = focusableItems();
+            if (items.length) {
+                items[0].focus();
+            }
+        }
 
+        function close(restoreFocus) {
+            if (!menu.classList.contains("mobile-menu-open")) {
+                return;
+            }
+            menu.classList.remove("mobile-menu-open");
+            document.body.classList.remove("menu-open");
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-label", "Apri il menu di navigazione");
 
-if (
-    mobileMenuButton &&
-    navMenu
-) {
+            if (restoreFocus && lastFocused) {
+                lastFocused.focus();
+            }
+        }
 
-    mobileMenuButton.addEventListener(
-        "click",
-        function () {
-
-            const isOpen =
-                navMenu.classList.contains(
-                    "mobile-menu-open"
-                );
-
-            if (isOpen) {
-
-                closeMobileMenu();
-
+        button.addEventListener("click", function () {
+            if (menu.classList.contains("mobile-menu-open")) {
+                close(true);
             } else {
-
-                openMobileMenu();
+                open();
             }
-        }
-    );
+        });
 
+        menu.addEventListener("click", function (event) {
+            if (event.target.closest("a")) {
+                close(false);
+            }
+        });
 
-    /* Chiude il menu quando viene selezionata una voce. */
+        document.addEventListener("keydown", function (event) {
+            if (!menu.classList.contains("mobile-menu-open")) {
+                return;
+            }
 
-    const menuLinks =
-        navMenu.querySelectorAll("a");
+            if (event.key === "Escape") {
+                close(true);
+                return;
+            }
 
-    menuLinks.forEach(
-        function (link) {
+            /* Focus trap: il tab resta all'interno del drawer e del pulsante. */
+            if (event.key === "Tab") {
+                const items = focusableItems().concat(button);
+                const first = items[0];
+                const last = items[items.length - 1];
 
-            link.addEventListener(
-                "click",
-                function () {
-
-                    closeMobileMenu();
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
                 }
-            );
-        }
-    );
-
-
-    /* Chiude il menu cliccando fuori dal menu. */
-
-    document.addEventListener(
-        "click",
-        function (event) {
-
-            const clickedInsideMenu =
-                navMenu.contains(
-                    event.target
-                );
-
-            const clickedButton =
-                mobileMenuButton.contains(
-                    event.target
-                );
-
-            if (
-                !clickedInsideMenu &&
-                !clickedButton
-            ) {
-
-                closeMobileMenu();
             }
-        }
-    );
+        });
 
-
-    /* Chiude il menu con il tasto Escape. */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                closeMobileMenu();
+        /* Se si passa a desktop con il drawer aperto, lo chiudiamo. */
+        mobileQuery.addEventListener("change", function (event) {
+            if (!event.matches) {
+                close(false);
             }
+        });
+    }
+
+    /* ------------------------------------------------------------
+       5. VOCE DI MENU ATTIVA
+    ------------------------------------------------------------ */
+
+    function markCurrentPage() {
+        const page = document.body.dataset.page;
+        if (!page) {
+            return;
         }
-    );
-}
 
+        document.querySelectorAll('.nav-menu a[data-nav="' + page + '"]').forEach(function (link) {
+            link.setAttribute("aria-current", "page");
+        });
+    }
 
-/* ============================================================
-   18. SCROLL REVEAL
+    /* ------------------------------------------------------------
+       6. RENDERING HOMEPAGE
+    ------------------------------------------------------------ */
 
-   Le sezioni vengono mostrate con una piccola animazione
-   quando entrano nella viewport.
-
-   IntersectionObserver è più efficiente rispetto a controllare
-   continuamente la posizione con lo scroll.
-============================================================ */
-
-const revealSections =
-    document.querySelectorAll(
-        `
-        .about,
-        .features,
-        .featured-menu,
-        .gallery,
-        .reviews,
-        .reservation-cta
-        `
-    );
-
-if (
-    "IntersectionObserver" in window
-) {
-
-    const revealObserver =
-        new IntersectionObserver(
-            function (entries) {
-
-                entries.forEach(
-                    function (entry) {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "section-visible"
-                            );
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-                        }
-                    }
-                );
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-
-    revealSections.forEach(
-        function (section) {
-
-            revealObserver.observe(
-                section
-            );
-        }
-    );
-
-} else {
-
-    /* Fallback per browser molto vecchi. */
-
-    revealSections.forEach(
-        function (section) {
-
-            section.classList.add(
-                "section-visible"
-            );
-        }
-    );
-}
-
-
-/* ============================================================
-   19. VISIBILITÀ DELLE SEZIONI
-
-   Legge restaurantConfig.sections e nasconde automaticamente
-   le sezioni impostate su false.
-
-   Questo permette di usare lo stesso template anche per
-   clienti che non vogliono determinate sezioni.
-============================================================ */
-
-function setupSectionVisibility() {
-
-    const sectionMap = {
-
-        about: ".about",
-
-        features: ".features",
-
-        featuredMenu: ".featured-menu",
-
-        gallery: ".gallery",
-
-        reviews: ".reviews",
-
-        reservation: ".reservation-cta"
+    const ICONS = {
+        pizza: '<path d="M2.5 9.5C5 6 8.5 4 12 4s7 2 9.5 5.5L12 21 2.5 9.5z"/><path d="M4.8 9.3c2.1-1.2 4.6-1.8 7.2-1.8s5.1.6 7.2 1.8"/><circle cx="9.5" cy="11.5" r="1.1"/><circle cx="14.5" cy="11.5" r="1.1"/><circle cx="12" cy="15.5" r="1.1"/>',
+        pasta: '<path d="M7 3v7a3 3 0 0 0 6 0V3"/><path d="M10 3v18"/><path d="M17.5 3c-1.5 2-2.5 4-2.5 7 0 2 .8 3 2.5 3v8"/>',
+        cup: '<path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 4c0 1-1 1.5-1 2.5M11.5 3c0 1-1 1.5-1 2.5"/>',
+        leaf: '<path d="M20 4c-8 0-14 5-14 12 0 1.5.3 2.7.8 3.8C9 16 13 12 18 10c-4 2.5-7.5 6.5-9.5 10.5 1 .3 2 .5 3 .5 7 0 9.5-8 8.5-17z"/>',
+        star: '<path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.3 1.3-6.6L2.5 9.5l6.6-.8z"/>'
     };
 
-
-    Object.keys(sectionMap).forEach(
-        function (sectionName) {
-
-            const enabled =
-                restaurantConfig.sections &&
-                restaurantConfig.sections[
-                    sectionName
-                ];
-
-            const section =
-                document.querySelector(
-                    sectionMap[sectionName]
-                );
-
-            if (
-                section &&
-                enabled === false
-            ) {
-
-                section.style.display =
-                    "none";
-            }
-        }
-    );
-}
-
-setupSectionVisibility();
-
-
-/* ============================================================
-   20. LINK DELLE SEZIONI
-
-   Se una sezione è disattivata, nasconde anche la relativa
-   voce nella navbar.
-============================================================ */
-
-function setupSectionLinks() {
-
-    const sectionLinks =
-        document.querySelectorAll(
-            "[data-section-link]"
-        );
-
-    sectionLinks.forEach(
-        function (link) {
-
-            const sectionName =
-                link.dataset.sectionLink;
-
-            const enabled =
-                restaurantConfig.sections &&
-                restaurantConfig.sections[
-                    sectionName
-                ];
-
-            if (
-                enabled === false
-            ) {
-
-                const parentItem =
-                    link.closest("li");
-
-                if (parentItem) {
-
-                    parentItem.style.display =
-                        "none";
-
-                } else {
-
-                    link.style.display =
-                        "none";
-                }
-            }
-        }
-    );
-}
-
-setupSectionLinks();
-
-
-/* ============================================================
-   21. LINK WHATSAPP
-
-   Predisposizione già presente nel template.
-
-   Funziona automaticamente se viene utilizzato un elemento
-   con classe .whatsapp-link.
-============================================================ */
-
-const whatsappLinks =
-    document.querySelectorAll(
-        ".whatsapp-link"
-    );
-
-const whatsapp =
-    getConfigValue(
-        "links.whatsapp"
-    );
-
-if (
-    whatsappLinks.length > 0 &&
-    whatsapp
-) {
-
-    whatsappLinks.forEach(
-        function (link) {
-
-            link.href =
-                whatsapp;
-        }
-    );
-}
-
-
-/* ============================================================
-   22. GOOGLE MAPS
-
-   Predisposizione per eventuali elementi .maps-link.
-============================================================ */
-
-const mapsLinks =
-    document.querySelectorAll(
-        ".maps-link"
-    );
-
-const googleMaps =
-    getConfigValue(
-        "links.googleMaps"
-    );
-
-if (
-    mapsLinks.length > 0 &&
-    googleMaps
-) {
-
-    mapsLinks.forEach(
-        function (link) {
-
-            link.href =
-                googleMaps;
-        }
-    );
-}
-
-
-/* ============================================================
-   23. LINK MENU
-
-   Collega automaticamente gli elementi .menu-link
-   al percorso configurato.
-============================================================ */
-
-const menuLinks =
-    document.querySelectorAll(
-        ".menu-link"
-    );
-
-const menuLink =
-    getConfigValue(
-        "links.menu"
-    );
-
-if (
-    menuLinks.length > 0 &&
-    menuLink
-) {
-
-    menuLinks.forEach(
-        function (link) {
-
-            link.href =
-                menuLink;
-        }
-    );
-}
-
-
-/* ============================================================
-   24. LINK PRENOTAZIONE
-
-   Collega automaticamente gli elementi .reservation-link
-   alla pagina di prenotazione.
-============================================================ */
-
-const reservationLinks =
-    document.querySelectorAll(
-        ".reservation-link"
-    );
-
-const reservationLink =
-    getConfigValue(
-        "links.reservation"
-    );
-
-if (
-    reservationLinks.length > 0 &&
-    reservationLink
-) {
-
-    reservationLinks.forEach(
-        function (link) {
-
-            link.href =
-                reservationLink;
-        }
-    );
-}
-
-
-/* ============================================================
-   25. ANNO AUTOMATICO DEL FOOTER
-
-   Evita di dover modificare manualmente l'anno ogni anno.
-
-   HTML:
-   <span class="current-year"></span>
-============================================================ */
-
-const currentYearElements =
-    document.querySelectorAll(
-        ".current-year"
-    );
-
-currentYearElements.forEach(
-    function (element) {
-
-        element.textContent =
-            new Date().getFullYear();
+    function svgIcon(name) {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("aria-hidden", "true");
+        svg.innerHTML = ICONS[name] || ICONS.leaf;
+        return svg;
     }
-);
 
+    function create(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) {
+            element.className = className;
+        }
+        if (text !== undefined) {
+            element.textContent = text;
+        }
+        return element;
+    }
 
-/* ============================================================
-   FINE SCRIPT.JS V1.0
+    function renderFeatures() {
+        const container = document.getElementById("features-container");
+        const items = getConfigValue("features.items");
+        if (!container || !Array.isArray(items)) {
+            return;
+        }
 
-   Per un nuovo cliente, normalmente non è necessario
-   modificare questo file.
+        container.textContent = "";
 
-   La personalizzazione principale avviene in:
+        items.forEach(function (feature) {
+            const card = create("article", "feature-card");
+            card.setAttribute("role", "listitem");
 
-   js/config.js
+            const icon = create("div", "feature-icon");
+            icon.appendChild(svgIcon(feature.icon));
 
-   e nella sostituzione delle immagini in:
+            card.appendChild(icon);
+            card.appendChild(create("h3", null, feature.title || ""));
+            card.appendChild(create("p", null, feature.description || ""));
+            container.appendChild(card);
+        });
+    }
 
-   assets/
-============================================================ */
+    function renderFeaturedMenu() {
+        const container = document.getElementById("featured-menu-container");
+        const items = getConfigValue("featuredMenu.items");
+        if (!container || !Array.isArray(items)) {
+            return;
+        }
+
+        container.textContent = "";
+
+        items.forEach(function (item) {
+            const card = create("article", "dish-card");
+            card.setAttribute("role", "listitem");
+
+            if (item.category) {
+                card.appendChild(create("span", "dish-category", item.category));
+            }
+
+            const header = create("div", "dish-header");
+            header.appendChild(create("h3", null, item.name || ""));
+            header.appendChild(create("span", "dish-leader"));
+            header.appendChild(create("span", "dish-price", item.price || ""));
+            card.appendChild(header);
+
+            if (item.description) {
+                card.appendChild(create("p", null, item.description));
+            }
+
+            container.appendChild(card);
+        });
+    }
+
+    function renderGallery() {
+        const container = document.getElementById("gallery-container");
+        const images = getConfigValue("gallery.images");
+        if (!container || !Array.isArray(images)) {
+            return;
+        }
+
+        container.textContent = "";
+
+        images.forEach(function (item, index) {
+            const figure = create("figure");
+            figure.setAttribute("role", "listitem");
+
+            const button = create("button", "gallery-button");
+            button.type = "button";
+            button.dataset.index = String(index);
+            button.setAttribute("aria-label", "Apri immagine: " + (item.alt || "foto del locale"));
+
+            const picture = document.createElement("picture");
+            if (item.webp) {
+                const source = document.createElement("source");
+                source.type = "image/webp";
+                source.srcset = item.webp;
+                picture.appendChild(source);
+            }
+
+            const img = document.createElement("img");
+            img.src = item.src;
+            img.alt = item.alt || "";
+            img.loading = "lazy";
+            img.decoding = "async";
+            if (item.width && item.height) {
+                img.width = item.width;
+                img.height = item.height;
+            }
+
+            picture.appendChild(img);
+            button.appendChild(picture);
+            figure.appendChild(button);
+            container.appendChild(figure);
+        });
+
+        setupLightbox(images);
+    }
+
+    function renderReviews() {
+        const container = document.getElementById("reviews-container");
+        const items = getConfigValue("reviews.items");
+        if (!container || !Array.isArray(items)) {
+            return;
+        }
+
+        container.textContent = "";
+
+        items.forEach(function (review) {
+            const card = create("article", "review-card");
+            card.setAttribute("role", "listitem");
+
+            const count = Math.min(5, Math.max(0, Number(review.stars) || 0));
+            const stars = create("div", "review-stars");
+            stars.setAttribute("role", "img");
+            stars.setAttribute("aria-label", count + " stelle su 5");
+            for (let i = 0; i < count; i += 1) {
+                stars.appendChild(svgIcon("star"));
+            }
+
+            const quote = create("blockquote");
+            quote.appendChild(create("p", null, review.text || ""));
+
+            card.appendChild(stars);
+            card.appendChild(quote);
+            card.appendChild(create("span", "review-author", review.author || ""));
+            container.appendChild(card);
+        });
+    }
+
+    /* ------------------------------------------------------------
+       7. LIGHTBOX
+    ------------------------------------------------------------ */
+
+    function setupLightbox(images) {
+        const dialog = document.getElementById("lightbox");
+        const container = document.getElementById("gallery-container");
+        if (!dialog || !container || typeof dialog.showModal !== "function") {
+            return;
+        }
+
+        const image = document.getElementById("lightbox-image");
+        const caption = document.getElementById("lightbox-caption");
+        let current = 0;
+
+        function show(index) {
+            current = (index + images.length) % images.length;
+            const item = images[current];
+            image.src = item.webp || item.src;
+            image.alt = item.alt || "";
+            caption.textContent = item.alt || "";
+        }
+
+        container.addEventListener("click", function (event) {
+            const button = event.target.closest(".gallery-button");
+            if (!button) {
+                return;
+            }
+            show(Number(button.dataset.index));
+            dialog.showModal();
+        });
+
+        dialog.addEventListener("click", function (event) {
+            const control = event.target.closest("[data-lightbox]");
+
+            if (control) {
+                const action = control.dataset.lightbox;
+                if (action === "prev") { show(current - 1); }
+                if (action === "next") { show(current + 1); }
+                if (action === "close") { dialog.close(); }
+                return;
+            }
+
+            /* Click sullo sfondo (fuori dall'immagine) chiude il lightbox. */
+            if (event.target === dialog) {
+                dialog.close();
+            }
+        });
+
+        dialog.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowLeft") { show(current - 1); }
+            if (event.key === "ArrowRight") { show(current + 1); }
+        });
+
+        dialog.addEventListener("close", function () {
+            image.removeAttribute("src");
+        });
+    }
+
+    /* ------------------------------------------------------------
+       8. VISIBILITÀ SEZIONI
+    ------------------------------------------------------------ */
+
+    function setupSectionVisibility() {
+        const sections = config.sections || {};
+        const map = {
+            about: ".about",
+            features: ".features",
+            featuredMenu: ".featured-menu",
+            gallery: ".gallery",
+            reviews: ".reviews",
+            reservation: ".reservation-cta"
+        };
+
+        Object.keys(map).forEach(function (name) {
+            if (sections[name] !== false) {
+                return;
+            }
+
+            document.querySelectorAll(map[name]).forEach(function (section) {
+                section.hidden = true;
+            });
+
+            document.querySelectorAll('[data-section-link="' + name + '"]').forEach(function (link) {
+                (link.closest("li") || link).hidden = true;
+            });
+        });
+    }
+
+    /* ------------------------------------------------------------
+       9. ANIMAZIONI DI INGRESSO
+    ------------------------------------------------------------ */
+
+    function setupReveal() {
+        const targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!("IntersectionObserver" in window) || reduceMotion) {
+            targets.forEach(function (el) { el.classList.add("is-visible"); });
+            return;
+        }
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        targets.forEach(function (el) { observer.observe(el); });
+    }
+
+    /* ------------------------------------------------------------
+       10. UTILITÀ
+    ------------------------------------------------------------ */
+
+    function setCurrentYear() {
+        const year = String(new Date().getFullYear());
+        document.querySelectorAll(".current-year").forEach(function (el) {
+            el.textContent = year;
+        });
+    }
+
+    /* Aggiunge .no-webp a <html> quando il browser non supporta WebP,
+       così il CSS usa le versioni JPG delle texture decorative. */
+    function detectWebp() {
+        const probe = new Image();
+        probe.onerror = function () {
+            document.documentElement.classList.add("no-webp");
+        };
+        probe.src = "data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==";
+    }
+
+    /* ------------------------------------------------------------
+       AVVIO
+    ------------------------------------------------------------ */
+
+    function init() {
+        detectWebp();
+        bindTexts();
+        bindHrefs();
+        bindContactLinks();
+        bindButtons();
+        bindSeo();
+        setupLogo();
+        setupHeader();
+        setupMobileMenu();
+        markCurrentPage();
+        renderFeatures();
+        renderFeaturedMenu();
+        renderGallery();
+        renderReviews();
+        setupSectionVisibility();
+        setupReveal();
+        setCurrentYear();
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+})();

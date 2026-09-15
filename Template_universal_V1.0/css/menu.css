@@ -1,0 +1,345 @@
+/*
+============================================================
+PASTIME — FILE: menu.css
+Stili specifici della pagina menu.html.
+Dipende dai token definiti in style.css.
+============================================================
+*/
+
+
+/* ------------------------------------------------------------
+   Navigazione per categorie (sticky sotto l'header)
+------------------------------------------------------------ */
+
+.menu-nav {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 90;
+    background: rgba(251, 249, 244, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--sand);
+}
+
+.menu-nav-list {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding-block: 0.5rem;
+    /* Estende l'area di scorrimento fino ai bordi su mobile */
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+}
+
+.menu-nav-list::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-nav-list a {
+    position: relative;
+    flex: none;
+    display: inline-block;
+    padding: 0.7rem 1rem;
+    scroll-snap-align: start;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-radius: var(--radius-sm);
+    transition: color var(--t-fast), background-color var(--t-fast);
+}
+
+.menu-nav-list a::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.35rem;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform var(--t-med);
+}
+
+.menu-nav-list a:hover {
+    color: var(--green-900);
+    background: var(--beige);
+}
+
+.menu-nav-list a[aria-current="true"] {
+    color: var(--green-900);
+}
+
+.menu-nav-list a[aria-current="true"]::after {
+    transform: scaleX(1);
+}
+
+
+/* ------------------------------------------------------------
+   Categorie
+------------------------------------------------------------ */
+
+.menu-page {
+    padding-block: clamp(3rem, 5vw, 5rem) var(--section-y);
+}
+
+.menu-category {
+    scroll-margin-top: calc(var(--header-h) + 56px);
+}
+
+.menu-category + .menu-category {
+    margin-top: clamp(3.5rem, 6vw, 6rem);
+    padding-top: clamp(3rem, 5vw, 5rem);
+    border-top: 1px solid var(--sand);
+}
+
+.menu-category-heading {
+    max-width: 640px;
+    margin: 0 auto clamp(2rem, 3.5vw, 3rem);
+    text-align: center;
+}
+
+.menu-category-heading h2 {
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+}
+
+.menu-category-heading .ornament {
+    margin-top: 1rem;
+}
+
+.menu-category-note {
+    margin: 1rem auto 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+}
+
+
+/* ------------------------------------------------------------
+   Card piatto
+------------------------------------------------------------ */
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.menu-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.75rem 1.6rem 1.6rem;
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: var(--radius);
+    transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+}
+
+/* Filetto oro in alto */
+.menu-card::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    width: 64px;
+    height: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transition: width var(--t-med);
+}
+
+.menu-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold-light);
+    box-shadow: var(--shadow-md);
+}
+
+.menu-card:hover::before {
+    width: 120px;
+}
+
+.menu-card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.menu-card-name {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--green-900);
+}
+
+.menu-card-leader {
+    flex: 1;
+    min-width: 1rem;
+    border-bottom: 1px dotted var(--gold-light);
+    transform: translateY(-0.3rem);
+}
+
+.menu-card-price {
+    flex: none;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--gold-deep);
+    white-space: nowrap;
+}
+
+.menu-card-price small {
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-right: 0.15em;
+}
+
+.menu-card-description {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+}
+
+.menu-note-mark {
+    margin-left: 0.15em;
+    font-family: var(--font-body);
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--gold-deep);
+    vertical-align: super;
+}
+
+/* Piatto in evidenza (es. pizza Pastime) */
+
+.menu-card--highlight {
+    border-color: var(--gold-light);
+    background:
+        linear-gradient(180deg, rgba(217, 197, 154, 0.12), transparent 60%),
+        var(--white);
+}
+
+.menu-card--highlight::before {
+    width: 120px;
+}
+
+.menu-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: flex-start;
+    margin-bottom: 0.25rem;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+}
+
+.menu-card-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Card con varianti (es. Chitarrina: ragù di carne / cinghiale) */
+
+.menu-card--group .menu-card-name {
+    font-size: 1.5rem;
+}
+
+.menu-variants {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.6rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--sand);
+}
+
+.menu-variant {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.menu-variant-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+}
+
+.menu-variant .menu-card-price {
+    font-size: 1.2rem;
+}
+
+
+/* ------------------------------------------------------------
+   Legenda
+------------------------------------------------------------ */
+
+.menu-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--sand);
+    font-size: var(--text-sm);
+    color: var(--muted);
+}
+
+.menu-legend li {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.menu-legend .menu-note-mark {
+    font-size: 0.9rem;
+    vertical-align: baseline;
+    margin: 0;
+}
+
+
+/* ------------------------------------------------------------
+   Responsive
+------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+    }
+
+    .menu-card {
+        padding: 1.4rem 1.25rem 1.3rem;
+    }
+
+    .menu-card-name,
+    .menu-card-price {
+        font-size: 1.25rem;
+    }
+
+    .menu-category {
+        scroll-margin-top: calc(var(--header-h) + 52px);
+    }
+}
