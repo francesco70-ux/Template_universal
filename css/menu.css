@@ -43,6 +43,7 @@ Dipende dai token definiti in style.css.
     display: inline-block;
     padding: 0.7rem 1rem;
     scroll-snap-align: start;
+    white-space: nowrap;
     font-size: var(--text-xs);
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -222,7 +223,7 @@ Dipende dai token definiti in style.css.
 .menu-card--highlight {
     border-color: var(--gold-light);
     background:
-        linear-gradient(180deg, rgba(217, 197, 154, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(227, 213, 179, 0.14), transparent 60%),
         var(--white);
 }
 

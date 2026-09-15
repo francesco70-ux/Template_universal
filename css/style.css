@@ -95,33 +95,33 @@ Indice
 ============================================================ */
 
 :root {
-    /* Verdi */
-    --green-950: #16281B;
-    --green-900: #1F3A26;
-    --green-800: #284631;
-    --green-700: #335A38;
-    --green-600: #3F6B45;
-    --sage: #8FA66B;
-    --sage-soft: #C9D6AE;
-    --sage-light: #EEF3DD;
+    /* Verdi naturali */
+    --green-950: #1B2E21;
+    --green-900: #24402D;
+    --green-800: #2F5039;
+    --green-700: #3D6647;
+    --green-600: #4E7A57;
+    --sage: #9BB08A;
+    --sage-soft: #D3DEC5;
+    --sage-light: #EDF2E4;
 
     /* Neutri caldi */
-    --cream: #FBF9F4;
-    --beige: #F4EFE5;
-    --sand: #E6DECF;
+    --cream: #FBF8F1;
+    --beige: #F2EADB;
+    --sand: #E5DBC8;
     --white: #FFFFFF;
 
-    /* Oro (dettagli) */
-    --gold: #B08D57;
-    --gold-deep: #8C6D3A;
-    --gold-light: #D9C59A;
+    /* Oro delicato: solo piccoli accenti (filetti, prezzi, etichette) */
+    --gold: #C4AE7E;
+    --gold-deep: #7F6A42;
+    --gold-light: #E3D5B3;
 
     /* Testi */
-    --ink: #1E231D;
-    --ink-soft: #3F473E;
-    --muted: #5B6357;
-    --on-dark: #F4F1E8;
-    --on-dark-soft: rgba(244, 241, 232, 0.72);
+    --ink: #1F241F;
+    --ink-soft: #40483F;
+    --muted: #5D655A;
+    --on-dark: #F5F2EA;
+    --on-dark-soft: rgba(245, 242, 234, 0.72);
 
     /* Alias semantici usati nei componenti */
     --color-primary: var(--green-700);
@@ -257,7 +257,7 @@ p {
 }
 
 :focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--green-600);
     outline-offset: 3px;
     border-radius: 2px;
 }
@@ -409,8 +409,8 @@ p {
 }
 
 .ornament svg {
-    width: 18px;
-    height: 18px;
+    width: 44px;
+    height: 14px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.4;
@@ -428,7 +428,7 @@ p {
     background-size: cover;
     background-position: center;
     pointer-events: none;
-    opacity: 0.55;
+    opacity: 0.34;
     -webkit-mask-image: linear-gradient(to right, #000 0%, #000 45%, transparent 100%);
     mask-image: linear-gradient(to right, #000 0%, #000 45%, transparent 100%);
 }
@@ -534,17 +534,17 @@ p {
     color: var(--on-dark);
 }
 
-/* Variante oro */
+/* Variante chiara per fondi scuri */
 
-.button--gold {
-    background-color: var(--gold);
-    border-color: var(--gold);
-    color: var(--green-950);
+.button--light {
+    background-color: var(--cream);
+    border-color: var(--cream);
+    color: var(--green-900);
 }
 
-.button--gold:hover {
-    background-color: var(--gold-light);
-    border-color: var(--gold-light);
+.button--light:hover {
+    background-color: var(--sage-light);
+    border-color: var(--sage-light);
 }
 
 /* Link testuale con freccia */
@@ -822,7 +822,7 @@ p {
     width: 16px;
     height: 16px;
     fill: none;
-    stroke: var(--gold-light);
+    stroke: var(--sage-soft);
     stroke-width: 1.4;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -871,7 +871,7 @@ p {
 .hero-scroll span {
     width: 1px;
     height: 36px;
-    background: linear-gradient(var(--gold-light), transparent);
+    background: linear-gradient(var(--sage-soft), transparent);
     animation: scroll-hint 2.2s ease-in-out infinite;
 }
 
@@ -925,9 +925,9 @@ a.info-item:hover {
     width: 46px;
     height: 46px;
     flex: none;
-    border: 1px solid var(--gold-light);
+    border: 1px solid var(--sage-soft);
     border-radius: 50%;
-    color: var(--gold-deep);
+    color: var(--green-700);
 }
 
 .info-icon svg {
@@ -1025,7 +1025,7 @@ a.info-item:hover {
     background-image: url("../assets/decor/leaves.webp");
     background-size: cover;
     border-radius: var(--radius);
-    opacity: 0.8;
+    opacity: 0.55;
 }
 
 .no-webp .about-image::before {
@@ -1093,7 +1093,7 @@ a.info-item:hover {
     width: 72px;
     height: 72px;
     margin: 0 auto 1.5rem;
-    border: 1px solid var(--gold-light);
+    border: 1px solid var(--sage-soft);
     border-radius: 50%;
     color: var(--green-700);
     background: var(--sage-light);
@@ -1451,14 +1451,14 @@ a.info-item:hover {
 .place-card {
     padding: 2.25rem 2rem;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(217, 197, 154, 0.35);
+    border: 1px solid rgba(211, 222, 197, 0.28);
     border-radius: var(--radius);
     backdrop-filter: blur(2px);
 }
 
 .place-card h3 {
     margin-bottom: 1.5rem;
-    color: var(--gold-light);
+    color: var(--sage-soft);
     font-weight: 500;
 }
 
@@ -1476,8 +1476,8 @@ a.info-item:hover {
 .place-row .info-icon {
     width: 40px;
     height: 40px;
-    border-color: rgba(217, 197, 154, 0.5);
-    color: var(--gold-light);
+    border-color: rgba(211, 222, 197, 0.45);
+    color: var(--sage-soft);
 }
 
 .place-row .info-label {
@@ -1492,7 +1492,7 @@ a.info-item:hover {
 }
 
 .place-row a.info-value:hover {
-    color: var(--gold-light);
+    color: var(--sage-soft);
 }
 
 .place-row p {
@@ -1533,7 +1533,7 @@ a.info-item:hover {
     font-size: var(--text-xs);
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: var(--sage-soft);
 }
 
 .footer-column p {
@@ -1550,7 +1550,7 @@ a.info-item:hover {
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: var(--sage-soft);
 }
 
 .footer-list li + li {
@@ -1686,7 +1686,7 @@ a.info-item:hover {
     margin-top: clamp(2.5rem, 4vw, 3.5rem);
     padding: 1.75rem 2rem;
     background: var(--sage-light);
-    border-left: 3px solid var(--gold);
+    border-left: 3px solid var(--sage);
     border-radius: var(--radius-sm);
 }
 
@@ -1810,10 +1810,12 @@ a.info-item:hover {
         justify-content: center;
         gap: 0;
         padding: calc(var(--header-h) + 1rem) var(--gutter) 2.5rem;
-        background: var(--sage-light);
-        background-image: url("../assets/decor/leaves.webp");
-        background-size: 420px auto;
-        background-position: right -80px bottom -40px;
+        background-color: var(--sage-light);
+        background-image:
+            linear-gradient(rgba(237, 242, 228, 0.78), rgba(237, 242, 228, 0.78)),
+            url("../assets/decor/leaves.webp");
+        background-size: 100% 100%, 420px auto;
+        background-position: center, right -80px bottom -40px;
         background-repeat: no-repeat;
         overflow-y: auto;
         visibility: hidden;
@@ -1823,7 +1825,9 @@ a.info-item:hover {
     }
 
     .no-webp .nav-menu {
-        background-image: url("../assets/decor/leaves.jpg");
+        background-image:
+            linear-gradient(rgba(237, 242, 228, 0.78), rgba(237, 242, 228, 0.78)),
+            url("../assets/decor/leaves.jpg");
     }
 
     .nav-menu.mobile-menu-open {
@@ -1871,6 +1875,13 @@ a.info-item:hover {
 
     .nav-drawer-extra .button {
         width: 100%;
+        padding: 0.85rem 1.5rem;
+        border-bottom: 1px solid var(--green-700);
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--on-dark);
     }
 
     .nav-drawer-extra p {
@@ -1965,6 +1976,30 @@ a.info-item:hover {
     :root {
         --header-h: 70px;
         --text-base: 1rem;
+    }
+
+    .eyebrow {
+        letter-spacing: 0.16em;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+        width: 18px;
+    }
+
+    /* Le texture laterali restano leggere e non interferiscono con il testo */
+    .leaf-decor {
+        width: 64px;
+        opacity: 0.2;
+    }
+
+    .page-hero .container--narrow {
+        width: min(100% - (var(--gutter) * 2) - 40px, var(--container-narrow));
+    }
+
+    .page-hero .eyebrow::before,
+    .page-hero .eyebrow::after {
+        display: none;
     }
 
     .logo-image {
