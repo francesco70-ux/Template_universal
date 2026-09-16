@@ -16,24 +16,27 @@
   <div class="demo-bar">Prototipo FC Studio · fotografie sostitutive · non è il sito ufficiale</div>
 
   <header class="site-header" id="header">
-    <a class="brand" href="index.html" aria-current="page">
+    <a class="brand" href="./index.html" aria-current="page">
       <span class="brand-name">Il Casale</span>
       <span class="brand-place">PIZZOFERRATO</span>
     </a>
+    <input class="nav-check" type="checkbox" id="nav-toggle">
     <nav>
       <ul class="nav" id="nav">
         <li><a href="#chi-siamo">Chi siamo</a></li>
         <li><a href="#cucina">La cucina</a></li>
         <li><a href="#territorio">Territorio</a></li>
-        <li><a href="menu.html">Menù</a></li>
+        <li><a href="./menu.html">Menù</a></li>
         <li><a href="#recensioni">Recensioni</a></li>
         <li><a href="#contatti">Contatti</a></li>
+        <li class="nav-book"><a href="#contatti">Prenota</a></li>
       </ul>
     </nav>
-    <a class="nav-cta" href="tel:+390872946242">Prenota</a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu">
+    <a class="nav-cta" href="#contatti">Prenota</a>
+    <label class="menu-toggle" for="nav-toggle" aria-controls="nav" aria-expanded="false">
+      <span class="visually-hidden">Apri il menu</span>
       <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h22" stroke="#1c2f26" stroke-width="1.6"/></svg>
-    </button>
+    </label>
   </header>
 
   <main id="contenuto">
@@ -48,8 +51,8 @@
         <p class="pos">La tavola con vista sulla Majella</p>
         <p>Cucina abruzzese di montagna, porzioni generose, vallata davanti agli occhi. Il pranzo che gli ospiti raccontano da anni — ora, finalmente, raccontato anche online.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+390872946242">Prenota un tavolo</a>
-          <a class="btn btn-ghost" href="menu.html">Scopri il menù</a>
+          <a class="btn btn-primary" href="#contatti">Prenota un tavolo</a>
+          <a class="btn btn-ghost" href="./menu.html">Scopri il menù</a>
         </div>
         <div class="hero-meta">
           <span>Casale Pollice, 4 · Pizzoferrato (CH)</span>
@@ -81,7 +84,7 @@
         <h2>Quello che gli ospiti ordinano davvero</h2>
         <p class="lead">Niente piatti inventati per riempire. Questi sono i nomi che tornano nelle recensioni.</p>
         <div class="dishes">
-          <a class="dish-card" href="menu.html#ravioli">
+          <a class="dish-card" href="./menu.html#ravioli">
             <div class="ph"><img src="assets/img/dish-ravioli.jpg" alt="Ravioli noci e tartufo — fotografia sostitutiva"></div>
             <div>
               <span class="tag">Piatto firma</span>
@@ -89,7 +92,7 @@
               <p>Il primo più citato. Pasta fatta in casa.</p>
             </div>
           </a>
-          <a class="dish-card" href="menu.html#pappardelle">
+          <a class="dish-card" href="./menu.html#pappardelle">
             <div class="ph"><img src="assets/img/dish-pappardelle.jpg" alt="Pappardelle al cinghiale — fotografia sostitutiva"></div>
             <div>
               <span class="tag">Piatto firma</span>
@@ -97,7 +100,7 @@
               <p>«Voto 10», scrivono gli ospiti.</p>
             </div>
           </a>
-          <a class="dish-card" href="menu.html#grigliata">
+          <a class="dish-card" href="./menu.html#grigliata">
             <div class="ph"><img src="assets/img/dish-griglia.jpg" alt="Grigliata mista — fotografia sostitutiva"></div>
             <div>
               <span class="tag">Dalla brace</span>
@@ -113,7 +116,7 @@
           <article><span>03</span><h3>Brace</h3><p>Grigliata, agnello, tegamini. Il secondo arriva se resta spazio.</p></article>
           <article><span>04</span><h3>Chiusura</h3><p>Dolci della casa, caffè, liquori fatti in casa — il kiwi lo ricordano tutti.</p></article>
         </div>
-        <p style="margin-top:28px"><a class="btn btn-dark" href="menu.html">Scopri il menù</a></p>
+        <p style="margin-top:28px"><a class="btn btn-dark" href="./menu.html">Scopri il menù</a></p>
       </div>
     </section>
 
@@ -160,7 +163,7 @@
           <p>Il cliente inquadra il codice e apre il menù sul telefono. Piatti, descrizioni e — quando li avremo — i prezzi si aggiornano in un file solo. Il QR resta uguale.</p>
           <p><strong>QR stampato → indirizzo fisso → menù digitale.</strong><br>
           Indirizzo previsto: <span class="qr-url">https://ilcasalepizzoferrato.it/menu.html</span></p>
-          <p><a class="btn btn-dark" href="menu.html">Apri il menù</a></p>
+          <p><a class="btn btn-dark" href="./menu.html">Apri il menù</a></p>
         </div>
         <div class="qr-card">
           <p class="eyebrow">Scansiona per vedere il menù</p>
@@ -210,7 +213,7 @@
           <p>Su Google la prenotazione risulta obbligatoria. Oggi l’unico canale verificato è il telefono fisso.</p>
           <p><a class="btn btn-primary" href="tel:+390872946242">Chiama 0872 946242</a></p>
           <p>Casale Pollice, 4<br>66040 Pizzoferrato (CH)</p>
-          <p><a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato">Apri in Google Maps</a></p>
+          <p><a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato" target="_blank" rel="noopener noreferrer">Apri in Google Maps</a></p>
           <table class="hours" id="hours">
             <tbody></tbody>
           </table>
@@ -248,14 +251,14 @@
         <p>Casale Pollice, 4 · 66040 Pizzoferrato (CH)<br><a href="tel:+390872946242">0872 946242</a></p>
       </div>
       <div>
-        <p>Menù<br><a href="menu.html">Menù digitale</a><br><a href="index.html#chi-siamo">Chi siamo</a><br><a href="index.html#contatti">Prenota</a></p>
+        <p>Menù<br><a href="./menu.html">Menù digitale</a><br><a href="./index.html#chi-siamo">Chi siamo</a><br><a href="./index.html#contatti">Prenota</a></p>
       </div>
       <div>
         <p>Pagine<br>
-          <a href="https://www.facebook.com/pages/Ristorante-il-casale-Pizzoferrato/133508856734476" rel="noopener">Facebook</a><br>
-          <a href="https://www.tripadvisor.it/Restaurant_Review-g1897616-d3484464-Reviews-Il_Casale-Pizzoferrato_Province_of_Chieti_Abruzzo.html" rel="noopener">Tripadvisor</a><br>
+          <a href="https://www.facebook.com/pages/Ristorante-il-casale-Pizzoferrato/133508856734476" target="_blank" rel="noopener noreferrer">Facebook</a><br>
+          <a href="https://www.tripadvisor.it/Restaurant_Review-g1897616-d3484464-Reviews-Il_Casale-Pizzoferrato_Province_of_Chieti_Abruzzo.html" target="_blank" rel="noopener noreferrer">Tripadvisor</a><br>
           <span>Instagram: non verificato — da attivare</span><br>
-          <a href="privacy.html">Privacy e cookie</a>
+          <a href="./privacy.html">Privacy e cookie</a>
         </p>
       </div>
     </div>
@@ -264,8 +267,8 @@
 
   <nav class="dock" aria-label="Azioni rapide">
     <a href="tel:+390872946242">Chiama</a>
-    <a href="menu.html">Menù</a>
-    <a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato">Indicazioni</a>
+    <a href="./menu.html">Menù</a>
+    <a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato" target="_blank" rel="noopener noreferrer">Indicazioni</a>
   </nav>
 
   <div class="lightbox" id="lite" role="dialog" aria-modal="true" hidden>

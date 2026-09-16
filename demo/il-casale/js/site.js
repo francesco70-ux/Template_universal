@@ -4,6 +4,7 @@
   var header = document.getElementById("header");
   var nav = document.getElementById("nav");
   var toggle = document.querySelector(".menu-toggle");
+  var navCheck = document.getElementById("nav-toggle");
   var hoursBody = document.querySelector("#hours tbody");
   var form = document.getElementById("form-prenota");
   var lite = document.getElementById("lite");
@@ -12,16 +13,26 @@
     if (header) header.classList.toggle("is-scrolled", window.scrollY > 8);
   });
 
-  if (toggle && nav) {
+  function closeNav() {
+    if (nav) nav.classList.remove("is-open");
+    if (navCheck) navCheck.checked = false;
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+  }
+
+  if (navCheck && toggle) {
+    navCheck.addEventListener("change", function () {
+      toggle.setAttribute("aria-expanded", navCheck.checked ? "true" : "false");
+      if (nav) nav.classList.toggle("is-open", navCheck.checked);
+    });
+  } else if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+  }
+  if (nav) {
     nav.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+      a.addEventListener("click", closeNav);
     });
   }
 

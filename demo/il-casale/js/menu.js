@@ -11,12 +11,16 @@
   if (!window.MENU || !root) return;
 
   function openMenu() {
-    if (cover) cover.style.display = "none";
-    shell.classList.add("is-on");
+    if (cover) cover.classList.add("is-off");
+    if (shell) shell.classList.add("is-on");
     if (search) search.focus();
   }
 
-  if (start) start.addEventListener("click", openMenu);
+  if (start) {
+    start.addEventListener("click", function () {
+      openMenu();
+    });
+  }
   if (window.location.hash && window.location.hash !== "#cover") {
     openMenu();
   }
@@ -107,10 +111,8 @@
 
   var dockTop = document.getElementById("dock-top");
   if (dockTop) {
-    dockTop.addEventListener("click", function (e) {
-      e.preventDefault();
+    dockTop.addEventListener("click", function () {
       openMenu();
-      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 })();

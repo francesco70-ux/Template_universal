@@ -6,19 +6,22 @@
   min-height: 100svh; position: relative; color: #fff;
   display: grid; place-items: end center;
 }
-.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.cover-shade,
+.cover .ph { pointer-events: none; }
 .cover-shade {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(18,28,22,.25), rgba(18,28,22,.82));
 }
 .cover-inner {
-  position: relative; z-index: 1; text-align: center; padding: 0 22px 96px; max-width: 420px;
+  position: relative; z-index: 2; pointer-events: auto; text-align: center; padding: 0 22px 96px; max-width: 420px;
 }
 .cover-inner h1 { font-size: 56px; font-style: italic; }
 .cover-inner p { font-family: var(--serif); font-size: 22px; font-style: italic; margin: 6px 0 22px; }
+.cover.is-off { display: none; }
 
-.menu-shell { display: none; padding-bottom: 88px; }
-.menu-shell.is-on { display: block; }
+.menu-shell { display: block; padding-bottom: 88px; }
+.cover:has(+ .menu-shell:target) { display: none; }
 
 .menu-top {
   position: sticky; top: 0; z-index: 20;

@@ -2,13 +2,19 @@
 
 Demo commerciale FC Studio. Non è il sito ufficiale.
 
-Apri `index.html` con un server locale (non in `file://`, altrimenti mappa e QR live possono fallire):
+Apri la demo **sul tuo computer**. L’indirizzo `http://127.0.0.1:8080` che compare nella chat dell’agente è la macchina remota: da lì i link non si aprono sul tuo browser.
+
+Dalla cartella del repo:
 
 ```bash
 python3 -m http.server 8080 --directory demo/il-casale
 ```
 
-Poi: http://127.0.0.1:8080/
+Poi, nel **tuo** browser: http://127.0.0.1:8080/
+
+In alternativa: apri il file `demo/il-casale/index.html` (doppio clic). La mappa Google e il QR live possono non comparire in `file://`; il resto della navigazione sì.
+
+«Prenota» porta alla sezione contatti (telefono, mappa, modulo). «Chiama» e il numero `0872 946242` usano `tel:`: sul computer non partono una chiamata, sul telefono sì.
 
 ## QR → URL fisso → menù
 
