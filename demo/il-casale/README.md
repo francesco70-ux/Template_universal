@@ -2,17 +2,18 @@
 
 Demo commerciale FC Studio. Non è il sito ufficiale.
 
-Apri la demo **sul tuo computer**. L’indirizzo `http://127.0.0.1:8080` che compare nella chat dell’agente è la macchina remota: da lì i link non si aprono sul tuo browser.
+## Preview live in Cursor
 
-Dalla cartella del repo:
+Il sito si vede **dentro Cursor**, senza pubblicare su GitHub e senza avviare un server a mano.
 
-```bash
-python3 -m http.server 8080 --directory demo/il-casale
-```
+1. Apri questa cartella del repo in Cursor (non un singolo file).
+2. Se compare la richiesta, installa l’estensione **Live Preview** (Microsoft, `ms-vscode.live-server`). È quella nativa di VS Code/Cursor per HTML statico: server locale automatico + browser integrato.
+3. Apri `demo/il-casale/index.html` o `demo/il-casale/menu.html`.
+4. Clicca l’icona **preview** in alto a destra dell’editor, oppure tasto destro sul file → **Show Preview**. Dalla Command Palette: **Live Preview: Show Preview**.
 
-Poi, nel **tuo** browser: http://127.0.0.1:8080/
+La preview si apre a fianco del codice. I link relativi (`index.html` ↔ `menu.html` ↔ `privacy.html`) funzionano perché la root del server è `demo/il-casale`. Ogni **salvataggio** ricarica la pagina.
 
-In alternativa: apri il file `demo/il-casale/index.html` (doppio clic). La mappa Google e il QR live possono non comparire in `file://`; il resto della navigazione sì.
+Per il menù: stessa preview, oppure naviga dal sito con «Menù» / «Scopri il menù».
 
 «Prenota» porta alla sezione contatti (telefono, mappa, modulo). «Chiama» e il numero `0872 946242` usano `tel:`: sul computer non partono una chiamata, sul telefono sì.
 
