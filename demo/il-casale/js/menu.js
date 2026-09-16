@@ -32,7 +32,7 @@
 
   function itemHtml(item) {
     var img = item.image
-      ? '<div class="ph"><img src="' + item.image + '" alt="' + item.name + (item.imagePlaceholder ? " — fotografia sostitutiva" : "") + '"></div>'
+      ? '<div class="ph" data-credit="Foto ospite"><img src="' + item.image + '" alt="' + item.name + '"></div>'
       : "";
     var tags = (item.tags || []).map(badge).join("");
     var allergens = item.allergens
@@ -57,12 +57,13 @@
     var steps = f.steps.map(function (s) {
       return "<li><strong>" + s.title + ".</strong> " + s.text + "</li>";
     }).join("");
+    var priceLine = f.priceLabel ? '<p class="price-line">' + f.priceLabel + ".</p>" : "";
     return (
       '<article class="formula-card" id="formula">' +
       "<h2>" + f.title + "</h2>" +
       "<p>" + f.lead + "</p>" +
       "<ol>" + steps + "</ol>" +
-      '<p class="price-line">' + f.priceFromReviews + " " + f.priceLabel + ".</p></article>"
+      priceLine + "</article>"
     );
   }
 

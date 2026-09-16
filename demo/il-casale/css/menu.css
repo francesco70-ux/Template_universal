@@ -6,7 +6,7 @@
   min-height: 100svh; position: relative; color: #fff;
   display: grid; place-items: end center;
 }
-.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; pointer-events: none; }
 .cover-shade,
 .cover .ph { pointer-events: none; }
 .cover-shade {

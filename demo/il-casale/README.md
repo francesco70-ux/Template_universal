@@ -29,22 +29,32 @@ Il file `assets/qr/menu-qr.svg` è il QR di pubblicazione (dominio previsto). Su
 ## Cosa è vero / cosa è placeholder
 
 **Dati veri (analisi)**  
-Nome, indirizzo Casale Pollice 4, telefono 0872 946242, orari Google (sab 12–23, dom 12–16, lun–ven chiuso), recensioni citate, piatti citati, Carmine / Fernanda / Michele, rating Google 4,6 (661) e Tripadvisor 4,4 (239, 1°/13), Facebook e Tripadvisor linkati.
+Nome, indirizzo Casale Pollice 4, telefono 0872 946242, recensioni citate, piatti citati, Carmine / Fernanda / Michele, rating Google 4,6 (661) e Tripadvisor 4,4 (239, 1°/13), Facebook e Tripadvisor linkati.
 
 **Non inventato, quindi assente o dichiarato**  
-Anno di apertura, storia di famiglia, email, WhatsApp, handle Instagram, prezzi ufficiali, allergeni, prodotti congelati, carta dei vini, categoria pizze (era un errore di directory), P.IVA.
+Orari (Google e gli ospiti non coincidono), anno di apertura, storia di famiglia, email, WhatsApp, handle Instagram, prezzi ufficiali, allergeni, prodotti congelati, carta dei vini, categoria pizze, P.IVA.
 
 **Immagini**  
-Tutte sostitutive (generate per la direzione visiva). Badge «Immagine sostitutiva». Da rimpiazzare con shooting reale: vetrata, sala, 12 piatti, staff, esterni.
+Foto reali del locale (ospiti, da shooting ufficiale) e di Pizzoferrato / Majella (Wikimedia Commons, CC). Niente foto generate con l’AI. Crediti in calce alle foto.
 
 **Modulo prenotazione**  
 Non invia nulla. In produzione: WhatsApp Business o mail del titolare.
+
+## Foto e licenze
+
+| File | Cosa ritrae | Fonte |
+|---|---|---|
+| `hero-veranda.jpg`, `sala-*`, `esterno.jpg`, `terrazza.jpg`, `dish-*.jpg` | Il Casale (sala, veranda, piatti) | Foto degli ospiti, raccolte pubblicamente |
+| `pizzoferrato.jpg` | Il borgo | Licia Missori / Wikimedia, CC BY-SA 3.0 |
+| `pizzoferrato-piazza.jpg` | Piazza e chiesa di San Rocco | Cristina Morettini 95 / Wikimedia, CC BY-SA 4.0 |
+| `majella.jpg` | Monte Tavola Rotonda | Davipar / Wikimedia, pubblico dominio |
+| `majella-inverno.jpg` | Massiccio della Majella | Matulus / Wikimedia, CC BY-SA 4.0 |
 
 ## Dove si modifica
 
 | Cosa | File |
 |---|---|
-| Nome, orari, telefono, social | `js/config.js` |
+| Nome, telefono, social | `js/config.js` |
 | Piatti, descrizioni, foto, prezzi | `js/menu-data.js` |
 | Testi di pagina | `index.html` |
 | Stile sito | `css/site.css` |

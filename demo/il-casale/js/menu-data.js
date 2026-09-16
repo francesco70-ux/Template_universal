@@ -15,7 +15,8 @@
   - Niente lista vini inventata: solo vino della casa e liquori citati.
   - allergens: null = da compilare col titolare (obbligo di legge in sala).
   - frozen: false se non dichiarato; non inventiamo prodotti congelati.
-  - imagePlaceholder: true = fotografia sostitutiva, non dello shooting ufficiale.
+  - image: foto degli ospiti del locale (non AI). image: null se non c’è uno scatto corrispondente.
+  - imagePlaceholder non si usa più: niente foto generate.
 */
 
 var MENU = {
@@ -40,9 +41,9 @@ var MENU = {
       "Solo primo e secondo — alcuni ospiti lo chiedono: da confermare al momento della prenotazione",
       "Bambini e esigenze vegetariane: segnalate in prenotazione (dalle recensioni risulta attenzione alle intolleranze)"
     ],
-    priceFromReviews: "Secondo le recensioni più recenti, il percorso completo si aggira indicativamente tra 25 e 40 € a persona.",
+    priceFromReviews: "",
     priceOfficial: null,
-    priceLabel: "Prezzo ufficiale da confermare"
+    priceLabel: "Prezzo ufficiale da confermare col locale"
   },
 
   categories: [
@@ -60,8 +61,7 @@ var MENU = {
           tags: ["firma"],
           allergens: null,
           frozen: false,
-          image: "assets/img/dish-antipasti.jpg",
-          imagePlaceholder: true
+          image: "assets/img/dish-antipasti.jpg"
         },
         {
           id: "tagliere",
@@ -72,8 +72,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "bruschette",
@@ -84,8 +83,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "pizzette",
@@ -96,8 +94,7 @@ var MENU = {
           tags: ["consigliato"],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "polentine",
@@ -108,8 +105,7 @@ var MENU = {
           tags: ["stagione"],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "pallotte",
@@ -120,8 +116,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "fegatini",
@@ -132,8 +127,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         }
       ]
     },
@@ -151,8 +145,7 @@ var MENU = {
           tags: ["firma"],
           allergens: null,
           frozen: false,
-          image: "assets/img/dish-ravioli.jpg",
-          imagePlaceholder: true
+          image: "assets/img/dish-ravioli.jpg"
         },
         {
           id: "pappardelle",
@@ -163,8 +156,7 @@ var MENU = {
           tags: ["firma", "stagione"],
           allergens: null,
           frozen: false,
-          image: "assets/img/dish-pappardelle.jpg",
-          imagePlaceholder: true
+          image: "assets/img/dish-pappardelle.jpg"
         },
         {
           id: "gnocchi-orapi",
@@ -175,8 +167,7 @@ var MENU = {
           tags: ["consigliato", "stagione"],
           allergens: null,
           frozen: false,
-          image: "assets/img/dish-gnocchi.jpg",
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "chitarra",
@@ -187,8 +178,7 @@ var MENU = {
           tags: ["stagione"],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "chitarra-ragu",
@@ -199,8 +189,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "gnocchi-pomodoro",
@@ -211,8 +200,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         }
       ]
     },
@@ -230,20 +218,18 @@ var MENU = {
           tags: ["firma"],
           allergens: null,
           frozen: false,
-          image: "assets/img/dish-griglia.jpg",
-          imagePlaceholder: true
+          image: "assets/img/dish-griglia.jpg"
         },
         {
           id: "agnello",
           name: "Agnello",
-          description: "Citato spesso insieme alla grigliata. Carné di montagna.",
+          description: "Citato spesso insieme alla grigliata. Carne di montagna.",
           price: null,
           priceLabel: "Nel percorso",
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "salsicce",
@@ -254,8 +240,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "arrosticini",
@@ -266,20 +251,18 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "tegamino-salsiccia",
           name: "Tegamino scamorza e salsiccia",
-          description: "Secondo caliente, citato come «veramente gustoso».",
+          description: "Secondo caldo, citato come «veramente gustoso».",
           price: null,
           priceLabel: "Nel percorso",
           tags: ["consigliato"],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "tegamino-porcini",
@@ -290,8 +273,7 @@ var MENU = {
           tags: ["stagione"],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         }
       ]
     },
@@ -309,8 +291,7 @@ var MENU = {
           tags: ["firma"],
           allergens: null,
           frozen: false,
-          image: "assets/img/dish-dolci.jpg",
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "liquori",
@@ -321,8 +302,7 @@ var MENU = {
           tags: ["firma"],
           allergens: null,
           frozen: false,
-          image: "assets/img/gallery-liquori.jpg",
-          imagePlaceholder: true
+          image: null
         }
       ]
     },
@@ -340,8 +320,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         },
         {
           id: "caffe",
@@ -352,8 +331,7 @@ var MENU = {
           tags: [],
           allergens: null,
           frozen: false,
-          image: null,
-          imagePlaceholder: true
+          image: null
         }
       ]
     }

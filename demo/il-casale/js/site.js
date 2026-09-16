@@ -5,7 +5,6 @@
   var nav = document.getElementById("nav");
   var toggle = document.querySelector(".menu-toggle");
   var navCheck = document.getElementById("nav-toggle");
-  var hoursBody = document.querySelector("#hours tbody");
   var form = document.getElementById("form-prenota");
   var lite = document.getElementById("lite");
 
@@ -38,16 +37,6 @@
 
   var y = document.getElementById("y");
   if (y) y.textContent = String(new Date().getFullYear());
-
-  if (hoursBody && window.SITE) {
-    var today = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"][new Date().getDay()];
-    SITE.hours.days.forEach(function (row) {
-      var tr = document.createElement("tr");
-      if (row.day === today) tr.className = "is-today";
-      tr.innerHTML = "<td>" + row.day + "</td><td>" + row.hours + "</td>";
-      hoursBody.appendChild(tr);
-    });
-  }
 
   if (form) {
     form.addEventListener("submit", function (e) {
