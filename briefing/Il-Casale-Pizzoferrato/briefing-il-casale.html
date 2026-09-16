@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>FC Studio — Briefing operativo · Il Casale, Pizzoferrato</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 12mm 16mm 12mm;
+      @bottom-left {
+        content: "FC Studio  ·  interno  ·  settembre 2026";
+        font-family: "Source Sans 3", "Inter", sans-serif;
+        font-size: 8pt;
+        color: #6b6b6b;
+        letter-spacing: 0.02em;
+      }
+      @bottom-right {
+        content: counter(page) " / " counter(pages);
+        font-family: "Source Sans 3", "Inter", sans-serif;
+        font-size: 8pt;
+        color: #6b6b6b;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: "Source Sans 3", "Inter", "Liberation Sans", sans-serif;
+      font-size: 9.4pt;
+      line-height: 1.38;
+      color: #1c1c1c;
+      background: #fff;
+    }
+
+    h1, h2, h3 { font-family: "Noto Serif", "Liberation Serif", serif; color: #1a2e24; }
+
+    .cover {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 3px solid #1a2e24;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .cover .kicker {
+      font-size: 8pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b2e2e;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .cover h1 {
+      font-size: 20pt;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+    .cover h1 span { display: block; font-size: 11.5pt; font-weight: 500; color: #3d5a4c; margin-top: 2px; }
+    .meta {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #444;
+      line-height: 1.45;
+    }
+    .meta strong { display: block; color: #1a2e24; font-size: 9.5pt; }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      margin: 8px 0 14px;
+      font-size: 7.8pt;
+      color: #444;
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .dot { width: 7px; height: 7px; border-radius: 1px; display: inline-block; }
+    .d-fatto { background: #1a2e24; }
+    .d-int { background: #8b5e3c; }
+    .d-prop { background: #2f5d8a; }
+    .d-nv { background: #b03a2e; }
+
+    h2 {
+      font-size: 12pt;
+      margin: 13px 0 6px;
+      padding: 3px 0 3px 8px;
+      border-left: 4px solid #6b2e2e;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 10pt;
+      margin: 8px 0 4px;
+      color: #2f4a3a;
+      page-break-after: avoid;
+    }
+
+    p { margin: 0 0 5px; }
+    ul, ol { margin: 0 0 6px 16px; }
+    li { margin-bottom: 2px; }
+
+    .snapshot {
+      background: #f4f1ea;
+      border: 1px solid #ddd4c4;
+      padding: 8px 10px;
+      font-size: 9.1pt;
+    }
+    .snapshot p { margin: 0 0 3px; }
+    .snapshot strong { color: #1a2e24; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.7pt;
+      line-height: 1.28;
+      margin: 4px 0 8px;
+      page-break-inside: auto;
+    }
+    thead { display: table-header-group; }
+    th {
+      background: #1a2e24;
+      color: #fff;
+      font-weight: 600;
+      text-align: left;
+      padding: 4px 5px;
+      font-size: 7.6pt;
+      letter-spacing: 0.03em;
+    }
+    td {
+      padding: 4px 5px;
+      vertical-align: top;
+      border-bottom: 1px solid #e2ddd3;
+    }
+    tbody tr:nth-child(even) td { background: #f7f5f0; }
+    td:first-child { font-weight: 700; color: #1a2e24; white-space: nowrap; width: 16%; }
+    .nv { color: #b03a2e; font-weight: 600; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+      margin-bottom: 6px;
+    }
+    .card {
+      border: 1px solid #ddd4c4;
+      padding: 6px 8px;
+      page-break-inside: avoid;
+    }
+    .card h4 {
+      font-size: 9pt;
+      color: #1a2e24;
+      margin: 0 0 3px;
+      font-family: "Noto Serif", serif;
+    }
+    .card p { margin: 0 0 2px; font-size: 8.5pt; }
+    .label {
+      font-size: 7.2pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b2e2e;
+      font-weight: 700;
+    }
+
+    .packs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0 8px;
+    }
+    .pack {
+      border: 1px solid #cfc6b6;
+      page-break-inside: avoid;
+    }
+    .pack header {
+      background: #1a2e24;
+      color: #fff;
+      padding: 5px 7px;
+    }
+    .pack.rec header { background: #6b2e2e; }
+    .pack header .name { font-size: 8pt; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .pack header h4 { font-family: "Noto Serif", serif; font-size: 11pt; margin: 1px 0 0; color: #fff; }
+    .pack .body { padding: 5px 7px; font-size: 8pt; }
+    .pack ul { margin: 3px 0 5px 14px; }
+    .price {
+      font-weight: 700;
+      font-size: 9.2pt;
+      color: #1a2e24;
+      border-top: 1px solid #ddd4c4;
+      padding-top: 4px;
+      margin-top: 4px;
+    }
+    .note { font-size: 8pt; color: #444; font-style: italic; }
+
+    .prio td:nth-child(3), .prio td:nth-child(4) { white-space: nowrap; text-align: center; font-weight: 600; }
+    .hi { color: #1a2e24; }
+    .mid { color: #8b5e3c; }
+    .lo { color: #666; }
+
+    .phases { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .phase { border-top: 3px solid #1a2e24; background: #f7f5f0; padding: 7px 8px; page-break-inside: avoid; }
+    .phase:nth-child(2) { border-top-color: #8b5e3c; }
+    .phase:nth-child(3) { border-top-color: #6b2e2e; }
+    .phase .when { font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.1em; color: #666; }
+    .phase h4 { font-family: "Noto Serif", serif; font-size: 10pt; margin: 1px 0 4px; color: #1a2e24; }
+
+    .qlist { counter-reset: q; list-style: none; margin: 0 0 8px; }
+    .qlist li {
+      counter-increment: q;
+      padding: 3.5px 0 3.5px 28px;
+      position: relative;
+      border-bottom: 1px solid #eee8dc;
+      page-break-inside: avoid;
+    }
+    .qlist li::before {
+      content: counter(q);
+      position: absolute;
+      left: 0; top: 4px;
+      width: 18px; height: 18px;
+      background: #1a2e24;
+      color: #fff;
+      font-size: 8pt;
+      font-weight: 700;
+      text-align: center;
+      line-height: 18px;
+    }
+
+    .exec {
+      background: #1a2e24;
+      color: #f4f1ea;
+      padding: 10px 12px;
+      page-break-inside: avoid;
+    }
+    .exec h2 {
+      color: #fff;
+      border-left: 4px solid #d4a017;
+      margin-top: 0;
+    }
+    .exec p { margin: 0 0 6px; font-size: 9pt; line-height: 1.4; }
+    .exec strong { color: #f0d78c; }
+
+    .foot-note {
+      font-size: 7.6pt;
+      color: #555;
+      margin-top: 6px;
+    }
+    .keep { page-break-inside: avoid; }
+  </style>
+</head>
+<body>
+
+<div class="cover">
+  <div>
+    <div class="kicker">Scheda di briefing operativo · uso interno</div>
+    <h1>Il Casale, Pizzoferrato<span>Cosa sta succedendo online e cosa può fare FC Studio</span></h1>
+  </div>
+  <div class="meta">
+    <strong>FC Studio</strong>
+    Riunione soci<br>
+    16 settembre 2026<br>
+    Lettura: ~5 minuti
+  </div>
+</div>
+
+<div class="legend">
+  <span><i class="dot d-fatto"></i> Fatto osservato</span>
+  <span><i class="dot d-int"></i> Interpretazione</span>
+  <span><i class="dot d-prop"></i> Proposta FC Studio</span>
+  <span><i class="dot d-nv"></i> Non verificato dal nostro ambiente</span>
+</div>
+
+<!-- 1 -->
+<h2>1. Snapshot del locale</h2>
+<div class="snapshot">
+  <p><strong>Nome / luogo.</strong> Il Casale — Casale Pollice 4, 66040 Pizzoferrato (CH), Parco Nazionale della Majella. Online compare anche come «Ristorante Il Casale» e «Agriturismo Il Casale».</p>
+  <p><strong>Tipologia.</strong> Ristorante di montagna a formula fissa (antipasti caldi/freddi → primi a scelta → brace → dolci e liquori della casa). Non è un agriturismo in senso stretto: nessuna evidenza di produzione propria.</p>
+  <p><strong>Posizionamento.</strong> Di fatto è il «pranzo della domenica» della Valle del Sangro: abbondanza, vista, prezzo percepito basso. La proposta è chiara nei clienti, assente nei canali del locale.</p>
+  <p><strong>Target.</strong> Famiglie e gruppi della costa (Lanciano–Pescara–Vasto, 60–90 min) e villeggianti di Valle del Sole. Potenziale non coperto: turisti Majella/Roccaraso ed eventi privati.</p>
+  <p><strong>Distintivi.</strong> Vetrata sulla vallata · tavola degli antipasti · ravioli noci e tartufo, pappardelle al cinghiale, gnocchi con orapi · titolare Carmine in sala · rapporto qualità/prezzo.</p>
+  <p><strong>Digitale.</strong> Reputazione da leader locale (Google 4,6 / 661; Tripadvisor 4,4 / 239, 1° su 13). Canali propri: deboli o assenti. Il problema non è farsi conoscere: è rendersi trovabili, comprensibili e coerenti.</p>
+</div>
+
+<!-- 2 -->
+<h2>2. Stato attuale</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Area</th>
+      <th>Stato attuale</th>
+      <th>Criticità</th>
+      <th>Opportunità</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google / Maps</td>
+      <td>Scheda attiva. 661 recensioni, media 4,6. Crescita recente (~70 recensioni in pochi mesi, via aggregatori). Telefono 0872 946242.</td>
+      <td>Orari solo sab 12–23 / dom 12–16 (un cliente ha trovato aperto il martedì). Nessun sito né menu collegato. Attributo «consegna a domicilio» probabilmente errato.</td>
+      <td>Orari stagionali, categorie (abruzzese / griglia / eventi), Q&amp;A, post, foto proprietario. Impatto immediato su chiamate e coperti.</td>
+    </tr>
+    <tr>
+      <td>Instagram</td>
+      <td><span class="nv">NON VERIFICATO.</span> Nessun handle pubblico rintracciabile. I competitor strutturati (Nido del Falco) lo hanno linkato ovunque.</td>
+      <td>Zero visibilità sul pubblico 25–45 e sui turisti che cercano «Abruzzo / Majella».</td>
+      <td>Profilo ufficiale + Reel su vista e piatti-firma. Secondario rispetto a Google, utile per crescita.</td>
+    </tr>
+    <tr>
+      <td>Facebook</td>
+      <td>Pagina esistente (ID legacy + 62 voti 5/5 via Restaurant Guru). Bio, frequenza, engagement: <span class="nv">NON VERIFICATI</span>.</td>
+      <td>Probabile pagina luogo non gestita. Il target 45–65 della provincia è ancora qui.</td>
+      <td>Piattaforma social primaria per il pubblico attuale. Eventi, Capodanno, orari del weekend.</td>
+    </tr>
+    <tr>
+      <td>Tripadvisor</td>
+      <td>239 recensioni, 4,4/5, 1° su 13 a Pizzoferrato, 76 foto. Categorie: italiana, barbecue, mediterranea. Fascia «€».</td>
+      <td>Nessun sito collegato. Fascia «economico» in tensione con conti recenti da 30–40 €. Stato rivendicazione e risposte: <span class="nv">NON VERIFICATO</span>.</td>
+      <td>Rivendicare, aggiornare fascia, collegare sito. Rilevante per turisti, secondario rispetto a Google.</td>
+    </tr>
+    <tr>
+      <td>Sito web</td>
+      <td>Assente. <em>ilcasale4.placeweb.site</em> (sito automatico Google, chiuso 2024) è parcheggiato. <em>ilcasalepizzoferrato.it</em> è libero (NXDOMAIN) ma ancora linkato da aggregatori.</td>
+      <td>Nessuna fonte autorevole. Casa del Pastore vince la SERP «ristorante Pizzoferrato» con un Joomla datato. Tre aggregatori pubblicano dati sbagliati.</td>
+      <td>Registrare il dominio già «atteso». Sito utile, ma non è il primo intervento: prima vanno sistemati Google e le informazioni.</td>
+    </tr>
+    <tr>
+      <td>Menu digitale</td>
+      <td>Nessun menu ufficiale. Solo ricostruzioni di terzi (PDF incoerente: pizza, pesce). Prezzo percepito 20–40 €, nessuno ufficiale.</td>
+      <td>La formula fissa, se non spiegata, produce attrito (rifiuto antipasti, incertezza sul conto).</td>
+      <td>Pagina «Come funziona il pranzo» + prezzo + QR. Alto impatto, lavoro contenuto.</td>
+    </tr>
+    <tr>
+      <td>Fotografia</td>
+      <td>Solo foto utente (76 TA, 162 aggregate). Autentiche, disordinate, senza brand.</td>
+      <td>Nessuna immagine che presenti il locale come vuole il titolare. Google e social vivono di scatti casuali.</td>
+      <td>1 giornata di shooting (sala, vetrata, 12 piatti, staff) alimenta tutti i canali per 6–12 mesi.</td>
+    </tr>
+    <tr>
+      <td>Video / content</td>
+      <td>Nessun Reel, TikTok o YouTube rintracciabile associato al locale.</td>
+      <td>Vista e tavola degli antipasti — i due motivi per cui si va — non sono usati come contenuto.</td>
+      <td>Serie «La finestra del Casale» + time-lapse antipasti. Da fare dopo lo shooting, non prima.</td>
+    </tr>
+    <tr>
+      <td>Branding</td>
+      <td>Logo: <span class="nv">NON VERIFICATO</span>. Nome in 4 varianti. Nessuna palette/tono ufficiale. Accoglienza fisica curata (guida rossa «BENVENUTO»).</td>
+      <td>«Il Casale» è un nome omonimo di decine di locali. Online il brand è deciso dai clienti.</td>
+      <td>Naming operativo «Il Casale Pizzoferrato» + kit minimo (logo, colori, avatar coerenti).</td>
+    </tr>
+    <tr>
+      <td>Local SEO</td>
+      <td>Forte nel local pack per volume recensioni. Assente nell’organico (nessuna pagina propria).</td>
+      <td>NAP incoerente: Casale Pollice vs Casale Greci; telefono milanese su Sluurpy; «cucina cinese» su Friends-and-food; PagineGialle non rivendicata.</td>
+      <td>Bonifica directory (tempo, poco denaro). Query locali senza contenuti di ristoratori.</td>
+    </tr>
+    <tr>
+      <td>Recensioni</td>
+      <td>Capitale reputazionale più grande della zona. Pregi ripetuti: antipasti, vista, Q/P, pasta in casa, staff. ~10% del campione critico sui primi elaborati.</td>
+      <td>Risposte del titolare: <span class="nv">NON VERIFICATE</span> (nessuna visibile negli estratti). Gap di aspettativa sul prezzo. Nessun QR di sollecito.</td>
+      <td>Protocollo risposte + QR sul conto. Le 900 recensioni sono già copy per social e sito.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 3 -->
+<h2>3. Punti di forza (già in mano al locale)</h2>
+<div class="grid-2">
+  <div class="card">
+    <h4>1. Reputazione da leader</h4>
+    <p>661 recensioni Google a 4,6 + 1° su Tripadvisor.</p>
+    <p><em>Perché conta:</em> è la prova sociale più forte della zona; il passaparola digitale c’è già.</p>
+    <p><em>Come usarlo:</em> badge, citazioni, risposte che ripetono i piatti-firma.</p>
+  </div>
+  <div class="card">
+    <h4>2. La vetrata sulla vallata</h4>
+    <p>La parola «vista / vallata» è tra le più citate.</p>
+    <p><em>Perché conta:</em> è l’unico asset visivo non copiabile dai competitor di paese.</p>
+    <p><em>Come usarlo:</em> foto hero, serie «La finestra del Casale», copertine Google/social.</p>
+  </div>
+  <div class="card">
+    <h4>3. Formula abbondante a prezzo basso percepito</h4>
+    <p>Percorso completo, clienti «quasi a scoppiare», conto che sorprende in positivo.</p>
+    <p><em>Perché conta:</em> promessa semplice e memorabile; spiega perché si sceglie Il Casale.</p>
+    <p><em>Come usarlo:</em> dichiararla online (oggi esiste solo nelle recensioni).</p>
+  </div>
+  <div class="card">
+    <h4>4. Piatti-firma spontanei</h4>
+    <p>Ravioli noci e tartufo, pappardelle al cinghiale, gnocchi con orapi, liquore al kiwi.</p>
+    <p><em>Perché conta:</em> i clienti hanno già nominato i «prodotti eroe».</p>
+    <p><em>Come usarlo:</em> foto ufficiali, Reel, menu digitale, post stagionali (tartufo, orapi, cinghiale).</p>
+  </div>
+  <div class="card">
+    <h4>5. Persone riconoscibili</h4>
+    <p>Carmine, Fernanda, Michele, «le ragazze» — citati per nome.</p>
+    <p><em>Perché conta:</em> è l’unico racconto umano disponibile; i competitor lo usano già (Antonio e Felicia al Nido del Falco).</p>
+    <p><em>Come usarlo:</em> pagina Chi siamo, ritratti, Stories di sala.</p>
+  </div>
+  <div class="card">
+    <h4>6. Sala + posizione</h4>
+    <p>Capienza, accessibilità, parcheggio, camino; Majella, eventi di paese, Roccaraso a ~35 min.</p>
+    <p><em>Perché conta:</em> adatto a gruppi, famiglie, cerimonie, cenoni — scontrino complessivo alto.</p>
+    <p><em>Come usarlo:</em> pagina Eventi/Capodanno con form; contenuti geotaggati Majella.</p>
+  </div>
+</div>
+
+<!-- 4 -->
+<h2>4. Criticità a impatto commerciale</h2>
+<table>
+  <thead>
+    <tr><th style="width:22%">Problema</th><th>Conseguenza</th><th>Soluzione</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Orari Google solo weekend</td>
+      <td>Clienti infrasettimanali persi. Già documentato da un recensore (aperto il martedì, Google diceva chiuso).</td>
+      <td>Orari stagionali e festività su GBP. Costo: zero. Impatto: coperti persi recuperabili da subito.</td>
+    </tr>
+    <tr>
+      <td>Nessun menu né prezzo ufficiale</td>
+      <td>Chi non conosce la formula non prenota, o arriva e rifiuta gli antipasti. Recensioni negative evitabili.</td>
+      <td>Menu digitale «Come funziona» con prezzo dichiarato e QR su tavolo/ingresso.</td>
+    </tr>
+    <tr>
+      <td>Dati contraddittori in rete</td>
+      <td>Due indirizzi, quattro nomi, telefono di Milano, «cucina cinese». Navigatori e Google ricevono segnali incoerenti.</td>
+      <td>Bonifica NAP su 6 directory + rivendica PagineGialle/Bianche. Tempo, non budget.</td>
+    </tr>
+    <tr>
+      <td>Prenotazione solo su fisso, «obbligatoria»</td>
+      <td>Telefono saturo nel weekend; nessuna traccia di richieste eventi/Capodanno.</td>
+      <td>WhatsApp Business + form eventi. Riduce no-show e chiamate perse.</td>
+    </tr>
+    <tr>
+      <td>Zero canali propri (sito assente, social NON VERIFICATI / inattivi)</td>
+      <td>Casa del Pastore intercetta «ristorante Pizzoferrato». Aggregatori monetizzano i suoi clienti. Nessun canale per tartufo, neve, cenoni.</td>
+      <td>Prima: Google + menu. Poi: dominio già libero + Facebook (target attuale). Instagram e sito come secondo passo, non come prima vendita.</td>
+    </tr>
+    <tr>
+      <td>Nessuna foto ufficiale</td>
+      <td>Chi scopre il locale su Maps non vede la vetrata come andrebbe vista. La decisione resta sulle foto dei clienti.</td>
+      <td>Shooting 1 giornata. Alimenta Google, menu, sito, social per un anno.</td>
+    </tr>
+    <tr>
+      <td>Prezzo percepito vs conto reale</td>
+      <td>Tripadvisor «€» e recensioni vecchie da 20–30 € vs ultime da 30–40 €. Rischio delusione sul conto, non sul cibo.</td>
+      <td>Dichiarare la fascia sul menu digitale e aggiornare Tripadvisor. Governare l’aspettativa.</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">Nota: le critiche sui primi elaborati (~10% del campione) sono un tema di cucina, non di marketing. FC Studio può farle emergere e rispondere online; non può «sistemarle» da sola.</p>
+
+<!-- 5 -->
+<h2>5. Opportunità per FC Studio</h2>
+
+<h3>Quick wins — veloci, alto rapporto costo/impatto</h3>
+<table>
+  <thead><tr><th>Cosa facciamo</th><th>Problema che risolve</th><th>Valore per il cliente</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Ottimizzazione Google Business Profile (orari, categorie, attributi, descrizione, Q&amp;A)</td>
+      <td>Scheda incompleta / fuorviante; traffico infrasettimanale perso</td>
+      <td>Più chiamate e indicazioni da chi sta già cercando un ristorante in zona</td>
+    </tr>
+    <tr>
+      <td>Bonifica NAP (6 directory + rivendica PG/PB/Tripadvisor)</td>
+      <td>Indirizzo, telefono e cucina sbagliati in rete</td>
+      <td>Navigatore giusto, meno clienti persi, segnali coerenti per Google</td>
+    </tr>
+    <tr>
+      <td>Menu digitale «Come funziona» + QR + prezzo</td>
+      <td>Formula e conto ignoti prima di arrivare</td>
+      <td>Meno attrito, meno recensioni evitabili, meno telefonate «quanto costa?»</td>
+    </tr>
+    <tr>
+      <td>WhatsApp Business + QR recensioni sul conto</td>
+      <td>Telefono unico canale; recensioni lasciate al caso</td>
+      <td>Prenotazioni tracciabili; rating difeso e accelerato</td>
+    </tr>
+    <tr>
+      <td>Registrazione <em>ilcasalepizzoferrato.it</em></td>
+      <td>Dominio libero, già linkato da aggregatori, a rischio snatch</td>
+      <td>Presidio del nome; base per landing o sito</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Progetti — più lavoro, costruiscono identità</h3>
+<table>
+  <thead><tr><th>Cosa facciamo</th><th>Problema che risolve</th><th>Valore per il cliente</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Mini brand kit + naming «Il Casale Pizzoferrato»</td>
+      <td>Omonimia e incoerenza tra piattaforme</td>
+      <td>Riconoscibilità minima su Google, social, biglietti, QR</td>
+    </tr>
+    <tr>
+      <td>Shooting foto + video (1 giornata)</td>
+      <td>Nessuna immagine ufficiale</td>
+      <td>Materiale per 6–12 mesi su tutti i canali; la vetrata diventa argomento di vendita</td>
+    </tr>
+    <tr>
+      <td>Landing o sito 5 pagine (Template V2.0) — Home, Formula, Chi siamo, Eventi, Contatti</td>
+      <td>Nessuna fonte autorevole; SERP organica persa</td>
+      <td>Info vere, form eventi/Capodanno, click da Google. Utile, non urgente quanto GBP+menu</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Servizi continuativi — rapporto mensile</h3>
+<table>
+  <thead><tr><th>Cosa facciamo</th><th>Problema che risolve</th><th>Valore per il cliente</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Social light: Facebook (primario) + Instagram — 2 Reel + 2 post/sett., Stories nei weekend</td>
+      <td>Nessun canale per stagioni, eventi, tartufo, neve</td>
+      <td>Ritorno dei clienti abituali; scoperta da 25–45 e turisti</td>
+    </tr>
+    <tr>
+      <td>Gestione recensioni (risposte 48 h + report)</td>
+      <td>Critiche sui primi senza replica; capitale reputazionale non presidiato</td>
+      <td>Difesa del 4,6; keyword rinforzate nelle risposte</td>
+    </tr>
+    <tr>
+      <td>Manutenzione orari/menu + 1 post GBP/settimana</td>
+      <td>Informazioni che tornano a divergere</td>
+      <td>Scheda sempre vera; il titolare non deve imparare Google</td>
+    </tr>
+    <tr>
+      <td>Ads Meta solo su ponti/festività/Capodanno (opzionale)</td>
+      <td>Eventi affidati al passaparola</td>
+      <td>Coperti extra nelle date che già riempiono la sala. Non Google Ads: la domanda locale è già sulla scheda.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 6 -->
+<div class="keep">
+<h2>6. Cosa vendere</h2>
+<p>Non vendere «un sito». Il primo valore è sistemare le informazioni su Google e spiegare la formula. Il sito è il passo 2, se il titolare vuole anche identità e eventi.</p>
+
+<div class="packs">
+  <div class="pack rec">
+    <header>
+      <div class="name">Pacchetto 1 · da proporre per primi</div>
+      <h4>BASE</h4>
+    </header>
+    <div class="body">
+      <p><strong>Comprende</strong></p>
+      <ul>
+        <li>Ottimizzazione completa GBP</li>
+        <li>Bonifica 6 directory + rivendica TA/PG</li>
+        <li>Menu digitale + QR + prezzo</li>
+        <li>WhatsApp Business + QR recensioni</li>
+        <li>Registrazione dominio</li>
+        <li>Landing one-page (orari, formula, mappa, WhatsApp)</li>
+      </ul>
+      <p><strong>Obiettivo.</strong> Stoppare le perdite: orari sbagliati, dati errati, formula opaca.</p>
+      <p class="price">1.200 – 1.800 € una tantum<br>+ 25 – 40 €/mese hosting e micro-aggiornamenti</p>
+    </div>
+  </div>
+  <div class="pack">
+    <header>
+      <div class="name">Pacchetto 2 · upsell naturale</div>
+      <h4>PRO</h4>
+    </header>
+    <div class="body">
+      <p><strong>Comprende BASE, più</strong></p>
+      <ul>
+        <li>Mini brand kit</li>
+        <li>Shooting foto+video 1 giornata</li>
+        <li>Sito 5 pagine (Template V2.0) + EN essenziale</li>
+        <li>Riordino Facebook + apertura Instagram</li>
+        <li>Caricamento foto/menu su Google</li>
+      </ul>
+      <p><strong>Obiettivo.</strong> Dare un volto ufficiale a una reputazione che oggi parlano solo i clienti.</p>
+      <p class="price">3.500 – 4.800 € setup<br>(o +2.200–3.000 € se BASE è già stato fatto)</p>
+    </div>
+  </div>
+  <div class="pack">
+    <header>
+      <div class="name">Pacchetto 3 · dopo 30-60 giorni</div>
+      <h4>CONTINUATIVO</h4>
+    </header>
+    <div class="body">
+      <p><strong>Mensile</strong></p>
+      <ul>
+        <li>2 Reel + 2 post/settimana</li>
+        <li>Stories nei giorni di apertura</li>
+        <li>1 post GBP/settimana</li>
+        <li>Risposte recensioni entro 48 h</li>
+        <li>Aggiornamento orari/menu</li>
+        <li>Report mensile KPI</li>
+      </ul>
+      <p><strong>Obiettivo.</strong> Stagioni, eventi, ritorno. Ha senso solo se BASE (o PRO) è a posto e c’è materiale da pubblicare.</p>
+      <p class="price">450 – 650 €/mese<br>su 12 mesi. Ads a parte (100–250 €/campagna, budget cliente)</p>
+    </div>
+  </div>
+</div>
+<p class="note">Prezzi IVA esclusa, allineati a piccola agenzia/freelance in Italia. Per un locale aperto principalmente nel weekend, BASE è la proposta coerente al primo incontro; PRO se il titolare vuole anche identità; il continuativo solo se c’è chi gira contenuto il sabato. Non proporre TheFork, SEO nazionale, delivery, TikTok da subito.</p>
+</div>
+
+<!-- 7 -->
+<h2>7. Priorità</h2>
+<table class="prio">
+  <thead>
+    <tr>
+      <th style="width:8%">Priorità</th>
+      <th>Intervento</th>
+      <th>Impatto</th>
+      <th>Difficoltà</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Correggere orari, attributi e categorie su Google Business Profile</td>
+      <td class="hi">Alto</td>
+      <td class="lo">Bassa</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Menu digitale «Come funziona» con prezzo e QR</td>
+      <td class="hi">Alto</td>
+      <td class="lo">Bassa</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Bonifica NAP / directory e rivendica delle schede</td>
+      <td class="mid">Medio</td>
+      <td class="lo">Bassa</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>WhatsApp Business + QR recensioni sul conto</td>
+      <td class="mid">Medio</td>
+      <td class="lo">Bassa</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Shooting + (landing o sito) + Facebook/Instagram — solo dopo i punti 1–4</td>
+      <td class="hi">Alto</td>
+      <td class="mid">Media</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">Ordine per impatto × fattibilità. Il sito non è in cima: senza Google e menu a posto, un sito bello non recupera i coperti persi per orari sbagliati.</p>
+
+<!-- 8 -->
+<h2>8. Roadmap (se accettano)</h2>
+<div class="phases">
+  <div class="phase">
+    <div class="when">Fase 1 · 0–30 giorni</div>
+    <h4>Sistemare</h4>
+    <ul>
+      <li>Incontro: orari reali, prezzo formula, accessi FB/IG, anno di apertura</li>
+      <li>GBP completo</li>
+      <li>Bonifica directory</li>
+      <li>Dominio registrato</li>
+      <li>Menu digitale + QR stampati</li>
+      <li>WhatsApp + protocollo recensioni</li>
+      <li>Landing online</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="when">Fase 2 · 30–60 giorni</div>
+    <h4>Costruire</h4>
+    <ul>
+      <li>Brand kit minimo</li>
+      <li>Shooting 1 giornata (meglio un sabato di servizio)</li>
+      <li>Sito 5 pagine (se PRO) o arricchimento landing</li>
+      <li>FB/IG riordinati</li>
+      <li>Avvio 2 Reel + 2 post/sett. (se continuativo)</li>
+      <li>Pagina Eventi / Capodanno</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="when">Fase 3 · 60–90 giorni</div>
+    <h4>Misurare</h4>
+    <ul>
+      <li>Confronto KPI vs giorno 0 (GBP Insights)</li>
+      <li>Quale Reel converte: vista vs piatti vs persone</li>
+      <li>Eventuale ads su ponte/Capodanno</li>
+      <li>Report e decisione: restare su BASE o salire</li>
+    </ul>
+  </div>
+</div>
+<p class="foot-note"><strong>KPI da leggere, non da promettere a caso:</strong> visualizzazioni scheda, chiamate, indicazioni, click al sito/menu, nuove recensioni/mese (baseline stimata 15–25), % risposte, invii form eventi, click WhatsApp. I coperti li misura solo il titolare.</p>
+
+<!-- 9 -->
+<div class="keep" style="page-break-before: always;">
+<h2>9. Cosa dobbiamo discutere noi due — 10 domande</h2>
+<ol class="qlist">
+  <li><strong>Cosa sappiamo fare internamente, cosa no?</strong> GBP, sito (abbiamo il Template V2.0), menu/QR: sì. Shooting e montaggio Reel: li facciamo noi o serve un fotografo esterno? Il costo cambia il prezzo del PRO.</li>
+  <li><strong>Chi pubblica le Stories il sabato e la domenica?</strong> Il locale è aperto nel weekend. Senza qualcuno in sala (titolare con cellulare, o noi in loco 1 volta al mese) il continuativo è fragile.</li>
+  <li><strong>Quante ore/mese abbiamo davvero</strong> se prende il continuativo (2 Reel + 2 post + recensioni + 1 mezza giornata in loco)? Se non tornano, non venderlo.</li>
+  <li><strong>Qual è il nostro costo pieno e il margine minimo?</strong> Prima di quotare 1.500 € o 4.000 €, quanto ci costa BASE e quanto PRO (giornate × tariffa nostra + fotografo + stampa QR + dominio).</li>
+  <li><strong>BASE come piede in porta, o PRO unico?</strong> Un titolare di ristorante di montagna che non ha mai investito in digitale accetta più facilmente 1.500 € visibili in 30 giorni che 4.000 €. L’upsell al PRO dopo lo shooting «di prova» è più credibile.</li>
+  <li><strong>Cosa promettiamo, per iscritto?</strong> Possiamo promettere: orari corretti, menu online, dati puliti, materiale fotografico, report KPI. Non possiamo promettere «più coperti» o «primi su Google Maps». Il 4,6 c’è già: non venderlo come risultato nostro.</li>
+  <li><strong>Cosa mostriamo al primo incontro?</strong> Non abbiamo (ancora) un case locale. Opzioni: mockup del Casale sul Template V2.0 + questa scheda + 3 screenshot dei dati errati (cinese, telefono Milano, dominio morto). È più forte di un portfolio generico.</li>
+  <li><strong>Cosa dobbiamo verificare col titolare prima di quotare?</strong> Orari infrasettimanali reali · accessi Facebook/Instagram · prezzo attuale della formula · se risponde già alle recensioni · se gli eventi/Capodanno gli interessano · budget massimo mentale.</li>
+  <li><strong>Chi parla col titolare e con quale tono?</strong> Non «ti serve un sito». Tre fatti: Google ti dà chiuso 5 giorni su 7; in rete risulti anche cinese e con un telefono di Milano; Casa del Pastore vince la ricerca col nome del paese. Poi i 661 voti a 4,6 che nessuno sta usando.</li>
+  <li><strong>Come ci differenziamo da un webmaster da 500 €?</strong> Non vendiamo pagine: sistemiamo il percorso da Maps al tavolo (orari, formula, prenotazione, recensioni). Il sito è uno strumento, non l’offerta. Se non siamo d’accordo su questo, rischiamo di quotare il pezzo sbagliato.</li>
+</ol>
+
+<!-- 10 -->
+<div class="exec">
+  <h2>10. Executive summary</h2>
+  <p><strong>1. Dove si trova oggi, digitalmente?</strong> Leader di reputazione, ultimo di presidio. Google e Tripadvisor lo tengono in cima a Pizzoferrato; il locale non ha sito, non ha menu, non ha (per quanto verificabile) social attivi. Gli aggregatori raccontano al posto suo, spesso male.</p>
+  <p><strong>2. Punti di forza principali?</strong> 661 recensioni a 4,6 e 1° su Tripadvisor; vetrata; formula abbondante a prezzo percepito basso; piatti-firma già nominati dai clienti; titolare e staff riconoscibili; sala adatta a gruppi ed eventi in un territorio (Majella) che porta gente da fuori.</p>
+  <p><strong>3. Problemi più importanti?</strong> Orari Google incompleti (coperti persi, già documentati). Formula e prezzo non dichiarati. Dati contraddittori in rete. Un solo canale di prenotazione (fisso). Nessuna immagine ufficiale. Nome omonimo. Questi punti bruciano soldi; un sito carente, da solo, no.</p>
+  <p><strong>4. Dove può intervenire FC Studio?</strong> Prima sulle perdite: GBP, directory, menu/QR, WhatsApp. Poi sull’identità: foto, brand, sito, Facebook. Infine sulla crescita: contenuti e, solo su date clou, ads. Non TheFork, non SEO Italia, non delivery.</p>
+  <p><strong>5. Primo passo concreto, oggi?</strong> Decidere internamente se proponiamo BASE (1.200–1.800 €) come prima offerta. Poi: una visita in loco di domenica — vedere sala, vetrata, orari veri, se esiste Instagram — e presentarsi al titolare con tre fatti verificati, non con un preventivo di sito.</p>
+</div>
+
+<p class="foot-note">Fonti: aggregatori pubblici (Restaurant Guru agg. 25/08/2026, Sluurpy, Tripadvisor .cn, OneItalia, PagineGialle/Bianche, DNS/RDAP). Non accessibili dal nostro ambiente: scheda Google nativa (post, Q&amp;A, foto proprietario), feed Instagram, contenuti Facebook. Qualsiasi preventivo va confermato dopo il sopralluogo.</p>
+</div>
+
+</body>
+</html>
