@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menù digitale — Il Casale Pizzoferrato</title>
+  <meta name="description" content="Menù digitale de Il Casale a Pizzoferrato: come funziona il pranzo, antipasti, primi, brace, dolci e liquori della casa.">
+  <meta name="theme-color" content="#1c2f26">
+  <link rel="icon" href="assets/logo/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body class="menu-app">
+  <a class="skip" href="#menu">Salta al menù</a>
+  <div class="demo-bar">Menù digitale · prototipo FC Studio · prezzi ufficiali assenti: non inventati</div>
+
+  <section class="cover" id="cover" aria-labelledby="cover-title">
+    <div class="ph" style="position:absolute;inset:0">
+      <img src="assets/img/sala-vetrata.jpg" alt="Sala panoramica — immagine sostitutiva">
+    </div>
+    <div class="cover-shade"></div>
+    <div class="cover-inner">
+      <p class="eyebrow" style="color:#f0d78c">Il Casale · Pizzoferrato</p>
+      <h1 id="cover-title">Il Casale</h1>
+      <p>La tavola con vista sulla Majella</p>
+      <button class="btn btn-primary" type="button" id="start-menu">Inizia a consultare il menù</button>
+    </div>
+  </section>
+
+  <div class="menu-shell" id="shell">
+    <header class="menu-top">
+      <div class="row">
+        <a class="brand" href="index.html" style="flex-direction:row;gap:8px;align-items:baseline">
+          <span class="brand-name" style="font-size:22px">Il Casale</span>
+        </a>
+        <a class="back" href="index.html">Sito</a>
+      </div>
+      <label class="visually-hidden" for="q" style="position:absolute;left:-999px">Cerca</label>
+      <input class="search" id="q" type="search" placeholder="Cerca un piatto, es. ravioli, tartufo…">
+      <nav class="chips" id="chips" aria-label="Categorie"></nav>
+    </header>
+
+    <main class="menu-pad" id="menu">
+      <noscript>
+        <article class="formula-card">
+          <h2>Come funziona il pranzo</h2>
+          <p>Antipasti caldi e freddi, primi fatti in casa, brace, dolci e liquori della casa. Prezzo ufficiale da confermare (in recensione: circa 25–40 €).</p>
+        </article>
+        <p>Attiva JavaScript per sfogliare i piatti, oppure chiama 0872 946242.</p>
+      </noscript>
+    </main>
+  </div>
+
+  <nav class="dock" aria-label="Azioni rapide">
+    <a href="tel:+390872946242">Chiama</a>
+    <a href="#menu" id="dock-top">Menù</a>
+    <a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato">Indicazioni</a>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
