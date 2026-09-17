@@ -19,8 +19,8 @@
     <p class="eyebrow">La carta</p>
     <h1>Il menù</h1>
     <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
-    <p>Questa è la carta del sito: si sfoglia da casa, prima di prenotare. Il menù da tavolo — quello del QR sui tavoli — è una pagina a parte, pensata per il telefono, sulla porta 8081.</p>
-    <p style="margin-top:18px"><a class="btn btn-line" data-menu-url href="./menu.html">Apri il menù QR (porta 8081)</a></p>
+    <p>Questa è la carta del sito: si sfoglia da casa, prima di prenotare. Il menù da tavolo — quello del QR sui tavoli — è una pagina a parte, pensata per il telefono.</p>
+    <p style="margin-top:18px"><a class="btn btn-line" href="./menu.html">Apri il menù digitale</a></p>
   </header>
 
   <main id="contenuto" class="wrap" style="padding-bottom:80px">
@@ -37,39 +37,17 @@
       <p class="note">Testo di prova, ricostruito da ciò che gli ospiti raccontano. Prezzo ufficiale da confermare col locale: non inventiamo listini. Le foto di categoria sono di riferimento, da altri ristoranti.</p>
     </section>
 
-    <section style="padding-top:0">
-      <p class="eyebrow">Menù da tavolo</p>
-      <h2>Porta 8081</h2>
-      <p>Il QR dei tavoli, in questa demo, apre il menù sulla porta <strong>8081</strong>. Dal telefono, sulla stessa rete del computer: <a data-menu-url href="./menu.html">apri il menù digitale</a>.</p>
-      <div class="ports">
-        <article class="port-card">
-          <p class="eyebrow">Sito web</p>
-          <div class="num">8080</div>
-          <p><a href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a></p>
-        </article>
-        <article class="port-card">
-          <p class="eyebrow">Menù QR</p>
-          <div class="num">8081</div>
-          <p><a data-menu-url data-menu-url-text href="./menu.html">http://127.0.0.1:8081</a></p>
-          <div id="live-qr" hidden></div>
-          <p id="live-qr-caption" hidden></p>
-        </article>
-      </div>
-    </section>
-
     <div id="carta"></div>
   </main>
 
   <footer class="site-footer" id="site-footer"></footer>
   <nav class="dock" aria-label="Azioni rapide">
     <a href="tel:+390872946242">Chiama</a>
-    <a href="./menu.html" data-menu-url>QR</a>
+    <a href="./menu.html">QR</a>
     <a href="./contatti.html">Prenota</a>
   </nav>
   <script src="js/menu-data.js"></script>
   <script src="js/carta.js"></script>
   <script src="js/layout.js"></script>
-  <script src="js/qrcode.min.js"></script>
-  <script src="js/preview-ports.js"></script>
 </body>
 </html>
