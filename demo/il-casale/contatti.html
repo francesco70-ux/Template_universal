@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contatti — Il Casale Pizzoferrato</title>
+  <meta name="description" content="Prenota un tavolo de Il Casale a Pizzoferrato: 0872 946242, Casale Pollice 4.">
+  <meta name="theme-color" content="#3e2a1b">
+  <link rel="icon" href="assets/logo/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="contatti" class="has-dock">
+  <a class="skip" href="#contenuto">Salta al contenuto</a>
+  <div class="demo-bar">Proposta di stile FC Studio · orari da confermare col titolare</div>
+  <header class="site-header" id="site-header"></header>
+
+  <header class="page-hero">
+    <p class="eyebrow">Contatti</p>
+    <h1>Prenota un tavolo</h1>
+    <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+    <p>Oggi l’unico canale verificato è il telefono fisso. Gli orari pubblicati online non coincidono: meglio chiedere in chiamata.</p>
+  </header>
+
+  <main id="contenuto">
+    <section>
+      <div class="wrap contact-grid">
+        <div>
+          <p><a class="btn btn-primary" href="tel:+390872946242">Chiama 0872 946242</a></p>
+          <p>Casale Pollice, 4<br>66040 Pizzoferrato (CH)</p>
+          <p><a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato" target="_blank" rel="noopener noreferrer">Apri in Google Maps</a></p>
+
+          <form class="form" id="form-prenota" action="#" method="post">
+            <label>Nome <input name="nome" required autocomplete="name"></label>
+            <label>Telefono <input name="tel" type="tel" required autocomplete="tel"></label>
+            <label>Data <input name="data" type="date" required></label>
+            <label>Persone
+              <select name="persone" required>
+                <option value="2">2</option><option value="4">4</option>
+                <option value="6">6</option><option value="8">8</option>
+                <option value="10+">10 o più</option>
+              </select>
+            </label>
+            <label>Note <textarea name="note" rows="3" placeholder="Bambini, intolleranze, solo primo e secondo…"></textarea></label>
+            <button class="btn btn-green" type="submit">Invia richiesta</button>
+            <div class="form-ok" id="form-ok" role="status"></div>
+          </form>
+          <p class="note">In produzione il modulo va collegato a WhatsApp Business o alla mail del titolare. Questa demo non invia dati.</p>
+        </div>
+        <div class="map gold-frame" style="padding:0">
+          <iframe title="Mappa: Il Casale, Pizzoferrato" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Casale%20Pollice%204%2C%20Pizzoferrato%20CH&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <nav class="dock" aria-label="Azioni rapide">
+    <a href="tel:+390872946242">Chiama</a>
+    <a href="./carta.html">Menù</a>
+    <a href="https://maps.google.com/?q=Casale+Pollice+4+Pizzoferrato" target="_blank" rel="noopener noreferrer">Mappa</a>
+  </nav>
+  <script src="js/layout.js"></script>
+</body>
+</html>

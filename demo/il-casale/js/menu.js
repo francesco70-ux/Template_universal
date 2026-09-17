@@ -61,16 +61,25 @@
     return (
       '<article class="formula-card" id="formula">' +
       "<h2>" + f.title + "</h2>" +
+      '<div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>' +
       "<p>" + f.lead + "</p>" +
       "<ol>" + steps + "</ol>" +
       priceLine + "</article>"
     );
   }
 
+  var catImg = {
+    antipasti: "assets/img/ref/bruschetta.jpg",
+    primi: "assets/img/ref/pasta.jpg",
+    secondi: "assets/img/ref/griglia.jpg",
+    dolci: "assets/img/ref/tiramisu.jpg",
+    bevande: "assets/img/ref/vino.jpg"
+  };
+
   function render(filter) {
     var q = (filter || "").trim().toLowerCase();
     var html = formulaHtml();
-    var chipHtml = '<a href="#formula">La formula</a>';
+    var chipHtml = '<a href="#formula" class="is-on">La formula</a>';
     var any = false;
 
     MENU.categories.forEach(function (cat) {
@@ -81,10 +90,14 @@
       chipHtml += '<a href="#' + cat.id + '">' + cat.name + "</a>";
       if (!items.length) return;
       any = true;
+      var photo = catImg[cat.id]
+        ? '<img class="cat-photo" src="' + catImg[cat.id] + '" alt="' + cat.name + ' — riferimento di stile">'
+        : "";
       html +=
         '<section class="cat" id="' + cat.id + '">' +
         "<h2>" + cat.name + "</h2>" +
         '<p class="cat-note">' + cat.note + "</p>" +
+        photo +
         items.map(itemHtml).join("") +
         "</section>";
     });
@@ -92,7 +105,15 @@
     if (q && !any) html += '<p class="empty">Nessun piatto corrisponde. Prova «ravioli», «tartufo» o «brace».</p>';
     html += '<p class="legal-note">' + MENU.priceDisclaimer + " " + MENU.allergenDisclaimer + "</p>";
     root.innerHTML = html;
-    if (chips) chips.innerHTML = chipHtml;
+    if (chips) {
+      chips.innerHTML = chipHtml;
+      chips.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          chips.querySelectorAll("a").forEach(function (x) { x.classList.remove("is-on"); });
+          a.classList.add("is-on");
+        });
+      });
+    }
   }
 
   render("");

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Menù digitale — Il Casale Pizzoferrato</title>
   <meta name="description" content="Menù digitale de Il Casale a Pizzoferrato: come funziona il pranzo, antipasti, primi, brace, dolci e liquori della casa.">
-  <meta name="theme-color" content="#1c2f26">
+  <meta name="theme-color" content="#3e2a1b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="icon" href="assets/logo/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/site.css">
@@ -13,18 +14,17 @@
 </head>
 <body class="menu-app">
   <a class="skip" href="#menu">Salta al menù</a>
-  <div class="demo-bar">Menù digitale · prototipo FC Studio · prezzi ufficiali assenti: non inventati</div>
+  <div class="demo-bar">Menù da tavolo (QR) · prototipo FC Studio · da aprire sul telefono</div>
 
   <section class="cover" id="cover" aria-labelledby="cover-title">
-    <div class="ph" data-credit="Foto ospite · Il Casale" style="position:absolute;inset:0">
-      <img src="assets/img/hero-veranda.jpg" alt="Veranda de Il Casale con vista sulla vallata">
-    </div>
+    <img src="assets/img/ref/sala.jpg" alt="Sala rustica con vista — immagine di riferimento">
     <div class="cover-shade"></div>
     <div class="cover-inner">
-      <p class="eyebrow" style="color:#f0d78c">Il Casale · Pizzoferrato</p>
+      <p class="eyebrow" style="color:var(--gold-2)">Il Casale · Pizzoferrato</p>
       <h1 id="cover-title">Il Casale</h1>
+      <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
       <p>La tavola con vista sulla Majella</p>
-      <a class="btn btn-primary" href="#shell" id="start-menu">Inizia a consultare il menù</a>
+      <a class="btn btn-primary" href="#shell" id="start-menu">Apri il menù</a>
     </div>
   </section>
 
@@ -36,7 +36,7 @@
         </a>
         <a class="back" href="./index.html">Sito</a>
       </div>
-      <label class="visually-hidden" for="q" style="position:absolute;left:-999px">Cerca</label>
+      <label class="visually-hidden" for="q">Cerca nel menù</label>
       <input class="search" id="q" type="search" placeholder="Cerca un piatto, es. ravioli, tartufo…">
       <nav class="chips" id="chips" aria-label="Categorie"></nav>
     </header>

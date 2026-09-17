@@ -1,0 +1,15 @@
+Unsplash — foto di riferimento (non Il Casale)
+
+Le immagini in questa cartella servono solo a mostrare lo stile rustico-elegante
+della proposta. Non sono scatti del locale.
+
+- sala.jpg — sala con tavoli di legno e vista
+- pasta.jpg — pasta in padella
+- griglia.jpg — carne su tagliere di legno
+- bruschetta.jpg — bruschette
+- tiramisu.jpg — dolce
+- dolce.jpg — dessert in vasetto
+- piatto.jpg — servizio in sala
+- olio.jpg — olio e olive
+- vino.jpg — brindisi
+- rustico.jpg — interni in legno

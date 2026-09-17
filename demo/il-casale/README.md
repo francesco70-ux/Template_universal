@@ -2,29 +2,42 @@
 
 Demo commerciale FC Studio. Non è il sito ufficiale.
 
+Proposta di stile **rustico elegante**: beige, sfumature di legno, verde della Majella, motivi dorati leggeri. Le foto di sala e piatti sono di **riferimento** (altri ristoranti / Unsplash), per far vedere al cliente come potrebbe venire il sito. Pizzoferrato e Majella sono foto reali.
+
+## Pagine
+
+| Pagina | File | Note |
+|---|---|---|
+| Home | `index.html` | Hero, percorso, paesaggio, prenota |
+| Chi siamo | `chi-siamo.html` | Locale + territorio |
+| Menù (sito) | `carta.html` | Carta da sito, **non** è il QR |
+| Recensioni | `recensioni.html` | Citazioni vere da analisi |
+| Contatti | `contatti.html` | Telefono, mappa, modulo demo |
+| Menù digitale (QR) | `menu.html` | Da tavolo, pensato per il telefono |
+| Privacy | `privacy.html` | Segnaposto |
+
+Navigazione del sito: Home · Chi siamo · Menù · Recensioni · Contatti.  
+Il QR sui tavoli apre `menu.html` (stesso stile, interfaccia mobile).
+
 ## Preview live in Cursor
 
 Il sito si vede **dentro Cursor**, senza pubblicare su GitHub e senza avviare un server a mano.
 
 1. Apri questa cartella del repo in Cursor (non un singolo file).
-2. Se compare la richiesta, installa l’estensione **Live Preview** (Microsoft, `ms-vscode.live-server`). È quella nativa di VS Code/Cursor per HTML statico: server locale automatico + browser integrato.
+2. Se compare la richiesta, installa l’estensione **Live Preview** (Microsoft, `ms-vscode.live-server`).
 3. Apri `demo/il-casale/index.html` o `demo/il-casale/menu.html`.
-4. Clicca l’icona **preview** in alto a destra dell’editor, oppure tasto destro sul file → **Show Preview**. Dalla Command Palette: **Live Preview: Show Preview**.
+4. Clicca l’icona **preview** in alto a destra, oppure tasto destro → **Show Preview**.
 
-La preview si apre a fianco del codice. I link relativi (`index.html` ↔ `menu.html` ↔ `privacy.html`) funzionano perché la root del server è `demo/il-casale`. Ogni **salvataggio** ricarica la pagina.
-
-Per il menù: stessa preview, oppure naviga dal sito con «Menù» / «Scopri il menù».
-
-«Prenota» porta alla sezione contatti (telefono, mappa, modulo). «Chiama» e il numero `0872 946242` usano `tel:`: sul computer non partono una chiamata, sul telefono sì.
+I link relativi tra le pagine funzionano se la root del server è `demo/il-casale`.
 
 ## QR → URL fisso → menù
 
-1. Si stampa **un solo QR**.
-2. Il QR punta a un indirizzo che non cambia: `https://ilcasalepizzoferrato.it/menu.html` (dominio previsto, oggi libero).
+1. Si stampa **un solo QR** (va sui tavoli).
+2. Il QR punta a un indirizzo che non cambia: `https://ilcasalepizzoferrato.it/menu.html`.
 3. Il contenuto del menù sta in `js/menu-data.js`.
-4. Si aggiornano piatti, testi, foto e — quando ci sono — i prezzi **solo in quel file**. Il QR restà identico.
+4. Si aggiornano piatti, testi, foto e — quando ci sono — i prezzi **solo in quel file**. Il QR resta identico.
 
-Il file `assets/qr/menu-qr.svg` è il QR di pubblicazione (dominio previsto). Sulla homepage, se la demo è servita in rete locale, compare anche un QR dell’URL attuale per provarlo dal telefono.
+Il file `assets/qr/menu-qr.svg` è il QR di pubblicazione (dominio previsto).
 
 ## Cosa è vero / cosa è placeholder
 
@@ -35,7 +48,10 @@ Nome, indirizzo Casale Pollice 4, telefono 0872 946242, recensioni citate, piatt
 Orari (Google e gli ospiti non coincidono), anno di apertura, storia di famiglia, email, WhatsApp, handle Instagram, prezzi ufficiali, allergeni, prodotti congelati, carta dei vini, categoria pizze, P.IVA.
 
 **Immagini**  
-Foto reali del locale (ospiti, da shooting ufficiale) e di Pizzoferrato / Majella (Wikimedia Commons, CC). Niente foto generate con l’AI. Crediti in calce alle foto.
+- Riferimento stile: `assets/img/ref/` (Unsplash, altri ristoranti). Elenco in `assets/img/ref/CREDITS.txt`.  
+- Foto reali del territorio: Pizzoferrato e Majella (Wikimedia).  
+- Alcuni piatti nel menù QR: foto degli ospiti del locale.  
+Niente foto generate con l’AI.
 
 **Modulo prenotazione**  
 Non invia nulla. In produzione: WhatsApp Business o mail del titolare.
@@ -44,7 +60,8 @@ Non invia nulla. In produzione: WhatsApp Business o mail del titolare.
 
 | File | Cosa ritrae | Fonte |
 |---|---|---|
-| `hero-veranda.jpg`, `sala-*`, `esterno.jpg`, `terrazza.jpg`, `dish-*.jpg` | Il Casale (sala, veranda, piatti) | Foto degli ospiti, raccolte pubblicamente |
+| `assets/img/ref/*` | Sala, pasta, brace, dolci… di altri locali | Unsplash, uso di riferimento |
+| `hero-veranda.jpg`, `sala-*`, `esterno.jpg`, `terrazza.jpg`, `dish-*.jpg` | Il Casale (ospiti) | Foto pubbliche degli ospiti |
 | `pizzoferrato.jpg` | Il borgo | Licia Missori / Wikimedia, CC BY-SA 3.0 |
 | `pizzoferrato-piazza.jpg` | Piazza e chiesa di San Rocco | Cristina Morettini 95 / Wikimedia, CC BY-SA 4.0 |
 | `majella.jpg` | Monte Tavola Rotonda | Davipar / Wikimedia, pubblico dominio |
@@ -56,7 +73,8 @@ Non invia nulla. In produzione: WhatsApp Business o mail del titolare.
 |---|---|
 | Nome, telefono, social | `js/config.js` |
 | Piatti, descrizioni, foto, prezzi | `js/menu-data.js` |
-| Testi di pagina | `index.html` |
+| Header e footer | `js/layout.js` |
+| Testi di pagina | `index.html`, `chi-siamo.html`, `carta.html`, `recensioni.html`, `contatti.html` |
 | Stile sito | `css/site.css` |
-| Stile menù | `css/menu.css` |
+| Stile menù QR | `css/menu.css` |
 | QR di pubblicazione | `assets/qr/` (rigenerare se cambia il dominio, non se cambia il menù) |
