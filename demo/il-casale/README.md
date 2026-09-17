@@ -19,6 +19,25 @@ Proposta di stile **rustico elegante**: beige, sfumature di legno, verde della M
 Navigazione del sito: Home · Chi siamo · Menù · Recensioni · Contatti.  
 Il QR sui tavoli apre `menu.html` (stesso stile, interfaccia mobile).
 
+## Porte di anteprima
+
+Due numeri di porta, così sito e menù da tavolo si aprono separati.
+
+| Cosa | Porta | Indirizzo locale | Cosa si vede |
+|---|---|---|---|
+| Sito web | **8080** | http://127.0.0.1:8080 | Home, chi siamo, menù, recensioni, contatti |
+| Menù QR | **8081** | http://127.0.0.1:8081 | `menu.html` (si apre subito, senza altri click) |
+
+Avvio:
+
+```bash
+python3 demo/il-casale/serve.py
+```
+
+Se la 8080 è già occupata, resta su quella porta il sito; lo script alza comunque la **8081** per il menù.
+
+Dal telefono, sulla stessa rete, si usa l’IP del computer al posto di `127.0.0.1`. In produzione il QR non avrà un numero di porta: punterà a `https://ilcasalepizzoferrato.it/menu.html`.
+
 ## Preview live in Cursor
 
 Il sito si vede **dentro Cursor**, senza pubblicare su GitHub e senza avviare un server a mano.
@@ -46,6 +65,9 @@ Nome, indirizzo Casale Pollice 4, telefono 0872 946242, recensioni citate, piatt
 
 **Non inventato, quindi assente o dichiarato**  
 Orari (Google e gli ospiti non coincidono), anno di apertura, storia di famiglia, email, WhatsApp, handle Instagram, prezzi ufficiali, allergeni, prodotti congelati, carta dei vini, categoria pizze, P.IVA.
+
+**Testi**  
+Frasi di prova, in attesa di quelle ufficiali del titolare. Non sono inventati orari, prezzi, mail o WhatsApp.
 
 **Immagini**  
 - Riferimento stile: `assets/img/ref/` (Unsplash, altri ristoranti). Elenco in `assets/img/ref/CREDITS.txt`.  

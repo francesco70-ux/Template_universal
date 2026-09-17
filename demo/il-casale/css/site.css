@@ -325,6 +325,21 @@ section { padding: 72px 0; }
 .site-footer a { color: var(--gold-2); }
 .legal { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(198,163,90,.25); font-size: 12px; }
 
+.ports {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px;
+}
+.port-card {
+  background: var(--cream); border: 1px solid var(--gold-line); padding: 22px 18px 24px;
+  text-align: center;
+}
+.port-card .num {
+  font-family: var(--serif); font-size: 48px; color: var(--wood-2); line-height: 1; margin: 6px 0 8px;
+}
+.port-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.port-card a { color: var(--wood-2); }
+#live-qr img { margin: 12px auto 0; background: #fff; padding: 8px; border: 1px solid var(--gold-line); }
+#live-qr-caption { font-size: 12px; color: var(--muted); word-break: break-all; margin-top: 8px; }
+
 .dock { display: none; }
 
 @media (max-width: 900px) {
@@ -338,7 +353,7 @@ section { padding: 72px 0; }
     z-index: 50;
   }
   .menu-toggle { display: grid; place-items: center; }
-  .split, .split.rev, .cards, .steps, .quotes, .contact-grid, .footer-grid, .facts, .carta-grid, .gallery {
+  .split, .split.rev, .cards, .steps, .quotes, .contact-grid, .footer-grid, .facts, .carta-grid, .gallery, .ports {
     grid-template-columns: 1fr;
   }
   .hero { min-height: 86svh; }
